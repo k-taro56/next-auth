@@ -1,0 +1,40 @@
+import { Callout } from 'nextra/components';
+
+# utils
+
+## parseDataSourceConfig()
+
+```ts
+parseDataSourceConfig(configOrString): DataSourceOptions
+```
+
+Ensure configOrString is normalized to an object.
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `configOrString` | `string` \| `DataSourceOptions` |
+
+### Returns
+
+`DataSourceOptions`
+
+***
+
+## updateConnectionEntities()
+
+```ts
+updateConnectionEntities(dataSource, entities): Promise<void>
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `dataSource` | `DataSource` |
+| `entities` | `any`[] |
+
+### Returns
+
+`Promise`\<`void`\>

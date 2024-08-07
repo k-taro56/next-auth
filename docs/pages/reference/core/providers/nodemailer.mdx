@@ -1,0 +1,205 @@
+import { Callout } from 'nextra/components';
+
+# providers/nodemailer
+
+## NodemailerConfig
+
+Shared across all [ProviderType](../providers.mdx#providertype)
+
+### Extends
+
+- [`EmailConfig`](email.mdx#emailconfig)
+
+### Properties
+
+#### apiKey?
+
+```ts
+optional apiKey: string;
+```
+
+Used with HTTP-based email providers.
+
+##### Inherited from
+
+[`EmailConfig`](email.mdx#emailconfig).[`apiKey`](email.mdx#apikey)
+
+#### from
+
+```ts
+from: string;
+```
+
+##### Inherited from
+
+[`EmailConfig`](email.mdx#emailconfig).[`from`](email.mdx#from)
+
+#### generateVerificationToken()?
+
+```ts
+optional generateVerificationToken: () => Awaitable<string>;
+```
+
+##### Returns
+
+[`Awaitable`](../types.mdx#awaitablet)\<`string`\>
+
+##### Inherited from
+
+[`EmailConfig`](email.mdx#emailconfig).[`generateVerificationToken`](email.mdx#generateverificationtoken)
+
+#### id
+
+```ts
+id: string;
+```
+
+Uniquely identifies the provider in AuthConfig.providers
+It's also part of the URL
+
+##### Inherited from
+
+[`EmailConfig`](email.mdx#emailconfig).[`id`](email.mdx#id)
+
+#### maxAge
+
+```ts
+maxAge: number;
+```
+
+##### Inherited from
+
+[`EmailConfig`](email.mdx#emailconfig).[`maxAge`](email.mdx#maxage)
+
+#### name
+
+```ts
+name: string;
+```
+
+The provider name used on the default sign-in page's sign-in button.
+For example if it's "Google", the corresponding button will say:
+"Sign in with Google"
+
+##### Inherited from
+
+[`EmailConfig`](email.mdx#emailconfig).[`name`](email.mdx#name)
+
+#### normalizeIdentifier()?
+
+```ts
+optional normalizeIdentifier: (identifier) => string;
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `identifier` | `string` |
+
+##### Returns
+
+`string`
+
+##### Inherited from
+
+[`EmailConfig`](email.mdx#emailconfig).[`normalizeIdentifier`](email.mdx#normalizeidentifier)
+
+#### options
+
+```ts
+options: NodemailerUserConfig;
+```
+
+##### Overrides
+
+[`EmailConfig`](email.mdx#emailconfig).[`options`](email.mdx#options)
+
+#### secret?
+
+```ts
+optional secret: string;
+```
+
+Used to hash the verification token.
+
+##### Inherited from
+
+[`EmailConfig`](email.mdx#emailconfig).[`secret`](email.mdx#secret)
+
+#### sendVerificationRequest()
+
+```ts
+sendVerificationRequest: (params) => Awaitable<void>;
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `params` | `Object` |
+| `params.expires` | `Date` |
+| `params.identifier` | `string` |
+| `params.provider` | [`NodemailerConfig`](nodemailer.mdx#nodemailerconfig) |
+| `params.request` | [`Request`]( https://developer.mozilla.org/en-US/docs/Web/API/Request ) |
+| `params.theme` | [`Theme`](../types.mdx#theme) |
+| `params.token` | `string` |
+| `params.url` | `string` |
+
+##### Returns
+
+[`Awaitable`](../types.mdx#awaitablet)\<`void`\>
+
+##### Overrides
+
+[`EmailConfig`](email.mdx#emailconfig).[`sendVerificationRequest`](email.mdx#sendverificationrequest)
+
+#### server?
+
+```ts
+optional server: AllTransportOptions;
+```
+
+Used with SMTP-based email providers.
+
+##### Overrides
+
+[`EmailConfig`](email.mdx#emailconfig).[`server`](email.mdx#server)
+
+#### type
+
+```ts
+type: "email";
+```
+
+See [ProviderType](../providers.mdx#providertype)
+
+##### Inherited from
+
+[`EmailConfig`](email.mdx#emailconfig).[`type`](email.mdx#type)
+
+***
+
+## NodemailerUserConfig
+
+```ts
+type NodemailerUserConfig: Omit<Partial<NodemailerConfig>, "options" | "type">;
+```
+
+***
+
+## default()
+
+```ts
+default(config): NodemailerConfig
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `config` | [`NodemailerUserConfig`](nodemailer.mdx#nodemaileruserconfig) |
+
+### Returns
+
+[`NodemailerConfig`](nodemailer.mdx#nodemailerconfig)

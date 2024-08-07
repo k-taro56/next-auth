@@ -1,0 +1,23 @@
+import { Callout } from 'nextra/components';
+
+# lib/utils
+
+## DefaultSchema\<Flavor\>
+
+```ts
+type DefaultSchema<Flavor>: Flavor extends AnyMySqlDatabase ? DefaultMySqlSchema : Flavor extends AnyPostgresDatabase ? DefaultPostgresSchema : Flavor extends AnySQLiteDatabase ? DefaultSQLiteSchema : never;
+```
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `Flavor` extends [`SqlFlavorOptions`](utils.mdx#sqlflavoroptions) |
+
+***
+
+## SqlFlavorOptions
+
+```ts
+type SqlFlavorOptions: AnyPostgresDatabase | AnyMySqlDatabase | AnySQLiteDatabase;
+```

@@ -1,0 +1,189 @@
+import { Callout } from 'nextra/components';
+
+# @auth/surrealdb-adapter
+
+<div style={{display: "flex", justifyContent: "space-between", alignItems: "center", padding: 16}}>
+ <p>Official <a href="https://www.surrealdb.com">SurrealDB</a> adapter for Auth.js / NextAuth.js.</p>
+ <a href="https://www.surrealdb.com">
+  <img style={{display: "block"}} src="https://authjs.dev/img/adapters/surrealdb.svg" width="30" />
+ </a>
+</div>
+
+## Installation
+
+```bash npm2yarn
+npm install @auth/surrealdb-adapter surrealdb.js
+```
+
+## AccountDoc\<T\>
+
+```ts
+type AccountDoc<T>: {
+  access_token: string;
+  expires_at: number;
+  id: string;
+  provider: string;
+  providerAccountId: string;
+  refresh_token: string;
+  type: Extract<ProviderType, "oauth" | "oidc" | "email" | "webauthn">;
+  userId: T;
+};
+```
+
+### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `T` | `string` |
+
+### Type declaration
+
+#### access\_token?
+
+```ts
+optional access_token: string;
+```
+
+#### expires\_at?
+
+```ts
+optional expires_at: number;
+```
+
+#### id
+
+```ts
+id: string;
+```
+
+#### provider
+
+```ts
+provider: string;
+```
+
+#### providerAccountId
+
+```ts
+providerAccountId: string;
+```
+
+#### refresh\_token?
+
+```ts
+optional refresh_token: string;
+```
+
+#### type
+
+```ts
+type: Extract<ProviderType, "oauth" | "oidc" | "email" | "webauthn">;
+```
+
+#### userId
+
+```ts
+userId: T;
+```
+
+***
+
+## SessionDoc\<T\>
+
+```ts
+type SessionDoc<T>: Document & {
+  userId: T;
+};
+```
+
+### Type declaration
+
+#### userId
+
+```ts
+userId: T;
+```
+
+### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `T` | `string` |
+
+***
+
+## UserDoc
+
+```ts
+type UserDoc: Document & {
+  email: string;
+};
+```
+
+### Type declaration
+
+#### email
+
+```ts
+email: string;
+```
+
+***
+
+## SurrealDBAdapter()
+
+```ts
+SurrealDBAdapter<T>(client): Adapter
+```
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `T` |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `client` | `Promise`\<`WebSocketStrategy` \| `HTTPStrategy`\<`T`\>\> |
+
+### Returns
+
+[`Adapter`](express/adapters.mdx#adapter)
+
+***
+
+## toId()
+
+```ts
+toId(surrealId): string
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `surrealId` | `string` |
+
+### Returns
+
+`string`
+
+***
+
+## toSurrealId()
+
+```ts
+toSurrealId(id): string
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `id` | `string` |
+
+### Returns
+
+`string`

@@ -1,0 +1,116 @@
+import { Callout } from 'nextra/components';
+
+# @auth/pouchdb-adapter
+
+<div style={{display: "flex", justifyContent: "space-between", alignItems: "center", padding: 16}}>
+ <p>Official <a href="https://pouchdb.com/api.html">PouchDB</a> adapter for Auth.js / NextAuth.js.</p>
+ <a href="https://pouchdb.com">
+  <img style={{display: "block"}} src="https://authjs.dev/img/adapters/pouchdb.svg" width="38" />
+ </a>
+</div>
+
+## Installation
+
+```bash npm2yarn
+npm install pouchdb pouchdb-find @auth/pouchdb-adapter
+```
+
+## PouchDBAdapterOptions
+
+Configure the adapter
+
+### Properties
+
+#### indexes?
+
+```ts
+optional indexes: IndexConfig;
+```
+
+Override the default index names.
+
+##### Default
+
+```js
+{
+  userByEmail: "nextAuthUserByEmail",
+  accountByProviderId: "nextAuthAccountByProviderId",
+  sessionByToken: "nextAuthSessionByToken",
+  verificationTokenByToken: "nextAuthVerificationRequestByToken"
+}
+```
+
+#### pouchdb
+
+```ts
+pouchdb: Database<{}>;
+```
+
+Your PouchDB instance, with the `pouchdb-find` plugin installed.
+
+##### Example
+
+```javascript
+import PouchDB from "pouchdb"
+
+PouchDB
+  .plugin(require("pouchdb-adapter-leveldb")) // Or any other adapter
+  .plugin(require("pouchdb-find")) // Don't forget the `pouchdb-find` plugin
+
+const pouchdb = new PouchDB("auth_db", \{ adapter: "leveldb" \})
+
+#### prefixes?
+
+```ts
+optional prefixes: PrefixConfig;
+```
+
+Override the default prefix names.
+
+##### Default
+
+```js
+{
+  user: "USER",
+  account: "ACCOUNT",
+  session: "SESSION",
+  verificationToken: "VERIFICATION-TOKEN"
+}
+```
+
+***
+
+## PouchDBAdapter()
+
+```ts
+PouchDBAdapter(options): Adapter
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options` | [`PouchDBAdapterOptions`](pouchdb-adapter.mdx#pouchdbadapteroptions) |
+
+### Returns
+
+[`Adapter`](express/adapters.mdx#adapter)
+
+***
+
+## createIndexes()
+
+```ts
+createIndexes(pouchdb, indexes?): Promise<void>
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `pouchdb` | `Database`\<\{}\> |
+| `indexes`? | `IndexConfig` |
+
+### Returns
+
+`Promise`\<`void`\>

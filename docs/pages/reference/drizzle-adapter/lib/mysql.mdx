@@ -1,0 +1,1786 @@
+import { Callout } from 'nextra/components';
+
+# lib/mysql
+
+## DefaultMySqlAccountsTable
+
+```ts
+type DefaultMySqlAccountsTable: MySqlTableWithColumns<{
+  columns: {
+     access_token: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        driverParam: string | number;
+        notNull: boolean;
+     }>;
+     expires_at: DefaultMyqlColumn<{
+        columnType: "MySqlInt";
+        data: number;
+        dataType: "number";
+        notNull: boolean;
+     }>;
+     id_token: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     provider: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     providerAccountId: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     refresh_token: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     scope: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     session_state: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     token_type: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     type: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     userId: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+  };
+  dialect: "mysql";
+  name: string;
+  schema: string | undefined;
+}>;
+```
+
+### Type declaration
+
+#### columns
+
+```ts
+columns: {
+  access_token: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     driverParam: string | number;
+     notNull: boolean;
+  }>;
+  expires_at: DefaultMyqlColumn<{
+     columnType: "MySqlInt";
+     data: number;
+     dataType: "number";
+     notNull: boolean;
+  }>;
+  id_token: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  provider: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  providerAccountId: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  refresh_token: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  scope: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  session_state: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  token_type: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  type: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  userId: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+};
+```
+
+#### columns.access\_token
+
+```ts
+access_token: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  driverParam: string | number;
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### driverParam
+
+```ts
+driverParam: string | number;
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.expires\_at
+
+```ts
+expires_at: DefaultMyqlColumn<{
+  columnType: "MySqlInt";
+  data: number;
+  dataType: "number";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlInt";
+```
+
+###### data
+
+```ts
+data: number;
+```
+
+###### dataType
+
+```ts
+dataType: "number";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.id\_token
+
+```ts
+id_token: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.provider
+
+```ts
+provider: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.providerAccountId
+
+```ts
+providerAccountId: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.refresh\_token
+
+```ts
+refresh_token: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.scope
+
+```ts
+scope: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.session\_state
+
+```ts
+session_state: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.token\_type
+
+```ts
+token_type: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.type
+
+```ts
+type: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.userId
+
+```ts
+userId: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### dialect
+
+```ts
+dialect: "mysql";
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+#### schema
+
+```ts
+schema: string | undefined;
+```
+
+***
+
+## DefaultMySqlAuthenticatorTable
+
+```ts
+type DefaultMySqlAuthenticatorTable: MySqlTableWithColumns<{
+  columns: {
+     counter: DefaultMyqlColumn<{
+        columnType: "MySqlInt";
+        data: number;
+        dataType: "number";
+        notNull: true;
+     }>;
+     credentialBackedUp: DefaultMyqlColumn<{
+        columnType: "MySqlBoolean";
+        data: boolean;
+        dataType: "boolean";
+        notNull: true;
+     }>;
+     credentialDeviceType: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     credentialID: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     credentialPublicKey: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     providerAccountId: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     transports: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        notNull: false;
+     }>;
+     userId: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+  };
+  dialect: "mysql";
+  name: string;
+  schema: string | undefined;
+}>;
+```
+
+### Type declaration
+
+#### columns
+
+```ts
+columns: {
+  counter: DefaultMyqlColumn<{
+     columnType: "MySqlInt";
+     data: number;
+     dataType: "number";
+     notNull: true;
+  }>;
+  credentialBackedUp: DefaultMyqlColumn<{
+     columnType: "MySqlBoolean";
+     data: boolean;
+     dataType: "boolean";
+     notNull: true;
+  }>;
+  credentialDeviceType: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  credentialID: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  credentialPublicKey: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  providerAccountId: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  transports: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     notNull: false;
+  }>;
+  userId: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+};
+```
+
+#### columns.counter
+
+```ts
+counter: DefaultMyqlColumn<{
+  columnType: "MySqlInt";
+  data: number;
+  dataType: "number";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlInt";
+```
+
+###### data
+
+```ts
+data: number;
+```
+
+###### dataType
+
+```ts
+dataType: "number";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.credentialBackedUp
+
+```ts
+credentialBackedUp: DefaultMyqlColumn<{
+  columnType: "MySqlBoolean";
+  data: boolean;
+  dataType: "boolean";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlBoolean";
+```
+
+###### data
+
+```ts
+data: boolean;
+```
+
+###### dataType
+
+```ts
+dataType: "boolean";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.credentialDeviceType
+
+```ts
+credentialDeviceType: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.credentialID
+
+```ts
+credentialID: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.credentialPublicKey
+
+```ts
+credentialPublicKey: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.providerAccountId
+
+```ts
+providerAccountId: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.transports
+
+```ts
+transports: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  notNull: false;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: false;
+```
+
+#### columns.userId
+
+```ts
+userId: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### dialect
+
+```ts
+dialect: "mysql";
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+#### schema
+
+```ts
+schema: string | undefined;
+```
+
+***
+
+## DefaultMySqlSchema
+
+```ts
+type DefaultMySqlSchema: {
+  accountsTable: DefaultMySqlAccountsTable;
+  authenticatorsTable: DefaultMySqlAuthenticatorTable;
+  sessionsTable: DefaultMySqlSessionsTable;
+  usersTable: DefaultMySqlUsersTable;
+  verificationTokensTable: DefaultMySqlVerificationTokenTable;
+};
+```
+
+### Type declaration
+
+#### accountsTable
+
+```ts
+accountsTable: DefaultMySqlAccountsTable;
+```
+
+#### authenticatorsTable?
+
+```ts
+optional authenticatorsTable: DefaultMySqlAuthenticatorTable;
+```
+
+#### sessionsTable?
+
+```ts
+optional sessionsTable: DefaultMySqlSessionsTable;
+```
+
+#### usersTable
+
+```ts
+usersTable: DefaultMySqlUsersTable;
+```
+
+#### verificationTokensTable?
+
+```ts
+optional verificationTokensTable: DefaultMySqlVerificationTokenTable;
+```
+
+***
+
+## DefaultMySqlSessionsTable
+
+```ts
+type DefaultMySqlSessionsTable: MySqlTableWithColumns<{
+  columns: {
+     expires: DefaultMyqlColumn<{
+        columnType: "MySqlTimestamp";
+        data: Date;
+        dataType: "date";
+        notNull: true;
+     }>;
+     sessionToken: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        isPrimaryKey: true;
+        notNull: true;
+     }>;
+     userId: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+  };
+  dialect: "mysql";
+  name: string;
+  schema: string | undefined;
+}>;
+```
+
+### Type declaration
+
+#### columns
+
+```ts
+columns: {
+  expires: DefaultMyqlColumn<{
+     columnType: "MySqlTimestamp";
+     data: Date;
+     dataType: "date";
+     notNull: true;
+  }>;
+  sessionToken: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     isPrimaryKey: true;
+     notNull: true;
+  }>;
+  userId: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+};
+```
+
+#### columns.expires
+
+```ts
+expires: DefaultMyqlColumn<{
+  columnType: "MySqlTimestamp";
+  data: Date;
+  dataType: "date";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlTimestamp";
+```
+
+###### data
+
+```ts
+data: Date;
+```
+
+###### dataType
+
+```ts
+dataType: "date";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.sessionToken
+
+```ts
+sessionToken: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  isPrimaryKey: true;
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### isPrimaryKey
+
+```ts
+isPrimaryKey: true;
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.userId
+
+```ts
+userId: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### dialect
+
+```ts
+dialect: "mysql";
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+#### schema
+
+```ts
+schema: string | undefined;
+```
+
+***
+
+## DefaultMySqlUsersTable
+
+```ts
+type DefaultMySqlUsersTable: MySqlTableWithColumns<{
+  columns: {
+     email: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     emailVerified: DefaultMyqlColumn<{
+        columnType: "MySqlTimestamp";
+        data: Date;
+        dataType: "date";
+        notNull: boolean;
+     }>;
+     id: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        isPrimaryKey: true;
+        notNull: true;
+     }>;
+     image: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     name: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+  };
+  dialect: "mysql";
+  name: string;
+  schema: string | undefined;
+}>;
+```
+
+### Type declaration
+
+#### columns
+
+```ts
+columns: {
+  email: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  emailVerified: DefaultMyqlColumn<{
+     columnType: "MySqlTimestamp";
+     data: Date;
+     dataType: "date";
+     notNull: boolean;
+  }>;
+  id: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     isPrimaryKey: true;
+     notNull: true;
+  }>;
+  image: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  name: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+};
+```
+
+#### columns.email
+
+```ts
+email: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.emailVerified
+
+```ts
+emailVerified: DefaultMyqlColumn<{
+  columnType: "MySqlTimestamp";
+  data: Date;
+  dataType: "date";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlTimestamp";
+```
+
+###### data
+
+```ts
+data: Date;
+```
+
+###### dataType
+
+```ts
+dataType: "date";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.id
+
+```ts
+id: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  isPrimaryKey: true;
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### isPrimaryKey
+
+```ts
+isPrimaryKey: true;
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.image
+
+```ts
+image: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.name
+
+```ts
+name: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### dialect
+
+```ts
+dialect: "mysql";
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+#### schema
+
+```ts
+schema: string | undefined;
+```
+
+***
+
+## DefaultMySqlVerificationTokenTable
+
+```ts
+type DefaultMySqlVerificationTokenTable: MySqlTableWithColumns<{
+  columns: {
+     expires: DefaultMyqlColumn<{
+        columnType: "MySqlTimestamp";
+        data: Date;
+        dataType: "date";
+        notNull: true;
+     }>;
+     identifier: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     token: DefaultMyqlColumn<{
+        columnType: "MySqlVarChar" | "MySqlText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+  };
+  dialect: "mysql";
+  name: string;
+  schema: string | undefined;
+}>;
+```
+
+### Type declaration
+
+#### columns
+
+```ts
+columns: {
+  expires: DefaultMyqlColumn<{
+     columnType: "MySqlTimestamp";
+     data: Date;
+     dataType: "date";
+     notNull: true;
+  }>;
+  identifier: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  token: DefaultMyqlColumn<{
+     columnType: "MySqlVarChar" | "MySqlText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+};
+```
+
+#### columns.expires
+
+```ts
+expires: DefaultMyqlColumn<{
+  columnType: "MySqlTimestamp";
+  data: Date;
+  dataType: "date";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlTimestamp";
+```
+
+###### data
+
+```ts
+data: Date;
+```
+
+###### dataType
+
+```ts
+dataType: "date";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.identifier
+
+```ts
+identifier: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.token
+
+```ts
+token: DefaultMyqlColumn<{
+  columnType: "MySqlVarChar" | "MySqlText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "MySqlVarChar" | "MySqlText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### dialect
+
+```ts
+dialect: "mysql";
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+#### schema
+
+```ts
+schema: string | undefined;
+```
+
+***
+
+## MySqlDrizzleAdapter()
+
+```ts
+MySqlDrizzleAdapter(client, schema?): Adapter
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `client` | `MySqlDatabase`\<`MySqlQueryResultHKT`, `PreparedQueryHKTBase`, `any`, `ExtractTablesWithRelations`\<`any`\>\> |
+| `schema`? | [`DefaultMySqlSchema`](mysql.mdx#defaultmysqlschema) |
+
+### Returns
+
+[`Adapter`](../../express/adapters.mdx#adapter)
+
+***
+
+## defineTables()
+
+```ts
+defineTables(schema): Required<DefaultMySqlSchema>
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `schema` | `Partial`\<[`DefaultMySqlSchema`](mysql.mdx#defaultmysqlschema)\> |
+
+### Returns
+
+`Required`\<[`DefaultMySqlSchema`](mysql.mdx#defaultmysqlschema)\>

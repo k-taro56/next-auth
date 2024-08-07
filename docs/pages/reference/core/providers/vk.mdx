@@ -1,0 +1,1664 @@
+import { Callout } from 'nextra/components';
+
+# providers/vk
+
+<div style={{backgroundColor: "#000", display: "flex", justifyContent: "space-between", color: "#fff", padding: 16}}>
+<span>Built-in <b>VK</b> integration.</span>
+<a href="https://vk.com/">
+  <img style={{display: "block"}} src="https://authjs.dev/img/providers/vk.svg" height="48" />
+</a>
+</div>
+
+## VkProfile
+
+https://dev.vk.com/reference/objects/user
+
+### Properties
+
+#### about?
+
+```ts
+optional about: string;
+```
+
+#### activities?
+
+```ts
+optional activities: string;
+```
+
+#### bdate?
+
+```ts
+optional bdate: string;
+```
+
+#### blacklisted?
+
+```ts
+optional blacklisted: 0 | 1;
+```
+
+#### blacklisted\_by\_me?
+
+```ts
+optional blacklisted_by_me: 0 | 1;
+```
+
+#### books?
+
+```ts
+optional books: string;
+```
+
+#### can\_access\_closed
+
+```ts
+can_access_closed: boolean;
+```
+
+#### can\_post?
+
+```ts
+optional can_post: 0 | 1;
+```
+
+#### can\_see\_all\_posts?
+
+```ts
+optional can_see_all_posts: 0 | 1;
+```
+
+#### can\_see\_audio?
+
+```ts
+optional can_see_audio: 0 | 1;
+```
+
+#### can\_send\_friend\_request?
+
+```ts
+optional can_send_friend_request: 0 | 1;
+```
+
+#### can\_write\_private\_message?
+
+```ts
+optional can_write_private_message: 0 | 1;
+```
+
+#### career?
+
+```ts
+optional career: {
+  city_id: number;
+  city_name: string;
+  company: string;
+  country_id: number;
+  from: number;
+  group_id: number;
+  position: string;
+  until: number;
+};
+```
+
+##### city\_id?
+
+```ts
+optional city_id: number;
+```
+
+##### city\_name?
+
+```ts
+optional city_name: string;
+```
+
+##### company?
+
+```ts
+optional company: string;
+```
+
+##### country\_id?
+
+```ts
+optional country_id: number;
+```
+
+##### from?
+
+```ts
+optional from: number;
+```
+
+##### group\_id?
+
+```ts
+optional group_id: number;
+```
+
+##### position?
+
+```ts
+optional position: string;
+```
+
+##### until?
+
+```ts
+optional until: number;
+```
+
+#### city?
+
+```ts
+optional city: {
+  id: number;
+  title: string;
+};
+```
+
+##### id
+
+```ts
+id: number;
+```
+
+##### title
+
+```ts
+title: string;
+```
+
+#### common\_count?
+
+```ts
+optional common_count: number;
+```
+
+#### connections?
+
+```ts
+optional connections: {
+  facebook: string;
+  instagram: string;
+  livejournal: string;
+  skype: string;
+  twitter: string;
+};
+```
+
+##### facebook?
+
+```ts
+optional facebook: string;
+```
+
+##### instagram?
+
+```ts
+optional instagram: string;
+```
+
+##### livejournal?
+
+```ts
+optional livejournal: string;
+```
+
+##### skype?
+
+```ts
+optional skype: string;
+```
+
+##### twitter?
+
+```ts
+optional twitter: string;
+```
+
+#### contacts?
+
+```ts
+optional contacts: {
+  home_phone: string;
+  mobile_phone: string;
+};
+```
+
+##### home\_phone?
+
+```ts
+optional home_phone: string;
+```
+
+##### mobile\_phone?
+
+```ts
+optional mobile_phone: string;
+```
+
+#### counters?
+
+```ts
+optional counters: {
+  albums: number;
+  audios: number;
+  followers: number;
+  friends: number;
+  groups: number;
+  mutual_friends: number;
+  notes: number;
+  online_friends: number;
+  pages: number;
+  photos: number;
+  user_videos: number;
+  videos: number;
+};
+```
+
+##### albums?
+
+```ts
+optional albums: number;
+```
+
+##### audios?
+
+```ts
+optional audios: number;
+```
+
+##### followers?
+
+```ts
+optional followers: number;
+```
+
+##### friends?
+
+```ts
+optional friends: number;
+```
+
+##### groups?
+
+```ts
+optional groups: number;
+```
+
+##### mutual\_friends?
+
+```ts
+optional mutual_friends: number;
+```
+
+##### notes?
+
+```ts
+optional notes: number;
+```
+
+##### online\_friends?
+
+```ts
+optional online_friends: number;
+```
+
+##### pages?
+
+```ts
+optional pages: number;
+```
+
+##### photos?
+
+```ts
+optional photos: number;
+```
+
+##### user\_videos?
+
+```ts
+optional user_videos: number;
+```
+
+##### videos?
+
+```ts
+optional videos: number;
+```
+
+#### country?
+
+```ts
+optional country: {
+  id: number;
+  title: string;
+};
+```
+
+##### id
+
+```ts
+id: number;
+```
+
+##### title
+
+```ts
+title: string;
+```
+
+#### crop\_photo?
+
+```ts
+optional crop_photo: {
+  crop: {
+     x: number;
+     x2: number;
+     y: number;
+     y2: number;
+  };
+  photo: {
+     access_key: string;
+     album_id: number;
+     can_comment: 0 | 1;
+     date: number;
+     has_tags: boolean;
+     height: number;
+     id: number;
+     images: {
+        height: number;
+        type:   | "p"
+           | "q"
+           | "s"
+           | "r"
+           | "x"
+           | "y"
+           | "m"
+           | "l"
+           | "o"
+           | "z"
+           | "w";
+        url: string;
+        width: number;
+     }[];
+     lat: number;
+     long: number;
+     owner_id: number;
+     photo_256: string;
+     place: string;
+     post_id: number;
+     sizes: {
+        height: number;
+        src: string;
+        type:   | "max"
+           | "k"
+           | "a"
+           | "b"
+           | "i"
+           | "p"
+           | "q"
+           | "s"
+           | "g"
+           | "d"
+           | "r"
+           | "x"
+           | "y"
+           | "m"
+           | "l"
+           | "o"
+           | "z"
+           | "w"
+           | "c"
+           | "e"
+           | "j"
+           | "temp"
+           | "h"
+           | "n"
+           | "f";
+        url: string;
+        width: number;
+     }[];
+     text: string;
+     user_id: number;
+     width: number;
+  };
+  rect: {
+     x: number;
+     x2: number;
+     y: number;
+     y2: number;
+  };
+};
+```
+
+##### crop
+
+```ts
+crop: {
+  x: number;
+  x2: number;
+  y: number;
+  y2: number;
+};
+```
+
+##### crop.x
+
+```ts
+x: number;
+```
+
+##### crop.x2
+
+```ts
+x2: number;
+```
+
+##### crop.y
+
+```ts
+y: number;
+```
+
+##### crop.y2
+
+```ts
+y2: number;
+```
+
+##### photo
+
+```ts
+photo: {
+  access_key: string;
+  album_id: number;
+  can_comment: 0 | 1;
+  date: number;
+  has_tags: boolean;
+  height: number;
+  id: number;
+  images: {
+     height: number;
+     type:   | "p"
+        | "q"
+        | "s"
+        | "r"
+        | "x"
+        | "y"
+        | "m"
+        | "l"
+        | "o"
+        | "z"
+        | "w";
+     url: string;
+     width: number;
+  }[];
+  lat: number;
+  long: number;
+  owner_id: number;
+  photo_256: string;
+  place: string;
+  post_id: number;
+  sizes: {
+     height: number;
+     src: string;
+     type:   | "max"
+        | "k"
+        | "a"
+        | "b"
+        | "i"
+        | "p"
+        | "q"
+        | "s"
+        | "g"
+        | "d"
+        | "r"
+        | "x"
+        | "y"
+        | "m"
+        | "l"
+        | "o"
+        | "z"
+        | "w"
+        | "c"
+        | "e"
+        | "j"
+        | "temp"
+        | "h"
+        | "n"
+        | "f";
+     url: string;
+     width: number;
+  }[];
+  text: string;
+  user_id: number;
+  width: number;
+};
+```
+
+##### photo.access\_key?
+
+```ts
+optional access_key: string;
+```
+
+##### photo.album\_id
+
+```ts
+album_id: number;
+```
+
+##### photo.can\_comment?
+
+```ts
+optional can_comment: 0 | 1;
+```
+
+##### photo.date
+
+```ts
+date: number;
+```
+
+##### photo.has\_tags
+
+```ts
+has_tags: boolean;
+```
+
+##### photo.height?
+
+```ts
+optional height: number;
+```
+
+##### photo.id
+
+```ts
+id: number;
+```
+
+##### photo.images?
+
+```ts
+optional images: {
+  height: number;
+  type:   | "p"
+     | "q"
+     | "s"
+     | "r"
+     | "x"
+     | "y"
+     | "m"
+     | "l"
+     | "o"
+     | "z"
+     | "w";
+  url: string;
+  width: number;
+  }[];
+```
+
+##### photo.lat?
+
+```ts
+optional lat: number;
+```
+
+##### photo.long?
+
+```ts
+optional long: number;
+```
+
+##### photo.owner\_id
+
+```ts
+owner_id: number;
+```
+
+##### photo.photo\_256?
+
+```ts
+optional photo_256: string;
+```
+
+##### photo.place?
+
+```ts
+optional place: string;
+```
+
+##### photo.post\_id?
+
+```ts
+optional post_id: number;
+```
+
+##### photo.sizes?
+
+```ts
+optional sizes: {
+  height: number;
+  src: string;
+  type:   | "max"
+     | "k"
+     | "a"
+     | "b"
+     | "i"
+     | "p"
+     | "q"
+     | "s"
+     | "g"
+     | "d"
+     | "r"
+     | "x"
+     | "y"
+     | "m"
+     | "l"
+     | "o"
+     | "z"
+     | "w"
+     | "c"
+     | "e"
+     | "j"
+     | "temp"
+     | "h"
+     | "n"
+     | "f";
+  url: string;
+  width: number;
+  }[];
+```
+
+##### photo.text?
+
+```ts
+optional text: string;
+```
+
+##### photo.user\_id?
+
+```ts
+optional user_id: number;
+```
+
+##### photo.width?
+
+```ts
+optional width: number;
+```
+
+##### rect
+
+```ts
+rect: {
+  x: number;
+  x2: number;
+  y: number;
+  y2: number;
+};
+```
+
+##### rect.x
+
+```ts
+x: number;
+```
+
+##### rect.x2
+
+```ts
+x2: number;
+```
+
+##### rect.y
+
+```ts
+y: number;
+```
+
+##### rect.y2
+
+```ts
+y2: number;
+```
+
+#### deactivated?
+
+```ts
+optional deactivated: string;
+```
+
+#### domain?
+
+```ts
+optional domain: string;
+```
+
+#### education?
+
+```ts
+optional education: {
+  faculty: number;
+  faculty_name: string;
+  graduation: number;
+  university: number;
+  university_name: string;
+};
+```
+
+##### faculty?
+
+```ts
+optional faculty: number;
+```
+
+##### faculty\_name?
+
+```ts
+optional faculty_name: string;
+```
+
+##### graduation?
+
+```ts
+optional graduation: number;
+```
+
+##### university?
+
+```ts
+optional university: number;
+```
+
+##### university\_name?
+
+```ts
+optional university_name: string;
+```
+
+#### email?
+
+```ts
+optional email: string;
+```
+
+#### exports?
+
+```ts
+optional exports: {
+  facebook: number;
+  instagram: number;
+  livejournal: number;
+  twitter: number;
+};
+```
+
+##### facebook?
+
+```ts
+optional facebook: number;
+```
+
+##### instagram?
+
+```ts
+optional instagram: number;
+```
+
+##### livejournal?
+
+```ts
+optional livejournal: number;
+```
+
+##### twitter?
+
+```ts
+optional twitter: number;
+```
+
+#### first\_name
+
+```ts
+first_name: string;
+```
+
+#### first\_name\_abl?
+
+```ts
+optional first_name_abl: string;
+```
+
+#### first\_name\_acc?
+
+```ts
+optional first_name_acc: string;
+```
+
+#### first\_name\_dat?
+
+```ts
+optional first_name_dat: string;
+```
+
+#### first\_name\_gen?
+
+```ts
+optional first_name_gen: string;
+```
+
+#### first\_name\_ins?
+
+```ts
+optional first_name_ins: string;
+```
+
+#### first\_name\_nom?
+
+```ts
+optional first_name_nom: string;
+```
+
+#### followers\_count?
+
+```ts
+optional followers_count: number;
+```
+
+#### friend\_status?
+
+```ts
+optional friend_status: 0 | 2 | 1 | 3;
+```
+
+#### games?
+
+```ts
+optional games: string;
+```
+
+#### has\_mobile?
+
+```ts
+optional has_mobile: 0 | 1;
+```
+
+#### has\_photo?
+
+```ts
+optional has_photo: 0 | 1;
+```
+
+#### home\_town?
+
+```ts
+optional home_town: string;
+```
+
+#### id
+
+```ts
+id: number;
+```
+
+#### interests?
+
+```ts
+optional interests: string;
+```
+
+#### is\_closed
+
+```ts
+is_closed: boolean;
+```
+
+#### is\_favorite?
+
+```ts
+optional is_favorite: 0 | 1;
+```
+
+#### is\_friend?
+
+```ts
+optional is_friend: 0 | 1;
+```
+
+#### is\_hidden\_from\_feed?
+
+```ts
+optional is_hidden_from_feed: 0 | 1;
+```
+
+#### is\_no\_index?
+
+```ts
+optional is_no_index: 0 | 1;
+```
+
+#### last\_name
+
+```ts
+last_name: string;
+```
+
+#### last\_name\_abl?
+
+```ts
+optional last_name_abl: string;
+```
+
+#### last\_name\_acc?
+
+```ts
+optional last_name_acc: string;
+```
+
+#### last\_name\_dat?
+
+```ts
+optional last_name_dat: string;
+```
+
+#### last\_name\_gen?
+
+```ts
+optional last_name_gen: string;
+```
+
+#### last\_name\_ins?
+
+```ts
+optional last_name_ins: string;
+```
+
+#### last\_name\_nom?
+
+```ts
+optional last_name_nom: string;
+```
+
+#### last\_seen?
+
+```ts
+optional last_seen: {
+  platform:   | 2
+     | 1
+     | 5
+     | 3
+     | 4
+     | 6
+     | 7;
+  time: number;
+};
+```
+
+##### platform?
+
+```ts
+optional platform: 
+  | 2
+  | 1
+  | 5
+  | 3
+  | 4
+  | 6
+  | 7;
+```
+
+##### time?
+
+```ts
+optional time: number;
+```
+
+#### maiden\_name?
+
+```ts
+optional maiden_name: string;
+```
+
+#### military?
+
+```ts
+optional military: {
+  country_id: number;
+  from: number;
+  unit: string;
+  unit_id: number;
+  until: number;
+};
+```
+
+##### country\_id
+
+```ts
+country_id: number;
+```
+
+##### from?
+
+```ts
+optional from: number;
+```
+
+##### unit
+
+```ts
+unit: string;
+```
+
+##### unit\_id
+
+```ts
+unit_id: number;
+```
+
+##### until?
+
+```ts
+optional until: number;
+```
+
+#### movies?
+
+```ts
+optional movies: string;
+```
+
+#### music?
+
+```ts
+optional music: string;
+```
+
+#### nickname?
+
+```ts
+optional nickname: string;
+```
+
+#### occupation?
+
+```ts
+optional occupation: {
+  id: number;
+  name: string;
+  type: "work" | "school" | "university";
+};
+```
+
+##### id?
+
+```ts
+optional id: number;
+```
+
+##### name?
+
+```ts
+optional name: string;
+```
+
+##### type?
+
+```ts
+optional type: "work" | "school" | "university";
+```
+
+#### online?
+
+```ts
+optional online: 0 | 1;
+```
+
+#### online\_app?
+
+```ts
+optional online_app: number;
+```
+
+#### online\_mobile?
+
+```ts
+optional online_mobile: 0 | 1;
+```
+
+#### personal?
+
+```ts
+optional personal: {
+  alcohol:   | 2
+     | 1
+     | 5
+     | 3
+     | 4;
+  inspired_by: string;
+  langs: string[];
+  life_main:   | 2
+     | 1
+     | 5
+     | 3
+     | 4
+     | 6
+     | 7
+     | 8;
+  people_main:   | 2
+     | 1
+     | 5
+     | 3
+     | 4
+     | 6;
+  political:   | 2
+     | 1
+     | 5
+     | 3
+     | 4
+     | 6
+     | 7
+     | 8
+     | 9;
+  religion: string;
+  smoking:   | 2
+     | 1
+     | 5
+     | 3
+     | 4;
+};
+```
+
+##### alcohol?
+
+```ts
+optional alcohol: 
+  | 2
+  | 1
+  | 5
+  | 3
+  | 4;
+```
+
+##### inspired\_by?
+
+```ts
+optional inspired_by: string;
+```
+
+##### langs?
+
+```ts
+optional langs: string[];
+```
+
+##### life\_main?
+
+```ts
+optional life_main: 
+  | 2
+  | 1
+  | 5
+  | 3
+  | 4
+  | 6
+  | 7
+  | 8;
+```
+
+##### people\_main?
+
+```ts
+optional people_main: 
+  | 2
+  | 1
+  | 5
+  | 3
+  | 4
+  | 6;
+```
+
+##### political?
+
+```ts
+optional political: 
+  | 2
+  | 1
+  | 5
+  | 3
+  | 4
+  | 6
+  | 7
+  | 8
+  | 9;
+```
+
+##### religion?
+
+```ts
+optional religion: string;
+```
+
+##### smoking?
+
+```ts
+optional smoking: 
+  | 2
+  | 1
+  | 5
+  | 3
+  | 4;
+```
+
+#### photo\_100
+
+```ts
+photo_100: string;
+```
+
+#### photo\_200?
+
+```ts
+optional photo_200: string;
+```
+
+#### photo\_200\_orig?
+
+```ts
+optional photo_200_orig: string;
+```
+
+#### photo\_400?
+
+```ts
+optional photo_400: string;
+```
+
+#### photo\_400\_orig?
+
+```ts
+optional photo_400_orig: string;
+```
+
+#### photo\_50?
+
+```ts
+optional photo_50: string;
+```
+
+#### photo\_id?
+
+```ts
+optional photo_id: string;
+```
+
+#### photo\_max?
+
+```ts
+optional photo_max: string;
+```
+
+#### photo\_max\_orig?
+
+```ts
+optional photo_max_orig: string;
+```
+
+#### quotes?
+
+```ts
+optional quotes: string;
+```
+
+#### relation?
+
+```ts
+optional relation: 
+  | 0
+  | 2
+  | 1
+  | 5
+  | 3
+  | 4
+  | 6
+  | 7
+  | 8;
+```
+
+#### relation\_partner?
+
+```ts
+optional relation_partner: {
+  can_access_closed: boolean;
+  deactivated: string;
+  first_name: string;
+  hidden: number;
+  id: number;
+  is_closed: boolean;
+  last_name: string;
+};
+```
+
+##### can\_access\_closed?
+
+```ts
+optional can_access_closed: boolean;
+```
+
+##### deactivated?
+
+```ts
+optional deactivated: string;
+```
+
+##### first\_name
+
+```ts
+first_name: string;
+```
+
+##### hidden?
+
+```ts
+optional hidden: number;
+```
+
+##### id
+
+```ts
+id: number;
+```
+
+##### is\_closed?
+
+```ts
+optional is_closed: boolean;
+```
+
+##### last\_name
+
+```ts
+last_name: string;
+```
+
+#### relatives?
+
+```ts
+optional relatives: {
+  id: number;
+  name: string;
+  type:   | "parent"
+     | "child"
+     | "grandparent"
+     | "grandchild"
+     | "sibling";
+  }[];
+```
+
+#### schools?
+
+```ts
+optional schools: {
+  city: number;
+  class: string;
+  country: number;
+  id: string;
+  name: string;
+  speciality: string;
+  type: number;
+  type_str: string;
+  year_from: number;
+  year_graduated: number;
+  year_to: number;
+  }[];
+```
+
+#### screen\_name?
+
+```ts
+optional screen_name: string;
+```
+
+#### sex?
+
+```ts
+optional sex: 0 | 2 | 1;
+```
+
+#### site?
+
+```ts
+optional site: string;
+```
+
+#### status?
+
+```ts
+optional status: string;
+```
+
+#### status\_audio?
+
+```ts
+optional status_audio: {
+  access_key: string;
+  album_id: number;
+  artist: string;
+  date: number;
+  duration: number;
+  genre_id: number;
+  id: number;
+  owner_id: number;
+  performer: string;
+  title: string;
+  url: string;
+};
+```
+
+##### access\_key?
+
+```ts
+optional access_key: string;
+```
+
+##### album\_id?
+
+```ts
+optional album_id: number;
+```
+
+##### artist
+
+```ts
+artist: string;
+```
+
+##### date?
+
+```ts
+optional date: number;
+```
+
+##### duration
+
+```ts
+duration: number;
+```
+
+##### genre\_id?
+
+```ts
+optional genre_id: number;
+```
+
+##### id
+
+```ts
+id: number;
+```
+
+##### owner\_id
+
+```ts
+owner_id: number;
+```
+
+##### performer?
+
+```ts
+optional performer: string;
+```
+
+##### title
+
+```ts
+title: string;
+```
+
+##### url?
+
+```ts
+optional url: string;
+```
+
+#### timezone?
+
+```ts
+optional timezone: number;
+```
+
+#### trending?
+
+```ts
+optional trending: 0 | 1;
+```
+
+#### tv?
+
+```ts
+optional tv: string;
+```
+
+#### universities?
+
+```ts
+optional universities: {
+  chair: number;
+  chair_name: string;
+  city: number;
+  country: number;
+  education_form: string;
+  education_status: string;
+  faculty: number;
+  faculty_name: string;
+  graduation: number;
+  id: number;
+  name: string;
+  university_group_id: number;
+  }[];
+```
+
+#### verified?
+
+```ts
+optional verified: 0 | 1;
+```
+
+#### wall\_default?
+
+```ts
+optional wall_default: "all" | "owner";
+```
+
+***
+
+## default()
+
+```ts
+default<P>(options): OAuthConfig<P>
+```
+
+Add VK login to your page.
+
+### Setup
+
+#### Callback URL
+```
+https://example.com/api/auth/callback/vk
+```
+
+#### Configuration
+```ts
+import { Auth } from "@auth/core"
+import VK from "@auth/core/providers/vk"
+
+const request = new Request(origin)
+const response = await Auth(request, {
+  providers: [VK({ clientId: VK_CLIENT_ID, clientSecret: VK_CLIENT_SECRET })],
+})
+```
+
+### Resources
+
+- [VK API documentation](https://vk.com/dev/first_guide)
+- [VK App configuration](https://vk.com/apps?act=manage)
+
+### Notes
+
+By default, Auth.js assumes that the VK provider is
+based on the [OAuth 2](https://www.rfc-editor.org/rfc/rfc6749.html) specification.
+
+
+<Callout type="default">
+  The VK provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/vk.ts).
+To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/configuring-oauth-providers).
+</Callout>
+
+
+<Callout type="info">
+  By default the provider uses 5.126 version of the API. See https://vk.com/dev/versions for more info.
+If you want to use a different version, you can pass it to provider's options object:
+```ts
+const apiVersion = "5.126"
+providers: [
+  Vk({
+    accessTokenUrl: `https://oauth.vk.com/access_token?v=${apiVersion}`,
+    requestTokenUrl: `https://oauth.vk.com/access_token?v=${apiVersion}`,
+    authorizationUrl:
+      `https://oauth.vk.com/authorize?response_type=code&v=${apiVersion}`,
+    profileUrl: `https://api.vk.com/method/users.get?fields=photo_100&v=${apiVersion}`,
+  })
+]
+```
+</Callout>
+
+
+<Callout type="info">
+  ****Disclaimer**** If you think you found a bug in the default configuration, you can [open an issue](https://authjs.dev/new/provider-issue).
+
+Auth.js strictly adheres to the specification and it cannot take responsibility for any deviation from
+the spec by the provider. You can open an issue, but if the problem is non-compliance with the spec,
+we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
+</Callout>
+
+### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `P` extends `Record`\<`string`, `any`\> | [`VkProfile`](vk.mdx#vkprofile) |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options` | [`OAuthUserConfig`](../providers.mdx#oauthuserconfigprofile)\<`P`\> |
+
+### Returns
+
+[`OAuthConfig`](../providers.mdx#oauthconfigprofile)\<`P`\>

@@ -1,0 +1,790 @@
+import { Callout } from 'nextra/components';
+
+# types
+
+## SvelteKitAuthConfig
+
+Configure the SvelteKitAuth method.
+
+### Extends
+
+- `Omit`\<[`AuthConfig`](../core.mdx#authconfig), `"raw"`\>
+
+### Properties
+
+#### adapter?
+
+```ts
+optional adapter: Adapter;
+```
+
+You can use the adapter option to pass in your database adapter.
+
+##### Inherited from
+
+`Omit.adapter`
+
+#### basePath?
+
+```ts
+optional basePath: string;
+```
+
+The base path of the Auth.js API endpoints.
+
+##### Default
+
+```ts
+"/api/auth" in "next-auth"; "/auth" with all other frameworks
+```
+
+##### Inherited from
+
+`Omit.basePath`
+
+#### callbacks?
+
+```ts
+optional callbacks: {
+  jwt: (params) => Awaitable<null | JWT>;
+  redirect: (params) => Awaitable<string>;
+  session: (params) => Awaitable<Session | DefaultSession>;
+  signIn: (params) => Awaitable<string | boolean>;
+};
+```
+
+Callbacks are asynchronous functions you can use to control what happens when an action is performed.
+Callbacks are *extremely powerful*, especially in scenarios involving JSON Web Tokens
+as they **allow you to implement access controls without a database** and to **integrate with external databases or APIs**.
+
+##### jwt()?
+
+```ts
+optional jwt: (params) => Awaitable<null | JWT>;
+```
+
+This callback is called whenever a JSON Web Token is created (i.e. at sign in)
+or updated (i.e whenever a session is accessed in the client). Anything you
+return here will be saved in the JWT and forwarded to the session callback.
+There you can control what should be returned to the client. Anything else
+will be kept from your frontend. The JWT is encrypted by default via your
+AUTH_SECRET environment variable.
+
+[`session` callback](https://authjs.dev/reference/core/types#session)
+
+###### Parameters
+
+| Parameter | Type | Description |
+| :------ | :------ | :------ |
+| `params` | `Object` | - |
+| `params.account` | `null` \| [`Account`](../sveltekit.mdx#account) | Contains information about the provider that was used to sign in.<br />Also includes TokenSet<br /><br />**Note**<br />available when `trigger` is `"signIn"` or `"signUp"` |
+| `params.isNewUser`? | `boolean` | **Deprecated**<br />use `trigger === "signUp"` instead |
+| `params.profile`? | [`Profile`](../sveltekit.mdx#profile) | The OAuth profile returned from your provider.<br />(In case of OIDC it will be the decoded ID Token or /userinfo response)<br /><br />**Note**<br />available when `trigger` is `"signIn"`. |
+| `params.session`? | `any` | When using [AuthConfig.session](../solid-start.mdx#session-3) `strategy: "jwt"`, this is the data<br />sent from the client via the `useSession().update` method.<br /><br />⚠ Note, you should validate this data before using it. |
+| `params.token` | [`JWT`](../next-auth/jwt.mdx#jwt) | When `trigger` is `"signIn"` or `"signUp"`, it will be a subset of [JWT](../next-auth/jwt.mdx#jwt),<br />`name`, `email` and `image` will be included.<br /><br />Otherwise, it will be the full [JWT](../next-auth/jwt.mdx#jwt) for subsequent calls. |
+| `params.trigger`? | `"signIn"` \| `"update"` \| `"signUp"` | Check why was the jwt callback invoked. Possible reasons are:<br />- user sign-in: First time the callback is invoked, `user`, `profile` and `account` will be present.<br />- user sign-up: a user is created for the first time in the database (when [AuthConfig.session](../solid-start.mdx#session-3).strategy is set to `"database"`)<br />- update event: Triggered by the `useSession().update` method.<br />In case of the latter, `trigger` will be `undefined`. |
+| `params.user` | [`User`](../sveltekit.mdx#user-2) \| [`AdapterUser`](adapter.mdx#adapteruser) | Either the result of the OAuthConfig.profile or the CredentialsConfig.authorize callback.<br /><br />**Note**<br />available when `trigger` is `"signIn"` or `"signUp"`.<br /><br />Resources:<br />- [Credentials Provider](https://authjs.dev/getting-started/authentication/credentials)<br />- [User database model](https://authjs.dev/guides/creating-a-database-adapter#user-management) |
+
+###### Returns
+
+[`Awaitable`](../core/types.mdx#awaitablet)\<`null` \| [`JWT`](../next-auth/jwt.mdx#jwt)\>
+
+##### redirect()?
+
+```ts
+optional redirect: (params) => Awaitable<string>;
+```
+
+This callback is called anytime the user is redirected to a callback URL (i.e. on signin or signout).
+By default only URLs on the same host as the origin are allowed.
+You can use this callback to customise that behaviour.
+
+[Documentation](https://authjs.dev/reference/core/types#redirect)
+
+###### Example
+
+```ts
+callbacks: {
+  async redirect({ url, baseUrl }) {
+    // Allows relative callback URLs
+    if (url.startsWith("/")) return `${baseUrl}${url}`
+
+    // Allows callback URLs on the same origin
+    if (new URL(url).origin === baseUrl) return url
+
+    return baseUrl
+  }
+}
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| :------ | :------ | :------ |
+| `params` | `Object` | - |
+| `params.baseUrl` | `string` | Default base URL of site (can be used as fallback) |
+| `params.url` | `string` | URL provided as callback URL by the client |
+
+###### Returns
+
+[`Awaitable`](../core/types.mdx#awaitablet)\<`string`\>
+
+##### session()?
+
+```ts
+optional session: (params) => Awaitable<Session | DefaultSession>;
+```
+
+This callback is called whenever a session is checked.
+(i.e. when invoking the `/api/session` endpoint, using `useSession` or `getSession`).
+The return value will be exposed to the client, so be careful what you return here!
+If you want to make anything available to the client which you've added to the token
+through the JWT callback, you have to explicitly return it here as well.
+
+
+<Callout type="info">
+  ⚠ By default, only a subset (email, name, image)
+of the token is returned for increased security.
+</Callout>
+
+The token argument is only available when using the jwt session strategy, and the
+user argument is only available when using the database session strategy.
+
+[`jwt` callback](https://authjs.dev/reference/core/types#jwt)
+
+###### Example
+
+```ts
+callbacks: {
+  async session({ session, token, user }) {
+    // Send properties to the client, like an access_token from a provider.
+    session.accessToken = token.accessToken
+
+    return session
+  }
+}
+```
+
+###### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `params` | \{ `session`: \{ `user`: [`AdapterUser`](adapter.mdx#adapteruser); } & [`AdapterSession`](adapter.mdx#adaptersession); `user`: [`AdapterUser`](adapter.mdx#adapteruser); } & \{ `session`: [`Session`](../sveltekit.mdx#session); `token`: [`JWT`](../next-auth/jwt.mdx#jwt); } & \{ `newSession`: `any`; `trigger`: `"update"`; } |
+
+###### Returns
+
+[`Awaitable`](../core/types.mdx#awaitablet)\<[`Session`](../sveltekit.mdx#session) \| [`DefaultSession`](../sveltekit.mdx#defaultsession)\>
+
+##### signIn()?
+
+```ts
+optional signIn: (params) => Awaitable<string | boolean>;
+```
+
+Controls whether a user is allowed to sign in or not.
+Returning `true` continues the sign-in flow.
+Returning `false` or throwing an error will stop the sign-in flow and redirect the user to the error page.
+Returning a string will redirect the user to the specified URL.
+
+Unhandled errors will throw an `AccessDenied` with the message set to the original error.
+
+[`AccessDenied`](https://authjs.dev/reference/core/errors#accessdenied)
+
+###### Example
+
+```ts
+callbacks: {
+ async signIn({ profile }) {
+  // Only allow sign in for users with email addresses ending with "yourdomain.com"
+  return profile?.email?.endsWith("@yourdomain.com")
+}
+```
+
+###### Parameters
+
+| Parameter | Type | Description |
+| :------ | :------ | :------ |
+| `params` | `Object` | - |
+| `params.account` | `null` \| [`Account`](../sveltekit.mdx#account) | - |
+| `params.credentials`? | `Record`\<`string`, [`CredentialInput`](../core/providers/credentials.mdx#credentialinput)\> | If Credentials provider is used, it contains the user credentials |
+| `params.email`? | `Object` | If Email provider is used, on the first call, it contains a<br />`verificationRequest: true` property to indicate it is being triggered in the verification request flow.<br />When the callback is invoked after a user has clicked on a sign in link,<br />this property will not be present. You can check for the `verificationRequest` property<br />to avoid sending emails to addresses or domains on a blocklist or to only explicitly generate them<br />for email address in an allow list. |
+| `params.email.verificationRequest`? | `boolean` | - |
+| `params.profile`? | [`Profile`](../sveltekit.mdx#profile) | If OAuth provider is used, it contains the full<br />OAuth profile returned by your provider. |
+| `params.user` | [`User`](../sveltekit.mdx#user-2) \| [`AdapterUser`](adapter.mdx#adapteruser) | - |
+
+###### Returns
+
+[`Awaitable`](../core/types.mdx#awaitablet)\<`string` \| `boolean`\>
+
+##### Inherited from
+
+`Omit.callbacks`
+
+#### cookies?
+
+```ts
+optional cookies: Partial<CookiesOptions>;
+```
+
+You can override the default cookie names and options for any of the cookies used by Auth.js.
+You can specify one or more cookies with custom properties
+and missing options will use the default values defined by Auth.js.
+If you use this feature, you will likely want to create conditional behavior
+to support setting different cookies policies in development and production builds,
+as you will be opting out of the built-in dynamic policy.
+
+- ⚠ **This is an advanced option.** Advanced options are passed the same way as basic options,
+but **may have complex implications** or side effects.
+You should **try to avoid using advanced options** unless you are very comfortable using them.
+
+##### Default
+
+```ts
+{}
+```
+
+##### Inherited from
+
+`Omit.cookies`
+
+#### debug?
+
+```ts
+optional debug: boolean;
+```
+
+Set debug to true to enable debug messages for authentication and database operations.
+
+- ⚠ If you added a custom [AuthConfig.logger](../solid-start.mdx#logger), this setting is ignored.
+
+##### Default
+
+```ts
+false
+```
+
+##### Inherited from
+
+`Omit.debug`
+
+#### events?
+
+```ts
+optional events: {
+  createUser: (message) => Awaitable<void>;
+  linkAccount: (message) => Awaitable<void>;
+  session: (message) => Awaitable<void>;
+  signIn: (message) => Awaitable<void>;
+  signOut: (message) => Awaitable<void>;
+  updateUser: (message) => Awaitable<void>;
+};
+```
+
+Events are asynchronous functions that do not return a response, they are useful for audit logging.
+You can specify a handler for any of these events below - e.g. for debugging or to create an audit log.
+The content of the message object varies depending on the flow
+(e.g. OAuth or Email authentication flow, JWT or database sessions, etc),
+but typically contains a user object and/or contents of the JSON Web Token
+and other information relevant to the event.
+
+##### Default
+
+```ts
+{}
+```
+
+##### createUser()?
+
+```ts
+optional createUser: (message) => Awaitable<void>;
+```
+
+###### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message` | `Object` |
+| `message.user` | [`User`](../sveltekit.mdx#user-2) |
+
+###### Returns
+
+[`Awaitable`](../core/types.mdx#awaitablet)\<`void`\>
+
+##### linkAccount()?
+
+```ts
+optional linkAccount: (message) => Awaitable<void>;
+```
+
+###### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message` | `Object` |
+| `message.account` | [`Account`](../sveltekit.mdx#account) |
+| `message.profile` | [`User`](../sveltekit.mdx#user-2) \| [`AdapterUser`](adapter.mdx#adapteruser) |
+| `message.user` | [`User`](../sveltekit.mdx#user-2) \| [`AdapterUser`](adapter.mdx#adapteruser) |
+
+###### Returns
+
+[`Awaitable`](../core/types.mdx#awaitablet)\<`void`\>
+
+##### session()?
+
+```ts
+optional session: (message) => Awaitable<void>;
+```
+
+The message object will contain one of these depending on
+if you use JWT or database persisted sessions:
+- `token`: The JWT for this session.
+- `session`: The session object from your adapter.
+
+###### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message` | `Object` |
+| `message.session` | [`Session`](../sveltekit.mdx#session) |
+| `message.token` | [`JWT`](../next-auth/jwt.mdx#jwt) |
+
+###### Returns
+
+[`Awaitable`](../core/types.mdx#awaitablet)\<`void`\>
+
+##### signIn()?
+
+```ts
+optional signIn: (message) => Awaitable<void>;
+```
+
+If using a `credentials` type auth, the user is the raw response from your
+credential provider.
+For other providers, you'll get the User object from your adapter, the account,
+and an indicator if the user was new to your Adapter.
+
+###### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message` | `Object` |
+| `message.account` | `null` \| [`Account`](../sveltekit.mdx#account) |
+| `message.isNewUser`? | `boolean` |
+| `message.profile`? | [`Profile`](../sveltekit.mdx#profile) |
+| `message.user` | [`User`](../sveltekit.mdx#user-2) |
+
+###### Returns
+
+[`Awaitable`](../core/types.mdx#awaitablet)\<`void`\>
+
+##### signOut()?
+
+```ts
+optional signOut: (message) => Awaitable<void>;
+```
+
+The message object will contain one of these depending on
+if you use JWT or database persisted sessions:
+- `token`: The JWT for this session.
+- `session`: The session object from your adapter that is being ended.
+
+###### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message` | \{ `session`: `undefined` \| `null` \| `void` \| [`AdapterSession`](adapter.mdx#adaptersession); } \| \{ `token`: `null` \| [`JWT`](../next-auth/jwt.mdx#jwt); } |
+
+###### Returns
+
+[`Awaitable`](../core/types.mdx#awaitablet)\<`void`\>
+
+##### updateUser()?
+
+```ts
+optional updateUser: (message) => Awaitable<void>;
+```
+
+###### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message` | `Object` |
+| `message.user` | [`User`](../sveltekit.mdx#user-2) |
+
+###### Returns
+
+[`Awaitable`](../core/types.mdx#awaitablet)\<`void`\>
+
+##### Inherited from
+
+`Omit.events`
+
+#### experimental?
+
+```ts
+optional experimental: {
+  enableWebAuthn: boolean;
+};
+```
+
+Use this option to enable experimental features.
+When enabled, it will print a warning message to the console.
+
+##### Note
+
+Experimental features are not guaranteed to be stable and may change or be removed without notice. Please use with caution.
+
+##### Default
+
+```ts
+{}
+```
+
+##### enableWebAuthn?
+
+```ts
+optional enableWebAuthn: boolean;
+```
+
+Enable WebAuthn support.
+
+###### Default
+
+```ts
+false
+```
+
+##### Inherited from
+
+`Omit.experimental`
+
+#### jwt?
+
+```ts
+optional jwt: Partial<JWTOptions>;
+```
+
+JSON Web Tokens are enabled by default if you have not specified an [AuthConfig.adapter](../solid-start.mdx#adapter).
+JSON Web Tokens are encrypted (JWE) by default. We recommend you keep this behaviour.
+
+##### Inherited from
+
+`Omit.jwt`
+
+#### logger?
+
+```ts
+optional logger: Partial<LoggerInstance>;
+```
+
+Override any of the logger levels (`undefined` levels will use the built-in logger),
+and intercept logs in NextAuth. You can use this option to send NextAuth logs to a third-party logging service.
+
+##### Example
+
+```ts
+// /auth.ts
+import log from "logging-service"
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  logger: {
+    error(code, ...message) {
+      log.error(code, message)
+    },
+    warn(code, ...message) {
+      log.warn(code, message)
+    },
+    debug(code, ...message) {
+      log.debug(code, message)
+    }
+  }
+})
+```
+
+- ⚠ When set, the [AuthConfig.debug](../solid-start.mdx#debug) option is ignored
+
+##### Default
+
+```ts
+console
+```
+
+##### Inherited from
+
+`Omit.logger`
+
+#### pages?
+
+```ts
+optional pages: Partial<PagesOptions>;
+```
+
+Specify URLs to be used if you want to create custom sign in, sign out and error pages.
+Pages specified will override the corresponding built-in page.
+
+##### Default
+
+```ts
+{}
+```
+
+##### Example
+
+```ts
+  pages: {
+    signIn: '/auth/signin',
+    signOut: '/auth/signout',
+    error: '/auth/error',
+    verifyRequest: '/auth/verify-request',
+    newUser: '/auth/new-user'
+  }
+```
+
+##### Inherited from
+
+`Omit.pages`
+
+#### providers
+
+```ts
+providers: Provider[];
+```
+
+List of authentication providers for signing in
+(e.g. Google, Facebook, Twitter, GitHub, Email, etc) in any order.
+This can be one of the built-in providers or an object with a custom provider.
+
+##### Default
+
+```ts
+[]
+```
+
+##### Inherited from
+
+`Omit.providers`
+
+#### redirectProxyUrl?
+
+```ts
+optional redirectProxyUrl: string;
+```
+
+When set, during an OAuth sign-in flow,
+the `redirect_uri` of the authorization request
+will be set based on this value.
+
+This is useful if your OAuth Provider only supports a single `redirect_uri`
+or you want to use OAuth on preview URLs (like Vercel), where you don't know the final deployment URL beforehand.
+
+The url needs to include the full path up to where Auth.js is initialized.
+
+##### Note
+
+This will auto-enable the `state` OAuth2Config.checks on the provider.
+
+##### Example
+
+```
+"https://authjs.example.com/api/auth"
+```
+
+You can also override this individually for each provider.
+
+##### Example
+
+```ts
+GitHub({
+  ...
+  redirectProxyUrl: "https://github.example.com/api/auth"
+})
+```
+
+##### Default
+
+`AUTH_REDIRECT_PROXY_URL` environment variable
+
+See also: [Guide: Securing a Preview Deployment](https://authjs.dev/getting-started/deployment#securing-a-preview-deployment)
+
+##### Inherited from
+
+`Omit.redirectProxyUrl`
+
+#### secret?
+
+```ts
+optional secret: string | string[];
+```
+
+A random string used to hash tokens, sign cookies and generate cryptographic keys.
+
+To generate a random string, you can use the Auth.js CLI: `npx auth secret`
+
+##### Note
+
+You can also pass an array of secrets, in which case the first secret that successfully
+decrypts the JWT will be used. This is useful for rotating secrets without invalidating existing sessions.
+The newer secret should be added to the start of the array, which will be used for all new sessions.
+
+##### Inherited from
+
+`Omit.secret`
+
+#### session?
+
+```ts
+optional session: {
+  generateSessionToken: () => string;
+  maxAge: number;
+  strategy: "jwt" | "database";
+  updateAge: number;
+};
+```
+
+Configure your session like if you want to use JWT or a database,
+how long until an idle session expires, or to throttle write operations in case you are using a database.
+
+##### generateSessionToken()?
+
+```ts
+optional generateSessionToken: () => string;
+```
+
+Generate a custom session token for database-based sessions.
+By default, a random UUID or string is generated depending on the Node.js version.
+However, you can specify your own custom string (such as CUID) to be used.
+
+###### Default
+
+`randomUUID` or `randomBytes.toHex` depending on the Node.js version
+
+###### Returns
+
+`string`
+
+##### maxAge?
+
+```ts
+optional maxAge: number;
+```
+
+Relative time from now in seconds when to expire the session
+
+###### Default
+
+```ts
+2592000 // 30 days
+```
+
+##### strategy?
+
+```ts
+optional strategy: "jwt" | "database";
+```
+
+Choose how you want to save the user session.
+The default is `"jwt"`, an encrypted JWT (JWE) in the session cookie.
+
+If you use an `adapter` however, we default it to `"database"` instead.
+You can still force a JWT session by explicitly defining `"jwt"`.
+
+When using `"database"`, the session cookie will only contain a `sessionToken` value,
+which is used to look up the session in the database.
+
+[Documentation](https://authjs.dev/reference/core#authconfig#session) | [Adapter](https://authjs.dev/reference/core#authconfig#adapter) | [About JSON Web Tokens](https://authjs.dev/concepts/session-strategies#jwt-session)
+
+##### updateAge?
+
+```ts
+optional updateAge: number;
+```
+
+How often the session should be updated in seconds.
+If set to `0`, session is updated every time.
+
+###### Default
+
+```ts
+86400 // 1 day
+```
+
+##### Inherited from
+
+`Omit.session`
+
+#### skipCSRFCheck?
+
+```ts
+optional skipCSRFCheck: typeof skipCSRFCheck;
+```
+
+##### Inherited from
+
+`Omit.skipCSRFCheck`
+
+#### theme?
+
+```ts
+optional theme: Theme;
+```
+
+Changes the theme of built-in [AuthConfig.pages](../solid-start.mdx#pages).
+
+##### Inherited from
+
+`Omit.theme`
+
+#### trustHost?
+
+```ts
+optional trustHost: boolean;
+```
+
+Auth.js relies on the incoming request's `host` header to function correctly. For this reason this property needs to be set to `true`.
+
+Make sure that your deployment platform sets the `host` header safely.
+
+
+<Callout type="info">
+  Official Auth.js-based libraries will attempt to set this value automatically for some deployment platforms (eg.: Vercel) that are known to set the `host` header safely.
+</Callout>
+
+##### Inherited from
+
+`Omit.trustHost`
+
+#### useSecureCookies?
+
+```ts
+optional useSecureCookies: boolean;
+```
+
+When set to `true` then all cookies set by NextAuth.js will only be accessible from HTTPS URLs.
+This option defaults to `false` on URLs that start with `http://` (e.g. http://localhost:3000) for developer convenience.
+You can manually set this option to `false` to disable this security feature and allow cookies
+to be accessible from non-secured URLs (this is not recommended).
+
+- ⚠ **This is an advanced option.** Advanced options are passed the same way as basic options,
+but **may have complex implications** or side effects.
+You should **try to avoid using advanced options** unless you are very comfortable using them.
+
+The default is `false` HTTP and `true` for HTTPS sites.
+
+##### Inherited from
+
+`Omit.useSecureCookies`
+
+***
+
+## LiteralUnion\<T, U\>
+
+```ts
+type LiteralUnion<T, U>: T | U & Record<never, never>;
+```
+
+### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `T` extends `U` | - |
+| `U` | `string` |

@@ -1,0 +1,472 @@
+import { Callout } from 'nextra/components';
+
+# jwt
+
+
+<Callout type="warning">
+  **Not recommended** In NextAuth.js v5 or newer, we recommend other authentication methods server-side. Read more at: https://authjs.dev/getting-started/migrating-to-v5#authenticating-server-side
+</Callout>
+
+## DefaultJWT
+
+### Extends
+
+- `Record`\<`string`, `unknown`\>
+
+### Properties
+
+#### email?
+
+```ts
+optional email: null | string;
+```
+
+#### exp?
+
+```ts
+optional exp: number;
+```
+
+#### iat?
+
+```ts
+optional iat: number;
+```
+
+#### jti?
+
+```ts
+optional jti: string;
+```
+
+#### name?
+
+```ts
+optional name: null | string;
+```
+
+#### picture?
+
+```ts
+optional picture: null | string;
+```
+
+#### sub?
+
+```ts
+optional sub: string;
+```
+
+***
+
+## GetTokenParams\<R\>
+
+### Extends
+
+- `Pick`\<[`JWTDecodeParams`](jwt.mdx#jwtdecodeparams), `"salt"` \| `"secret"`\>
+
+### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `R` extends `boolean` | `false` |
+
+### Properties
+
+#### cookieName?
+
+```ts
+optional cookieName: string;
+```
+
+If the JWT is in the cookie, what name `getToken()` should look for.
+
+#### decode()?
+
+```ts
+optional decode: (params) => Awaitable<null | JWT>;
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `params` | [`JWTDecodeParams`](jwt.mdx#jwtdecodeparams) |
+
+##### Returns
+
+[`Awaitable`](../core/types.mdx#awaitablet)\<`null` \| [`JWT`](jwt.mdx#jwt)\>
+
+#### logger?
+
+```ts
+optional logger: LoggerInstance | Console;
+```
+
+#### raw?
+
+```ts
+optional raw: R;
+```
+
+`getToken()` will return the raw JWT if this is set to `true`
+
+##### Default
+
+```ts
+false
+```
+
+#### req
+
+```ts
+req: Request | {
+  headers: Headers | Record<string, string>;
+};
+```
+
+The request containing the JWT either in the cookies or in the `Authorization` header.
+
+#### salt
+
+```ts
+salt: string;
+```
+
+Used in combination with `secret`, to derive the encryption secret for JWTs.
+
+##### Inherited from
+
+`Pick.salt`
+
+#### secret
+
+```ts
+secret: string | string[];
+```
+
+Used in combination with `salt`, to derive the encryption secret for JWTs.
+
+##### Note
+
+You can also pass an array of secrets, in which case the first secret that successfully
+decrypts the JWT will be used. This is useful for rotating secrets without invalidating existing sessions.
+The newer secret should be added to the start of the array, which will be used for all new sessions.
+
+##### Inherited from
+
+`Pick.secret`
+
+#### secureCookie?
+
+```ts
+optional secureCookie: boolean;
+```
+
+Use secure prefix for cookie name, unless URL in `NEXTAUTH_URL` is http://
+or not set (e.g. development or test instance) case use unprefixed name
+
+***
+
+## JWT
+
+Returned by the `jwt` callback when using JWT sessions
+
+[`jwt` callback](https://authjs.dev/reference/core/types#jwt)
+
+### Extends
+
+- `Record`\<`string`, `unknown`\>.[`DefaultJWT`](jwt.mdx#defaultjwt)
+
+### Properties
+
+#### email?
+
+```ts
+optional email: null | string;
+```
+
+##### Inherited from
+
+[`DefaultJWT`](jwt.mdx#defaultjwt).[`email`](jwt.mdx#email)
+
+#### exp?
+
+```ts
+optional exp: number;
+```
+
+##### Inherited from
+
+[`DefaultJWT`](jwt.mdx#defaultjwt).[`exp`](jwt.mdx#exp)
+
+#### iat?
+
+```ts
+optional iat: number;
+```
+
+##### Inherited from
+
+[`DefaultJWT`](jwt.mdx#defaultjwt).[`iat`](jwt.mdx#iat)
+
+#### jti?
+
+```ts
+optional jti: string;
+```
+
+##### Inherited from
+
+[`DefaultJWT`](jwt.mdx#defaultjwt).[`jti`](jwt.mdx#jti)
+
+#### name?
+
+```ts
+optional name: null | string;
+```
+
+##### Inherited from
+
+[`DefaultJWT`](jwt.mdx#defaultjwt).[`name`](jwt.mdx#name)
+
+#### picture?
+
+```ts
+optional picture: null | string;
+```
+
+##### Inherited from
+
+[`DefaultJWT`](jwt.mdx#defaultjwt).[`picture`](jwt.mdx#picture)
+
+#### sub?
+
+```ts
+optional sub: string;
+```
+
+##### Inherited from
+
+[`DefaultJWT`](jwt.mdx#defaultjwt).[`sub`](jwt.mdx#sub)
+
+***
+
+## JWTDecodeParams
+
+### Properties
+
+#### salt
+
+```ts
+salt: string;
+```
+
+Used in combination with `secret`, to derive the encryption secret for JWTs.
+
+#### secret
+
+```ts
+secret: string | string[];
+```
+
+Used in combination with `salt`, to derive the encryption secret for JWTs.
+
+##### Note
+
+You can also pass an array of secrets, in which case the first secret that successfully
+decrypts the JWT will be used. This is useful for rotating secrets without invalidating existing sessions.
+The newer secret should be added to the start of the array, which will be used for all new sessions.
+
+#### token?
+
+```ts
+optional token: string;
+```
+
+The Auth.js issued JWT to be decoded
+
+***
+
+## JWTEncodeParams\<Payload\>
+
+### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `Payload` | [`JWT`](jwt.mdx#jwt) |
+
+### Properties
+
+#### maxAge?
+
+```ts
+optional maxAge: number;
+```
+
+The maximum age of the Auth.js issued JWT in seconds.
+
+##### Default
+
+```ts
+30 * 24 * 60 * 60 // 30 days
+```
+
+#### salt
+
+```ts
+salt: string;
+```
+
+Used in combination with `secret`, to derive the encryption secret for JWTs.
+
+#### secret
+
+```ts
+secret: string | string[];
+```
+
+Used in combination with `salt`, to derive the encryption secret for JWTs.
+
+#### token?
+
+```ts
+optional token: Payload;
+```
+
+The JWT payload.
+
+***
+
+## JWTOptions
+
+### Properties
+
+#### decode()
+
+```ts
+decode: (params) => Awaitable<null | JWT>;
+```
+
+Override this method to control the Auth.js issued JWT decoding.
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `params` | [`JWTDecodeParams`](jwt.mdx#jwtdecodeparams) |
+
+##### Returns
+
+[`Awaitable`](../core/types.mdx#awaitablet)\<`null` \| [`JWT`](jwt.mdx#jwt)\>
+
+#### encode()
+
+```ts
+encode: (params) => Awaitable<string>;
+```
+
+Override this method to control the Auth.js issued JWT encoding.
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `params` | [`JWTEncodeParams`](jwt.mdx#jwtencodeparamspayload)\<[`JWT`](jwt.mdx#jwt)\> |
+
+##### Returns
+
+[`Awaitable`](../core/types.mdx#awaitablet)\<`string`\>
+
+#### maxAge
+
+```ts
+maxAge: number;
+```
+
+The maximum age of the Auth.js issued JWT in seconds.
+
+##### Default
+
+```ts
+30 * 24 * 60 * 60 // 30 days
+```
+
+***
+
+## decode()
+
+```ts
+decode<Payload>(params): Promise<Payload | null>
+```
+
+Decodes a Auth.js issued JWT.
+
+### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `Payload` | [`JWT`](jwt.mdx#jwt) |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `params` | [`JWTDecodeParams`](jwt.mdx#jwtdecodeparams) |
+
+### Returns
+
+`Promise`\<`Payload` \| `null`\>
+
+***
+
+## encode()
+
+```ts
+encode<Payload>(params): Promise<string>
+```
+
+Issues a JWT. By default, the JWT is encrypted using "A256CBC-HS512".
+
+### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `Payload` | [`JWT`](jwt.mdx#jwt) |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `params` | [`JWTEncodeParams`](jwt.mdx#jwtencodeparamspayload)\<`Payload`\> |
+
+### Returns
+
+`Promise`\<`string`\>
+
+***
+
+## getToken()
+
+```ts
+getToken<R>(params): Promise<R extends true ? string : JWT | null>
+```
+
+Takes an Auth.js request (`req`) and returns either the Auth.js issued JWT's payload,
+or the raw JWT string. We look for the JWT in the either the cookies, or the `Authorization` header.
+
+### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `R` extends `boolean` | `false` |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `params` | [`GetTokenParams`](jwt.mdx#gettokenparamsr)\<`R`\> |
+
+### Returns
+
+`Promise`\<`R` extends `true` ? `string` : [`JWT`](jwt.mdx#jwt) \| `null`\>

@@ -1,0 +1,205 @@
+import { Callout } from 'nextra/components';
+
+# providers/authentik
+
+<div style={{backgroundColor: "#fd4b2d", display: "flex", justifyContent: "space-between", color: "#fff", padding: 16}}>
+<span>Built-in <b>Authentik</b> integration.</span>
+<a href="https://goauthentik.io/">
+  <img style={{display: "block"}} src="https://authjs.dev/img/providers/authentik.svg" height="48" width="48"/>
+</a>
+</div>
+
+## AuthentikProfile
+
+### Extends
+
+- `Record`\<`string`, `any`\>
+
+### Properties
+
+#### acr
+
+```ts
+acr: string;
+```
+
+#### at\_hash
+
+```ts
+at_hash: string;
+```
+
+#### aud
+
+```ts
+aud: string;
+```
+
+#### auth\_time
+
+```ts
+auth_time: number;
+```
+
+#### c\_hash
+
+```ts
+c_hash: string;
+```
+
+#### email
+
+```ts
+email: string;
+```
+
+#### email\_verified
+
+```ts
+email_verified: boolean;
+```
+
+#### exp
+
+```ts
+exp: number;
+```
+
+#### family\_name
+
+```ts
+family_name: string;
+```
+
+#### given\_name
+
+```ts
+given_name: string;
+```
+
+#### groups
+
+```ts
+groups: string[];
+```
+
+#### iat
+
+```ts
+iat: number;
+```
+
+#### iss
+
+```ts
+iss: string;
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+#### nickname
+
+```ts
+nickname: string;
+```
+
+#### nonce
+
+```ts
+nonce: string;
+```
+
+#### preferred\_username
+
+```ts
+preferred_username: string;
+```
+
+#### sub
+
+```ts
+sub: string;
+```
+
+***
+
+## default()
+
+```ts
+default<P>(options): OAuthConfig<P>
+```
+
+Add Authentik login to your page.
+
+### Setup
+
+#### Callback URL
+```
+https://example.com/api/auth/callback/authentik
+```
+
+#### Configuration
+```ts
+import { Auth } from "@auth/core"
+import Authentik from "@auth/core/providers/authentik"
+
+const request = new Request(origin)
+const response = await Auth(request, {
+  providers: [
+    Authentik({
+      clientId: AUTHENTIK_CLIENT_ID,
+      clientSecret: AUTHENTIK_CLIENT_SECRET,
+      issuer: AUTHENTIK_ISSUER,
+    }),
+  ],
+})
+```
+
+
+<Callout type="info">
+  issuer should include the slug without a trailing slash – e.g., https://my-authentik-domain.com/application/o/My_Slug
+</Callout>
+
+### Resources
+
+ - [Authentik OAuth documentation](https://goauthentik.io/docs/providers/oauth2)
+
+### Notes
+
+By default, Auth.js assumes that the Authentik provider is
+based on the [Open ID Connect](https://openid.net/specs/openid-connect-core-1_0.html) specification.
+
+
+<Callout type="default">
+  The Authentik provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/authentik.ts).
+To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/configuring-oauth-providers).
+</Callout>
+
+
+<Callout type="info">
+  ****Disclaimer**** If you think you found a bug in the default configuration, you can [open an issue](https://authjs.dev/new/provider-issue).
+
+Auth.js strictly adheres to the specification and it cannot take responsibility for any deviation from
+the spec by the provider. You can open an issue, but if the problem is non-compliance with the spec,
+we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
+</Callout>
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `P` extends [`AuthentikProfile`](authentik.mdx#authentikprofile) |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options` | [`OAuthUserConfig`](../providers.mdx#oauthuserconfigprofile)\<`P`\> |
+
+### Returns
+
+[`OAuthConfig`](../providers.mdx#oauthconfigprofile)\<`P`\>

@@ -1,0 +1,974 @@
+import { Callout } from 'nextra/components';
+
+# types
+
+This module contains public types and interfaces of the core package.
+
+## Installation
+
+```bash npm2yarn
+npm install @auth/core
+```
+
+You can then import this submodule from `@auth/core/types`.
+
+## Usage
+
+Even if you don't use TypeScript, IDEs like VS Code will pick up types to provide you with a better developer experience.
+While you are typing, you will get suggestions about what certain objects/functions look like,
+and sometimes links to documentation, examples, and other valuable resources.
+
+Generally, you will not need to import types from this module.
+Mostly when using the `Auth` function and optionally the `AuthConfig` interface,
+everything inside there will already be typed.
+
+
+<Callout type="default">
+  Inside the `Auth` function, you won't need to use a single type from this module.
+
+## Example
+
+```ts title=index.ts
+import { Auth } from "@auth/core"
+
+const request = new Request("https://example.com")
+const response = await Auth(request, {
+  callbacks: {
+    jwt(): JWT { // <-- This is unnecessary!
+      return { foo: "bar" }
+    },
+    session(
+       { session, token }: { session: Session; token: JWT } // <-- This is unnecessary!
+    ) {
+      return session
+    },
+  }
+})
+```
+</Callout>
+
+## Resources
+
+- [TypeScript - The Basics](https://www.typescriptlang.org/docs/handbook/2/basic-types.html)
+- [Extending built-in types](https://authjs.dev/getting-started/typescript#module-augmentation)
+
+## AuthConfig
+
+Re-exports [AuthConfig](../core.mdx#authconfig)
+
+## Account
+
+Usually contains information about the provider being used
+and also extends `TokenSet`, which is different tokens returned by OAuth Providers.
+
+### Extends
+
+- `Partial`\<`OpenIDTokenEndpointResponse`\>
+
+### Properties
+
+#### access\_token?
+
+```ts
+optional readonly access_token: string;
+```
+
+##### Inherited from
+
+`Partial.access_token`
+
+#### authorization\_details?
+
+```ts
+optional readonly authorization_details: AuthorizationDetails[];
+```
+
+##### Inherited from
+
+`Partial.authorization_details`
+
+#### expires\_at?
+
+```ts
+optional expires_at: number;
+```
+
+Calculated value based on OAuth2TokenEndpointResponse.expires_in.
+
+It is the absolute timestamp (in seconds) when the OAuth2TokenEndpointResponse.access_token expires.
+
+This value can be used for implementing token rotation together with OAuth2TokenEndpointResponse.refresh_token.
+
+##### See
+
+ - https://authjs.dev/guides/refresh-token-rotation#database-strategy
+ - https://www.rfc-editor.org/rfc/rfc6749#section-5.1
+
+#### expires\_in?
+
+```ts
+optional readonly expires_in: number;
+```
+
+##### Inherited from
+
+`Partial.expires_in`
+
+#### id\_token?
+
+```ts
+optional readonly id_token: string;
+```
+
+##### Inherited from
+
+`Partial.id_token`
+
+#### provider
+
+```ts
+provider: string;
+```
+
+Provider's id for this account. Eg.: "google"
+
+#### providerAccountId
+
+```ts
+providerAccountId: string;
+```
+
+This value depends on the type of the provider being used to create the account.
+- oauth/oidc: The OAuth account's id, returned from the `profile()` callback.
+- email: The user's email address.
+- credentials: `id` returned from the `authorize()` callback
+
+#### refresh\_token?
+
+```ts
+optional readonly refresh_token: string;
+```
+
+##### Inherited from
+
+`Partial.refresh_token`
+
+#### scope?
+
+```ts
+optional readonly scope: string;
+```
+
+##### Inherited from
+
+`Partial.scope`
+
+#### token\_type?
+
+```ts
+optional readonly token_type: Lowercase<string>;
+```
+
+NOTE: because the value is case insensitive it is always returned lowercased
+
+##### Inherited from
+
+`Partial.token_type`
+
+#### type
+
+```ts
+type: ProviderType;
+```
+
+Provider's type for this account
+
+#### userId?
+
+```ts
+optional userId: string;
+```
+
+id of the user this account belongs to
+
+##### See
+
+https://authjs.dev/reference/core/adapters#adapteruser
+
+***
+
+## Authenticator
+
+A webauthn authenticator.
+Represents an entity capable of authenticating the account it references,
+and contains the auhtenticator's credentials and related information.
+
+### See
+
+https://www.w3.org/TR/webauthn/#authenticator
+
+### Extended by
+
+- [`AdapterAuthenticator`](adapters.mdx#adapterauthenticator)
+
+### Properties
+
+#### counter
+
+```ts
+counter: number;
+```
+
+Number of times the authenticator has been used.
+
+#### credentialBackedUp
+
+```ts
+credentialBackedUp: boolean;
+```
+
+Whether the client authenticator backed up the credential.
+
+#### credentialDeviceType
+
+```ts
+credentialDeviceType: string;
+```
+
+Device type of the authenticator.
+
+#### credentialID
+
+```ts
+credentialID: string;
+```
+
+Base64 encoded credential ID.
+
+#### credentialPublicKey
+
+```ts
+credentialPublicKey: string;
+```
+
+Base64 encoded credential public key.
+
+#### providerAccountId
+
+```ts
+providerAccountId: string;
+```
+
+The provider account ID connected to the authenticator.
+
+#### transports?
+
+```ts
+optional transports: null | string;
+```
+
+Concatenated transport flags.
+
+#### userId?
+
+```ts
+optional userId: string;
+```
+
+ID of the user this authenticator belongs to.
+
+***
+
+## CookieOption
+
+[Documentation](https://authjs.dev/reference/core#cookies)
+
+### Properties
+
+#### name
+
+```ts
+name: string;
+```
+
+#### options
+
+```ts
+options: CookieSerializeOptions;
+```
+
+***
+
+## CookiesOptions
+
+[Documentation](https://authjs.dev/reference/core#cookies)
+
+### Properties
+
+#### callbackUrl
+
+```ts
+callbackUrl: Partial<CookieOption>;
+```
+
+#### csrfToken
+
+```ts
+csrfToken: Partial<CookieOption>;
+```
+
+#### nonce
+
+```ts
+nonce: Partial<CookieOption>;
+```
+
+#### pkceCodeVerifier
+
+```ts
+pkceCodeVerifier: Partial<CookieOption>;
+```
+
+#### sessionToken
+
+```ts
+sessionToken: Partial<CookieOption>;
+```
+
+#### state
+
+```ts
+state: Partial<CookieOption>;
+```
+
+#### webauthnChallenge
+
+```ts
+webauthnChallenge: Partial<CookieOption>;
+```
+
+***
+
+## DefaultSession
+
+### Extended by
+
+- [`Session`](types.mdx#session)
+
+### Properties
+
+#### expires
+
+```ts
+expires: string;
+```
+
+#### user?
+
+```ts
+optional user: User;
+```
+
+***
+
+## LoggerInstance
+
+Override any of the methods, and the rest will use the default logger.
+
+[Documentation](https://authjs.dev/reference/core#authconfig#logger)
+
+### Extends
+
+- `Record`\<`string`, `Function`\>
+
+### Properties
+
+#### debug()
+
+```ts
+debug: (message, metadata?) => void;
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message` | `string` |
+| `metadata`? | `unknown` |
+
+##### Returns
+
+`void`
+
+#### error()
+
+```ts
+error: (error) => void;
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `error` | `Error` |
+
+##### Returns
+
+`void`
+
+#### warn()
+
+```ts
+warn: (code) => void;
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `code` | `WarningCode` |
+
+##### Returns
+
+`void`
+
+***
+
+## PagesOptions
+
+### Properties
+
+#### error
+
+```ts
+error: string;
+```
+
+The path to the error page.
+
+The optional "error" query parameter is set to
+one of the [available](types.mdx#errorpageparam) values.
+
+##### Default
+
+```ts
+"/error"
+```
+
+#### newUser
+
+```ts
+newUser: string;
+```
+
+If set, new users will be directed here on first sign in
+
+#### signIn
+
+```ts
+signIn: string;
+```
+
+The path to the sign in page.
+
+The optional "error" query parameter is set to
+one of the [available](types.mdx#signinpageerrorparam) values.
+
+##### Default
+
+```ts
+"/signin"
+```
+
+#### signOut
+
+```ts
+signOut: string;
+```
+
+#### verifyRequest
+
+```ts
+verifyRequest: string;
+```
+
+***
+
+## Profile
+
+The user info returned from your OAuth provider.
+
+### See
+
+https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims
+
+### Indexable
+
+ \[`claim`: `string`\]: `unknown`
+
+### Properties
+
+#### address?
+
+```ts
+optional address: null | {
+  country: null | string;
+  formatted: null | string;
+  locality: null | string;
+  postal_code: null | string;
+  region: null | string;
+  street_address: null | string;
+};
+```
+
+#### birthdate?
+
+```ts
+optional birthdate: null | string;
+```
+
+#### email?
+
+```ts
+optional email: null | string;
+```
+
+#### email\_verified?
+
+```ts
+optional email_verified: null | boolean;
+```
+
+#### family\_name?
+
+```ts
+optional family_name: null | string;
+```
+
+#### gender?
+
+```ts
+optional gender: null | string;
+```
+
+#### given\_name?
+
+```ts
+optional given_name: null | string;
+```
+
+#### id?
+
+```ts
+optional id: null | string;
+```
+
+#### locale?
+
+```ts
+optional locale: null | string;
+```
+
+#### middle\_name?
+
+```ts
+optional middle_name: null | string;
+```
+
+#### name?
+
+```ts
+optional name: null | string;
+```
+
+#### nickname?
+
+```ts
+optional nickname: null | string;
+```
+
+#### phone\_number?
+
+```ts
+optional phone_number: null | string;
+```
+
+#### picture?
+
+```ts
+optional picture: any;
+```
+
+#### preferred\_username?
+
+```ts
+optional preferred_username: null | string;
+```
+
+#### profile?
+
+```ts
+optional profile: null | string;
+```
+
+#### sub?
+
+```ts
+optional sub: null | string;
+```
+
+#### updated\_at?
+
+```ts
+optional updated_at: null | string | number | Date;
+```
+
+#### website?
+
+```ts
+optional website: null | string;
+```
+
+#### zoneinfo?
+
+```ts
+optional zoneinfo: null | string;
+```
+
+***
+
+## PublicProvider
+
+### Properties
+
+#### callbackUrl
+
+```ts
+callbackUrl: string;
+```
+
+#### id
+
+```ts
+id: string;
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+#### signinUrl
+
+```ts
+signinUrl: string;
+```
+
+#### type
+
+```ts
+type: string;
+```
+
+***
+
+## ResponseInternal\<Body\>
+
+### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `Body` extends `string` \| `Record`\<`string`, `any`\> \| `any`[] \| `null` | `any` |
+
+### Properties
+
+#### body?
+
+```ts
+optional body: Body;
+```
+
+#### cookies?
+
+```ts
+optional cookies: Cookie[];
+```
+
+#### headers?
+
+```ts
+optional headers: HeadersInit;
+```
+
+#### redirect?
+
+```ts
+optional redirect: string;
+```
+
+#### status?
+
+```ts
+optional status: number;
+```
+
+***
+
+## Session
+
+The active session of the logged in user.
+
+### Extends
+
+- [`DefaultSession`](types.mdx#defaultsession)
+
+### Properties
+
+#### expires
+
+```ts
+expires: string;
+```
+
+##### Inherited from
+
+[`DefaultSession`](types.mdx#defaultsession).[`expires`](types.mdx#expires)
+
+#### user?
+
+```ts
+optional user: User;
+```
+
+##### Inherited from
+
+[`DefaultSession`](types.mdx#defaultsession).[`user`](types.mdx#user)
+
+***
+
+## Theme
+
+Change the theme of the built-in pages.
+
+[Documentation](https://authjs.dev/reference/core#theme) |
+[Pages](https://authjs.dev/guides/pages/signin)
+
+### Properties
+
+#### brandColor?
+
+```ts
+optional brandColor: string;
+```
+
+#### buttonText?
+
+```ts
+optional buttonText: string;
+```
+
+#### colorScheme?
+
+```ts
+optional colorScheme: "auto" | "dark" | "light";
+```
+
+#### logo?
+
+```ts
+optional logo: string;
+```
+
+***
+
+## User
+
+The shape of the returned object in the OAuth providers' `profile` callback,
+available in the `jwt` and `session` callbacks,
+or the second parameter of the `session` callback, when using a database.
+
+### Extended by
+
+- [`AdapterUser`](adapters.mdx#adapteruser)
+
+### Properties
+
+#### email?
+
+```ts
+optional email: null | string;
+```
+
+#### id?
+
+```ts
+optional id: string;
+```
+
+#### image?
+
+```ts
+optional image: null | string;
+```
+
+#### name?
+
+```ts
+optional name: null | string;
+```
+
+***
+
+## AuthAction
+
+```ts
+type AuthAction: 
+  | "callback"
+  | "csrf"
+  | "error"
+  | "providers"
+  | "session"
+  | "signin"
+  | "signout"
+  | "verify-request"
+  | "webauthn-options";
+```
+
+Supported actions by Auth.js. Each action map to a REST API endpoint.
+Some actions have a `GET` and `POST` variant, depending on if the action
+changes the state of the server.
+
+- **`"callback"`**:
+  - **`GET`**: Handles the callback from an [OAuth provider](https://authjs.dev/reference/core/providers#oauth2configprofile).
+  - **`POST`**: Handles the callback from a [Credentials provider](https://authjs.dev/getting-started/providers/credentials#credentialsconfigcredentialsinputs).
+- **`"csrf"`**: Returns the raw CSRF token, which is saved in a cookie (encrypted).
+It is used for CSRF protection, implementing the [double submit cookie](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html#double-submit-cookie) technique.
+
+<Callout type="info">
+  Some frameworks have built-in CSRF protection and can therefore disable this action. In this case, the corresponding endpoint will return a 404 response. Read more at [`skipCSRFCheck`](https://authjs.dev/reference/core#skipcsrfcheck).
+_⚠ We don't recommend manually disabling CSRF protection, unless you know what you're doing._
+</Callout>
+- **`"error"`**: Renders the built-in error page.
+- **`"providers"`**: Returns a client-safe list of all configured providers.
+- **`"session"`**:
+  - **`GET`**: Returns the user's session if it exists, otherwise `null`.
+  - **`POST`**: Updates the user's session and returns the updated session.
+- **`"signin"`**:
+  - **`GET`**: Renders the built-in sign-in page.
+  - **`POST`**: Initiates the sign-in flow.
+- **`"signout"`**:
+  - **`GET`**: Renders the built-in sign-out page.
+  - **`POST`**: Initiates the sign-out flow. This will invalidate the user's session (deleting the cookie, and if there is a session in the database, it will be deleted as well).
+- **`"verify-request"`**: Renders the built-in verification request page.
+- **`"webauthn-options"`**:
+  - **`GET`**: Returns the options for the WebAuthn authentication and registration flows.
+
+***
+
+## Awaitable\<T\>
+
+```ts
+type Awaitable<T>: T | PromiseLike<T>;
+```
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `T` |
+
+***
+
+## Awaited\<T\>
+
+```ts
+type Awaited<T>: T extends Promise<infer U> ? U : T;
+```
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `T` |
+
+***
+
+## ErrorPageParam
+
+```ts
+type ErrorPageParam: "Configuration" | "AccessDenied" | "Verification";
+```
+
+TODO: Check if all these are used/correct
+
+***
+
+## SemverString
+
+```ts
+type SemverString: v${number} | v${number}.${number} | v${number}.${number}.${number};
+```
+
+***
+
+## SignInPageErrorParam
+
+```ts
+type SignInPageErrorParam: 
+  | "Signin"
+  | "OAuthSignin"
+  | "OAuthCallbackError"
+  | "OAuthCreateAccount"
+  | "EmailCreateAccount"
+  | "Callback"
+  | "OAuthAccountNotLinked"
+  | "EmailSignin"
+  | "CredentialsSignin"
+  | "SessionRequired";
+```
+
+TODO: Check if all these are used/correct
+
+***
+
+## TokenSet
+
+```ts
+type TokenSet: Partial<OAuth2TokenEndpointResponse | OpenIDTokenEndpointResponse> & {
+  expires_at: number;
+};
+```
+
+Different tokens returned by OAuth Providers.
+Some of them are available with different casing,
+but they refer to the same value.
+
+### Type declaration
+
+#### expires\_at?
+
+```ts
+optional expires_at: number;
+```
+
+Date of when the `access_token` expires in seconds.
+This value is calculated from the `expires_in` value.
+
+##### See
+
+https://www.ietf.org/rfc/rfc6749.html#section-4.2.2
+
+***
+
+## WebAuthnOptionsResponseBody
+
+```ts
+type WebAuthnOptionsResponseBody: {
+  action: WebAuthnAuthenticate;
+  options: PublicKeyCredentialRequestOptionsJSON;
+  } | {
+  action: WebAuthnRegister;
+  options: PublicKeyCredentialCreationOptionsJSON;
+};
+```

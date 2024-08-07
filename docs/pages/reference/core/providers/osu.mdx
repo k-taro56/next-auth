@@ -1,0 +1,484 @@
+import { Callout } from 'nextra/components';
+
+# providers/osu
+
+<div style={{backgroundColor: "#000", display: "flex", justifyContent: "space-between", color: "#fff", padding: 16}}>
+<span>Built-in <b>osu!</b> integration.</span>
+<a href="https://osu.ppy.sh/home">
+  <img style={{display: "block"}} src="https://authjs.dev/img/providers/osu.svg" height="48" />
+</a>
+</div>
+
+## OsuProfile
+
+### Extends
+
+- [`OsuUserCompact`](osu.mdx#osuusercompact).`Record`\<`string`, `any`\>
+
+### Properties
+
+#### avatar\_url
+
+```ts
+avatar_url: string;
+```
+
+##### Inherited from
+
+[`OsuUserCompact`](osu.mdx#osuusercompact).[`avatar_url`](osu.mdx#avatar_url-1)
+
+#### country
+
+```ts
+country: {
+  code: string;
+  name: string;
+};
+```
+
+##### code
+
+```ts
+code: string;
+```
+
+##### name
+
+```ts
+name: string;
+```
+
+#### country\_code
+
+```ts
+country_code: string;
+```
+
+##### Inherited from
+
+[`OsuUserCompact`](osu.mdx#osuusercompact).[`country_code`](osu.mdx#country_code-1)
+
+#### cover
+
+```ts
+cover: {
+  custom_url: null | string;
+  id: null | number;
+  url: string;
+};
+```
+
+##### custom\_url
+
+```ts
+custom_url: null | string;
+```
+
+##### id
+
+```ts
+id: null | number;
+```
+
+##### url
+
+```ts
+url: string;
+```
+
+#### default\_group
+
+```ts
+default_group: string;
+```
+
+##### Inherited from
+
+[`OsuUserCompact`](osu.mdx#osuusercompact).[`default_group`](osu.mdx#default_group-1)
+
+#### discord
+
+```ts
+discord: null | string;
+```
+
+#### has\_supported
+
+```ts
+has_supported: boolean;
+```
+
+#### id
+
+```ts
+id: number;
+```
+
+##### Inherited from
+
+[`OsuUserCompact`](osu.mdx#osuusercompact).[`id`](osu.mdx#id-2)
+
+#### interests
+
+```ts
+interests: null | string;
+```
+
+#### is\_active
+
+```ts
+is_active: boolean;
+```
+
+##### Inherited from
+
+[`OsuUserCompact`](osu.mdx#osuusercompact).[`is_active`](osu.mdx#is_active-1)
+
+#### is\_bot
+
+```ts
+is_bot: boolean;
+```
+
+##### Inherited from
+
+[`OsuUserCompact`](osu.mdx#osuusercompact).[`is_bot`](osu.mdx#is_bot-1)
+
+#### is\_deleted
+
+```ts
+is_deleted: boolean;
+```
+
+##### Inherited from
+
+[`OsuUserCompact`](osu.mdx#osuusercompact).[`is_deleted`](osu.mdx#is_deleted-1)
+
+#### is\_online
+
+```ts
+is_online: boolean;
+```
+
+##### Inherited from
+
+[`OsuUserCompact`](osu.mdx#osuusercompact).[`is_online`](osu.mdx#is_online-1)
+
+#### is\_restricted
+
+```ts
+is_restricted: boolean;
+```
+
+#### is\_supporter
+
+```ts
+is_supporter: boolean;
+```
+
+##### Inherited from
+
+[`OsuUserCompact`](osu.mdx#osuusercompact).[`is_supporter`](osu.mdx#is_supporter-1)
+
+#### join\_date
+
+```ts
+join_date: Date;
+```
+
+#### kudosu
+
+```ts
+kudosu: {
+  available: number;
+  total: number;
+};
+```
+
+##### available
+
+```ts
+available: number;
+```
+
+##### total
+
+```ts
+total: number;
+```
+
+#### last\_visit
+
+```ts
+last_visit: null | Date;
+```
+
+##### Inherited from
+
+[`OsuUserCompact`](osu.mdx#osuusercompact).[`last_visit`](osu.mdx#last_visit-1)
+
+#### location
+
+```ts
+location: null | string;
+```
+
+#### max\_blocks
+
+```ts
+max_blocks: number;
+```
+
+#### max\_friends
+
+```ts
+max_friends: number;
+```
+
+#### occupation
+
+```ts
+occupation: null | string;
+```
+
+#### playmode
+
+```ts
+playmode: string;
+```
+
+#### playstyle
+
+```ts
+playstyle: string[];
+```
+
+#### pm\_friends\_only
+
+```ts
+pm_friends_only: boolean;
+```
+
+##### Inherited from
+
+[`OsuUserCompact`](osu.mdx#osuusercompact).[`pm_friends_only`](osu.mdx#pm_friends_only-1)
+
+#### post\_count
+
+```ts
+post_count: number;
+```
+
+#### profile\_colour
+
+```ts
+profile_colour: null | string;
+```
+
+##### Inherited from
+
+[`OsuUserCompact`](osu.mdx#osuusercompact).[`profile_colour`](osu.mdx#profile_colour-1)
+
+#### profile\_order
+
+```ts
+profile_order: string[];
+```
+
+#### title
+
+```ts
+title: null | string;
+```
+
+#### title\_url
+
+```ts
+title_url: null | string;
+```
+
+#### twitter
+
+```ts
+twitter: null | string;
+```
+
+#### username
+
+```ts
+username: string;
+```
+
+##### Inherited from
+
+[`OsuUserCompact`](osu.mdx#osuusercompact).[`username`](osu.mdx#username-1)
+
+#### website
+
+```ts
+website: null | string;
+```
+
+***
+
+## OsuUserCompact
+
+### Extended by
+
+- [`OsuProfile`](osu.mdx#osuprofile)
+
+### Properties
+
+#### avatar\_url
+
+```ts
+avatar_url: string;
+```
+
+#### country\_code
+
+```ts
+country_code: string;
+```
+
+#### default\_group
+
+```ts
+default_group: string;
+```
+
+#### id
+
+```ts
+id: number;
+```
+
+#### is\_active
+
+```ts
+is_active: boolean;
+```
+
+#### is\_bot
+
+```ts
+is_bot: boolean;
+```
+
+#### is\_deleted
+
+```ts
+is_deleted: boolean;
+```
+
+#### is\_online
+
+```ts
+is_online: boolean;
+```
+
+#### is\_supporter
+
+```ts
+is_supporter: boolean;
+```
+
+#### last\_visit
+
+```ts
+last_visit: null | Date;
+```
+
+#### pm\_friends\_only
+
+```ts
+pm_friends_only: boolean;
+```
+
+#### profile\_colour
+
+```ts
+profile_colour: null | string;
+```
+
+#### username
+
+```ts
+username: string;
+```
+
+***
+
+## default()
+
+```ts
+default<P>(options): OAuthConfig<P>
+```
+
+Add osu! login to your page.
+
+### Setup
+
+#### Callback URL
+```
+https://example.com/api/auth/callback/osu
+```
+
+#### Configuration
+```ts
+import { Auth } from "@auth/core"
+import Osu from "@auth/core/providers/osu"
+
+const request = new Request(origin)
+const response = await Auth(request, {
+  providers: [
+    Osu({ clientId: OSU_CLIENT_ID, clientSecret: OSU_CLIENT_SECRET }),
+  ],
+})
+```
+
+### Resources
+
+ - [osu! OAuth documentation](https://osu.ppy.sh/docs/index.html#authentication)
+ - [osu! app console](https://osu.ppy.sh/home/account/edit#new-oauth-application)
+
+### Notes
+
+By default, Auth.js assumes that the Osu provider is
+based on the [OAuth 2](https://www.rfc-editor.org/rfc/rfc6749.html) specification.
+
+
+<Callout type="info">
+  osu! does not provide a user email.
+</Callout>
+
+
+<Callout type="default">
+  The osu! provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/osu.ts).
+To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/configuring-oauth-providers).
+</Callout>
+
+
+<Callout type="info">
+  ****Disclaimer**** If you think you found a bug in the default configuration, you can [open an issue](https://authjs.dev/new/provider-issue).
+
+Auth.js strictly adheres to the specification and it cannot take responsibility for any deviation from
+the spec by the provider. You can open an issue, but if the problem is non-compliance with the spec,
+we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
+</Callout>
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `P` extends [`OsuProfile`](osu.mdx#osuprofile) |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options` | [`OAuthUserConfig`](../providers.mdx#oauthuserconfigprofile)\<`P`\> |
+
+### Returns
+
+[`OAuthConfig`](../providers.mdx#oauthconfigprofile)\<`P`\>

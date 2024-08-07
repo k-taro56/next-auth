@@ -1,0 +1,40 @@
+import { Callout } from 'nextra/components';
+
+# @auth/drizzle-adapter
+
+<div style={{display: "flex", justifyContent: "space-between", alignItems: "center", padding: 16}}>
+ <p>Official <a href="https://orm.drizzle.team">Drizzle ORM</a> adapter for Auth.js / NextAuth.js.</p>
+ <a href="https://orm.drizzle.team">
+  <img style={{display: "block"}} src="/img/adapters/drizzle.svg" width="38" />
+ </a>
+</div>
+
+## Installation
+
+```bash npm2yarn
+npm install drizzle-orm @auth/drizzle-adapter
+npm install drizzle-kit --save-dev
+```
+
+## DrizzleAdapter()
+
+```ts
+DrizzleAdapter<SqlFlavor>(db, schema?): Adapter
+```
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `SqlFlavor` extends [`SqlFlavorOptions`](drizzle-adapter/lib/utils.mdx#sqlflavoroptions) |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `db` | `SqlFlavor` |
+| `schema`? | [`DefaultSchema`](drizzle-adapter/lib/utils.mdx#defaultschemaflavor)\<`SqlFlavor`\> |
+
+### Returns
+
+[`Adapter`](express/adapters.mdx#adapter)

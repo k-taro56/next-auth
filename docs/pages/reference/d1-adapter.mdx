@@ -1,0 +1,170 @@
+import { Callout } from 'nextra/components';
+
+# @auth/d1-adapter
+
+<div style={{display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px"}}>
+ <p>An official <a href="https://developers.cloudflare.com/d1/">Cloudflare D1</a> adapter for Auth.js / NextAuth.js.</p>
+ <a href="https://developers.cloudflare.com/d1/">
+  <img style={{display: "block"}} src="/img/adapters/d1.svg" width="48" />
+ </a>
+</div>
+
+## Warning
+This adapter is not developed or maintained by Cloudflare and they haven't declared the D1 api stable.  The author will make an effort to keep this adapter up to date.
+The adapter is compatible with the D1 api as of March 22, 2023.
+
+## Installation
+
+```bash npm2yarn
+npm install next-auth @auth/d1-adapter
+```
+
+## D1Database
+
+```ts
+type D1Database: WorkerDatabase | MiniflareD1Database;
+```
+
+***
+
+## D1Adapter()
+
+```ts
+D1Adapter(db): Adapter
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `db` | [`D1Database`](d1-adapter.mdx#d1database) |
+
+### Returns
+
+[`Adapter`](express/adapters.mdx#adapter)
+
+***
+
+## createRecord()
+
+```ts
+createRecord<RecordType>(
+   db, 
+   CREATE_SQL, 
+   bindings, 
+   GET_SQL, 
+getBindings): Promise<null | RecordType>
+```
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `RecordType` |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `db` | [`D1Database`](d1-adapter.mdx#d1database) |
+| `CREATE_SQL` | `string` |
+| `bindings` | `any`[] |
+| `GET_SQL` | `string` |
+| `getBindings` | `any`[] |
+
+### Returns
+
+`Promise`\<`null` \| `RecordType`\>
+
+***
+
+## deleteRecord()
+
+```ts
+deleteRecord(
+   db, 
+   SQL, 
+bindings): Promise<void>
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `db` | [`D1Database`](d1-adapter.mdx#d1database) |
+| `SQL` | `string` |
+| `bindings` | `any`[] |
+
+### Returns
+
+`Promise`\<`void`\>
+
+***
+
+## getRecord()
+
+```ts
+getRecord<RecordType>(
+   db, 
+   SQL, 
+bindings): Promise<RecordType | null>
+```
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `RecordType` |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `db` | [`D1Database`](d1-adapter.mdx#d1database) |
+| `SQL` | `string` |
+| `bindings` | `any`[] |
+
+### Returns
+
+`Promise`\<`RecordType` \| `null`\>
+
+***
+
+## up()
+
+```ts
+up(db): Promise<void>
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `db` | [`D1Database`](d1-adapter.mdx#d1database) |
+
+### Returns
+
+`Promise`\<`void`\>
+
+***
+
+## updateRecord()
+
+```ts
+updateRecord(
+   db, 
+   SQL, 
+bindings): Promise<D1Result<unknown> | D1Result<unknown>>
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `db` | [`D1Database`](d1-adapter.mdx#d1database) |
+| `SQL` | `string` |
+| `bindings` | `any`[] |
+
+### Returns
+
+`Promise`\<`D1Result`\<`unknown`\> \| `D1Result`\<`unknown`\>\>

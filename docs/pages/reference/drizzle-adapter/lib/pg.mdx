@@ -1,0 +1,1777 @@
+import { Callout } from 'nextra/components';
+
+# lib/pg
+
+## DefaultPostgresAccountsTable
+
+```ts
+type DefaultPostgresAccountsTable: PgTableWithColumns<{
+  columns: {
+     access_token: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     expires_at: DefaultPostgresColumn<{
+        columnType: "PgInteger";
+        data: number;
+        dataType: "number";
+        notNull: boolean;
+     }>;
+     id_token: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     provider: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     providerAccountId: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     refresh_token: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     scope: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     session_state: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     token_type: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     type: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     userId: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText" | "PgUUID";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+  };
+  dialect: "pg";
+  name: string;
+  schema: string | undefined;
+}>;
+```
+
+### Type declaration
+
+#### columns
+
+```ts
+columns: {
+  access_token: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  expires_at: DefaultPostgresColumn<{
+     columnType: "PgInteger";
+     data: number;
+     dataType: "number";
+     notNull: boolean;
+  }>;
+  id_token: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  provider: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  providerAccountId: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  refresh_token: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  scope: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  session_state: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  token_type: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  type: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  userId: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText" | "PgUUID";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+};
+```
+
+#### columns.access\_token
+
+```ts
+access_token: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.expires\_at
+
+```ts
+expires_at: DefaultPostgresColumn<{
+  columnType: "PgInteger";
+  data: number;
+  dataType: "number";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgInteger";
+```
+
+###### data
+
+```ts
+data: number;
+```
+
+###### dataType
+
+```ts
+dataType: "number";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.id\_token
+
+```ts
+id_token: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.provider
+
+```ts
+provider: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.providerAccountId
+
+```ts
+providerAccountId: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.refresh\_token
+
+```ts
+refresh_token: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.scope
+
+```ts
+scope: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.session\_state
+
+```ts
+session_state: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.token\_type
+
+```ts
+token_type: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.type
+
+```ts
+type: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.userId
+
+```ts
+userId: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText" | "PgUUID";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText" | "PgUUID";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### dialect
+
+```ts
+dialect: "pg";
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+#### schema
+
+```ts
+schema: string | undefined;
+```
+
+***
+
+## DefaultPostgresAuthenticatorTable
+
+```ts
+type DefaultPostgresAuthenticatorTable: PgTableWithColumns<{
+  columns: {
+     counter: DefaultPostgresColumn<{
+        columnType: "PgInteger";
+        data: number;
+        dataType: "number";
+        notNull: true;
+     }>;
+     credentialBackedUp: DefaultPostgresColumn<{
+        columnType: "PgBoolean";
+        data: boolean;
+        dataType: "boolean";
+        notNull: true;
+     }>;
+     credentialDeviceType: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     credentialID: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     credentialPublicKey: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     providerAccountId: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     transports: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText";
+        data: string;
+        dataType: "string";
+        notNull: false;
+     }>;
+     userId: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+  };
+  dialect: "pg";
+  name: string;
+  schema: string | undefined;
+}>;
+```
+
+### Type declaration
+
+#### columns
+
+```ts
+columns: {
+  counter: DefaultPostgresColumn<{
+     columnType: "PgInteger";
+     data: number;
+     dataType: "number";
+     notNull: true;
+  }>;
+  credentialBackedUp: DefaultPostgresColumn<{
+     columnType: "PgBoolean";
+     data: boolean;
+     dataType: "boolean";
+     notNull: true;
+  }>;
+  credentialDeviceType: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  credentialID: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  credentialPublicKey: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  providerAccountId: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  transports: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText";
+     data: string;
+     dataType: "string";
+     notNull: false;
+  }>;
+  userId: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+};
+```
+
+#### columns.counter
+
+```ts
+counter: DefaultPostgresColumn<{
+  columnType: "PgInteger";
+  data: number;
+  dataType: "number";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgInteger";
+```
+
+###### data
+
+```ts
+data: number;
+```
+
+###### dataType
+
+```ts
+dataType: "number";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.credentialBackedUp
+
+```ts
+credentialBackedUp: DefaultPostgresColumn<{
+  columnType: "PgBoolean";
+  data: boolean;
+  dataType: "boolean";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgBoolean";
+```
+
+###### data
+
+```ts
+data: boolean;
+```
+
+###### dataType
+
+```ts
+dataType: "boolean";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.credentialDeviceType
+
+```ts
+credentialDeviceType: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.credentialID
+
+```ts
+credentialID: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.credentialPublicKey
+
+```ts
+credentialPublicKey: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.providerAccountId
+
+```ts
+providerAccountId: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.transports
+
+```ts
+transports: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText";
+  data: string;
+  dataType: "string";
+  notNull: false;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: false;
+```
+
+#### columns.userId
+
+```ts
+userId: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### dialect
+
+```ts
+dialect: "pg";
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+#### schema
+
+```ts
+schema: string | undefined;
+```
+
+***
+
+## DefaultPostgresSchema
+
+```ts
+type DefaultPostgresSchema: {
+  accountsTable: DefaultPostgresAccountsTable;
+  authenticatorsTable: DefaultPostgresAuthenticatorTable;
+  sessionsTable: DefaultPostgresSessionsTable;
+  usersTable: DefaultPostgresUsersTable;
+  verificationTokensTable: DefaultPostgresVerificationTokenTable;
+};
+```
+
+### Type declaration
+
+#### accountsTable
+
+```ts
+accountsTable: DefaultPostgresAccountsTable;
+```
+
+#### authenticatorsTable?
+
+```ts
+optional authenticatorsTable: DefaultPostgresAuthenticatorTable;
+```
+
+#### sessionsTable?
+
+```ts
+optional sessionsTable: DefaultPostgresSessionsTable;
+```
+
+#### usersTable
+
+```ts
+usersTable: DefaultPostgresUsersTable;
+```
+
+#### verificationTokensTable?
+
+```ts
+optional verificationTokensTable: DefaultPostgresVerificationTokenTable;
+```
+
+***
+
+## DefaultPostgresSessionsTable
+
+```ts
+type DefaultPostgresSessionsTable: PgTableWithColumns<{
+  columns: {
+     expires: DefaultPostgresColumn<{
+        columnType: "PgTimestamp";
+        data: Date;
+        dataType: "date";
+        notNull: true;
+     }>;
+     sessionToken: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText";
+        data: string;
+        dataType: "string";
+        isPrimaryKey: true;
+        notNull: true;
+     }>;
+     userId: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText" | "PgUUID";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+  };
+  dialect: "pg";
+  name: string;
+  schema: string | undefined;
+}>;
+```
+
+### Type declaration
+
+#### columns
+
+```ts
+columns: {
+  expires: DefaultPostgresColumn<{
+     columnType: "PgTimestamp";
+     data: Date;
+     dataType: "date";
+     notNull: true;
+  }>;
+  sessionToken: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText";
+     data: string;
+     dataType: "string";
+     isPrimaryKey: true;
+     notNull: true;
+  }>;
+  userId: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText" | "PgUUID";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+};
+```
+
+#### columns.expires
+
+```ts
+expires: DefaultPostgresColumn<{
+  columnType: "PgTimestamp";
+  data: Date;
+  dataType: "date";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgTimestamp";
+```
+
+###### data
+
+```ts
+data: Date;
+```
+
+###### dataType
+
+```ts
+dataType: "date";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.sessionToken
+
+```ts
+sessionToken: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText";
+  data: string;
+  dataType: "string";
+  isPrimaryKey: true;
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### isPrimaryKey
+
+```ts
+isPrimaryKey: true;
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.userId
+
+```ts
+userId: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText" | "PgUUID";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText" | "PgUUID";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### dialect
+
+```ts
+dialect: "pg";
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+#### schema
+
+```ts
+schema: string | undefined;
+```
+
+***
+
+## DefaultPostgresUsersTable
+
+```ts
+type DefaultPostgresUsersTable: PgTableWithColumns<{
+  columns: {
+     email: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     emailVerified: DefaultPostgresColumn<{
+        columnType: "PgTimestamp";
+        data: Date;
+        dataType: "date";
+        notNull: boolean;
+     }>;
+     id: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText" | "PgUUID";
+        data: string;
+        dataType: "string";
+        isPrimaryKey: true;
+        notNull: true;
+     }>;
+     image: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     name: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+  };
+  dialect: "pg";
+  name: string;
+  schema: string | undefined;
+}>;
+```
+
+### Type declaration
+
+#### columns
+
+```ts
+columns: {
+  email: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  emailVerified: DefaultPostgresColumn<{
+     columnType: "PgTimestamp";
+     data: Date;
+     dataType: "date";
+     notNull: boolean;
+  }>;
+  id: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText" | "PgUUID";
+     data: string;
+     dataType: "string";
+     isPrimaryKey: true;
+     notNull: true;
+  }>;
+  image: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  name: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+};
+```
+
+#### columns.email
+
+```ts
+email: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.emailVerified
+
+```ts
+emailVerified: DefaultPostgresColumn<{
+  columnType: "PgTimestamp";
+  data: Date;
+  dataType: "date";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgTimestamp";
+```
+
+###### data
+
+```ts
+data: Date;
+```
+
+###### dataType
+
+```ts
+dataType: "date";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.id
+
+```ts
+id: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText" | "PgUUID";
+  data: string;
+  dataType: "string";
+  isPrimaryKey: true;
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText" | "PgUUID";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### isPrimaryKey
+
+```ts
+isPrimaryKey: true;
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.image
+
+```ts
+image: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.name
+
+```ts
+name: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### dialect
+
+```ts
+dialect: "pg";
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+#### schema
+
+```ts
+schema: string | undefined;
+```
+
+***
+
+## DefaultPostgresVerificationTokenTable
+
+```ts
+type DefaultPostgresVerificationTokenTable: PgTableWithColumns<{
+  columns: {
+     expires: DefaultPostgresColumn<{
+        columnType: "PgTimestamp";
+        data: Date;
+        dataType: "date";
+        notNull: true;
+     }>;
+     identifier: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     token: DefaultPostgresColumn<{
+        columnType: "PgVarchar" | "PgText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+  };
+  dialect: "pg";
+  name: string;
+  schema: string | undefined;
+}>;
+```
+
+### Type declaration
+
+#### columns
+
+```ts
+columns: {
+  expires: DefaultPostgresColumn<{
+     columnType: "PgTimestamp";
+     data: Date;
+     dataType: "date";
+     notNull: true;
+  }>;
+  identifier: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  token: DefaultPostgresColumn<{
+     columnType: "PgVarchar" | "PgText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+};
+```
+
+#### columns.expires
+
+```ts
+expires: DefaultPostgresColumn<{
+  columnType: "PgTimestamp";
+  data: Date;
+  dataType: "date";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgTimestamp";
+```
+
+###### data
+
+```ts
+data: Date;
+```
+
+###### dataType
+
+```ts
+dataType: "date";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.identifier
+
+```ts
+identifier: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.token
+
+```ts
+token: DefaultPostgresColumn<{
+  columnType: "PgVarchar" | "PgText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "PgVarchar" | "PgText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### dialect
+
+```ts
+dialect: "pg";
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+#### schema
+
+```ts
+schema: string | undefined;
+```
+
+***
+
+## PostgresDrizzleAdapter()
+
+```ts
+PostgresDrizzleAdapter(client, schema?): Adapter
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `client` | `PgDatabase`\<`PgQueryResultHKT`, `any`, `ExtractTablesWithRelations`\<`any`\>\> |
+| `schema`? | [`DefaultPostgresSchema`](pg.mdx#defaultpostgresschema) |
+
+### Returns
+
+[`Adapter`](../../express/adapters.mdx#adapter)
+
+***
+
+## defineTables()
+
+```ts
+defineTables(schema): Required<DefaultPostgresSchema>
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `schema` | `Partial`\<[`DefaultPostgresSchema`](pg.mdx#defaultpostgresschema)\> |
+
+### Returns
+
+`Required`\<[`DefaultPostgresSchema`](pg.mdx#defaultpostgresschema)\>

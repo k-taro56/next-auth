@@ -1,0 +1,231 @@
+import { Callout } from 'nextra/components';
+
+# lib/client
+
+## DgraphClientError
+
+### Extends
+
+- `Error`
+
+### Constructors
+
+#### new DgraphClientError(errors, query, variables)
+
+```ts
+new DgraphClientError(
+   errors, 
+   query, 
+   variables): DgraphClientError
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `errors` | `any`[] |
+| `query` | `string` |
+| `variables` | `any` |
+
+##### Returns
+
+[`DgraphClientError`](client.mdx#dgraphclienterror)
+
+##### Overrides
+
+`Error.constructor`
+
+### Properties
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+`Error.message`
+
+#### name
+
+```ts
+name: string = "DgraphClientError";
+```
+
+##### Overrides
+
+`Error.name`
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+`Error.stack`
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+`Error.prepareStackTrace`
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+`Error.stackTraceLimit`
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+`Error.captureStackTrace`
+
+***
+
+## DgraphClientParams
+
+### Properties
+
+#### authHeader?
+
+```ts
+optional authHeader: string;
+```
+
+##### Default
+
+```ts
+"Authorization"
+
+[Using JWT and authorization claims](https://dgraph.io/docs/graphql/authorization/authorization-overview#using-jwts-and-authorization-claims)
+```
+
+#### authToken
+
+```ts
+authToken: string;
+```
+
+`X-Auth-Token` header value
+
+[Dgraph Cloud Authentication](https://dgraph.io/docs/cloud/cloud-api/overview/#dgraph-cloud-authentication)
+
+#### endpoint
+
+```ts
+endpoint: string;
+```
+
+#### jwtAlgorithm?
+
+```ts
+optional jwtAlgorithm: "HS256" | "RS256";
+```
+
+##### Default
+
+```ts
+"RS256"
+
+[Using JWT and authorization claims](https://dgraph.io/docs/graphql/authorization/authorization-overview#using-jwts-and-authorization-claims)
+```
+
+#### jwtSecret?
+
+```ts
+optional jwtSecret: string;
+```
+
+[Using JWT and authorization claims](https://dgraph.io/docs/graphql/authorization/authorization-overview#using-jwts-and-authorization-claims)
+
+***
+
+## client()
+
+```ts
+client(params): {
+  run: Promise<null | T>;
+}
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `params` | [`DgraphClientParams`](client.mdx#dgraphclientparams) |
+
+### Returns
+
+```ts
+{
+  run: Promise<null | T>;
+}
+```
+
+#### run()
+
+##### Type parameters
+
+| Type parameter |
+| :------ |
+| `T` |
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `query` | `string` |
+| `variables`? | `Record`\<`string`, `any`\> |
+
+##### Returns
+
+`Promise`\<`null` \| `T`\>

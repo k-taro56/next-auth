@@ -1,0 +1,5876 @@
+import { Callout } from 'nextra/components';
+
+# errors
+
+## AccessDenied
+
+Thrown when the execution of the [`signIn` callback](https://authjs.dev/reference/core/types#signin) fails
+or if it returns `false`.
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new AccessDenied(message, errorOptions)
+
+```ts
+new AccessDenied(message?, errorOptions?): AccessDenied
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`AccessDenied`](errors.mdx#accessdenied)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "AccessDenied";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## AccountNotLinked
+
+Thrown when an Email address is already associated with an account
+but the user is trying an account that is not linked to it.
+
+For security reasons, Auth.js does not automatically link accounts to existing accounts if the user is not signed in.
+
+### Extends
+
+- [`SignInError`](errors.mdx#signinerror)
+
+### Constructors
+
+#### new AccountNotLinked(message, errorOptions)
+
+```ts
+new AccountNotLinked(message?, errorOptions?): AccountNotLinked
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`AccountNotLinked`](errors.mdx#accountnotlinked)
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`constructor`](errors.mdx#constructors-27)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`cause`](errors.mdx#cause-27)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`message`](errors.mdx#message-27)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`name`](errors.mdx#name-27)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`stack`](errors.mdx#stack-27)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`type`](errors.mdx#type-53)
+
+#### kind
+
+```ts
+static kind: string = "signIn";
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`kind`](errors.mdx#kind-7)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`prepareStackTrace`](errors.mdx#preparestacktrace-27)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`stackTraceLimit`](errors.mdx#stacktracelimit-27)
+
+#### type
+
+```ts
+static type: string = "AccountNotLinked";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`captureStackTrace`](errors.mdx#capturestacktrace-27)
+
+***
+
+## AdapterError
+
+One of the database [`Adapter` methods](https://authjs.dev/reference/core/adapters#methods)
+failed during execution.
+
+
+<Callout type="default">
+  If `debug: true` is set, you can check out `[auth][debug]` in the logs to learn more about the failed adapter method execution.
+
+### Example
+
+```sh
+[auth][debug]: adapter_getUserByEmail
+{ "args": [undefined] }
+```
+</Callout>
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new AdapterError(message, errorOptions)
+
+```ts
+new AdapterError(message?, errorOptions?): AdapterError
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`AdapterError`](errors.mdx#adaptererror)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "AdapterError";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## AuthError
+
+Base error class for all Auth.js errors.
+It's optimized to be printed in the server logs in a nicely formatted way
+via the [`logger.error`](https://authjs.dev/reference/core#logger) option.
+
+### Extends
+
+- `Error`
+
+### Constructors
+
+#### new AuthError(message, errorOptions)
+
+```ts
+new AuthError(message?, errorOptions?): AuthError
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`AuthError`](errors.mdx#autherror)
+
+##### Overrides
+
+`Error.constructor`
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Overrides
+
+`Error.cause`
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+`Error.message`
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+`Error.name`
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+`Error.stack`
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+`Error.prepareStackTrace`
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+`Error.stackTraceLimit`
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+`Error.captureStackTrace`
+
+***
+
+## CallbackRouteError
+
+This error occurs when the user cannot finish login.
+Depending on the provider type, this could have happened for multiple reasons.
+
+
+<Callout type="default">
+  Check out `[auth][details]` in the logs to know which provider failed.
+
+### Example
+
+```sh
+[auth][details]: { "provider": "github" }
+```
+</Callout>
+
+For an [OAuth provider](https://authjs.dev/getting-started/authentication/oauth), possible causes are:
+- The user denied access to the application
+- There was an error parsing the OAuth Profile:
+  Check out the provider's `profile` or `userinfo.request` method to make sure
+  it correctly fetches the user's profile.
+- The `signIn` or `jwt` callback methods threw an uncaught error:
+  Check the callback method implementations.
+
+For an [Email provider](https://authjs.dev/getting-started/authentication/email), possible causes are:
+- The provided email/token combination was invalid/missing:
+  Check if the provider's `sendVerificationRequest` method correctly sends the email.
+- The provided email/token combination has expired:
+  Ask the user to log in again.
+- There was an error with the database:
+  Check the database logs.
+
+For a [Credentials provider](https://authjs.dev/getting-started/authentication/credentials), possible causes are:
+- The `authorize` method threw an uncaught error:
+  Check the provider's `authorize` method.
+- The `signIn` or `jwt` callback methods threw an uncaught error:
+  Check the callback method implementations.
+
+
+<Callout type="default">
+  Check out `[auth][cause]` in the error message for more details.
+It will show the original stack trace.
+</Callout>
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new CallbackRouteError(message, errorOptions)
+
+```ts
+new CallbackRouteError(message?, errorOptions?): CallbackRouteError
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`CallbackRouteError`](errors.mdx#callbackrouteerror)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "CallbackRouteError";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## CredentialsSignin
+
+Can be thrown from the `authorize` callback of the Credentials provider.
+When an error occurs during the `authorize` callback, two things can happen:
+1. The user is redirected to the signin page, with `error=CredentialsSignin&code=credentials` in the URL. `code` is configurable.
+2. If you throw this error in a framework that handles form actions server-side, this error is thrown, instead of redirecting the user, so you'll need to handle.
+
+### Extends
+
+- [`SignInError`](errors.mdx#signinerror)
+
+### Constructors
+
+#### new CredentialsSignin(message, errorOptions)
+
+```ts
+new CredentialsSignin(message?, errorOptions?): CredentialsSignin
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`CredentialsSignin`](errors.mdx#credentialssignin)
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`constructor`](errors.mdx#constructors-27)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`cause`](errors.mdx#cause-27)
+
+#### code
+
+```ts
+code: string = "credentials";
+```
+
+The error code that is set in the `code` query parameter of the redirect URL.
+
+⚠ NOTE: This property is going to be included in the URL, so make sure it does not hint at sensitive errors.
+
+The full error is always logged on the server, if you need to debug.
+
+Generally, we don't recommend hinting specifically if the user had either a wrong username or password specifically,
+try rather something like "Invalid credentials".
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`message`](errors.mdx#message-27)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`name`](errors.mdx#name-27)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`stack`](errors.mdx#stack-27)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`type`](errors.mdx#type-53)
+
+#### kind
+
+```ts
+static kind: string = "signIn";
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`kind`](errors.mdx#kind-7)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`prepareStackTrace`](errors.mdx#preparestacktrace-27)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`stackTraceLimit`](errors.mdx#stacktracelimit-27)
+
+#### type
+
+```ts
+static type: string = "CredentialsSignin";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`captureStackTrace`](errors.mdx#capturestacktrace-27)
+
+***
+
+## DuplicateConditionalUI
+
+Thrown when multiple providers have `enableConditionalUI` set to `true`.
+Only one provider can have this option enabled at a time.
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new DuplicateConditionalUI(message, errorOptions)
+
+```ts
+new DuplicateConditionalUI(message?, errorOptions?): DuplicateConditionalUI
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`DuplicateConditionalUI`](errors.mdx#duplicateconditionalui)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "DuplicateConditionalUI";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## EmailSignInError
+
+Happens when the login by an [Email provider](https://authjs.dev/getting-started/authentication/email) could not be started.
+
+Possible causes are:
+- The email sent from the client is invalid, could not be normalized by [`EmailConfig.normalizeIdentifier`](https://authjs.dev/reference/core/providers/email#normalizeidentifier)
+- The provided email/token combination has expired:
+  Ask the user to log in again.
+- There was an error with the database:
+  Check the database logs.
+
+### Extends
+
+- [`SignInError`](errors.mdx#signinerror)
+
+### Constructors
+
+#### new EmailSignInError(message, errorOptions)
+
+```ts
+new EmailSignInError(message?, errorOptions?): EmailSignInError
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`EmailSignInError`](errors.mdx#emailsigninerror)
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`constructor`](errors.mdx#constructors-27)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`cause`](errors.mdx#cause-27)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`message`](errors.mdx#message-27)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`name`](errors.mdx#name-27)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`stack`](errors.mdx#stack-27)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`type`](errors.mdx#type-53)
+
+#### kind
+
+```ts
+static kind: string = "signIn";
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`kind`](errors.mdx#kind-7)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`prepareStackTrace`](errors.mdx#preparestacktrace-27)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`stackTraceLimit`](errors.mdx#stacktracelimit-27)
+
+#### type
+
+```ts
+static type: string = "EmailSignInError";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`captureStackTrace`](errors.mdx#capturestacktrace-27)
+
+***
+
+## ErrorPageLoop
+
+Thrown when Auth.js is misconfigured and accidentally tried to require authentication on a custom error page.
+To prevent an infinite loop, Auth.js will instead render its default error page.
+
+To fix this, make sure that the `error` page does not require authentication.
+
+Learn more at [Guide: Error pages](https://authjs.dev/guides/pages/error)
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new ErrorPageLoop(message, errorOptions)
+
+```ts
+new ErrorPageLoop(message?, errorOptions?): ErrorPageLoop
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`ErrorPageLoop`](errors.mdx#errorpageloop)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "ErrorPageLoop";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## EventError
+
+One of the [`events` methods](https://authjs.dev/reference/core/types#eventcallbacks)
+failed during execution.
+
+Make sure that the `events` methods are implemented correctly and uncaught errors are handled.
+
+Learn more at [`events`](https://authjs.dev/reference/core/types#eventcallbacks)
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new EventError(message, errorOptions)
+
+```ts
+new EventError(message?, errorOptions?): EventError
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`EventError`](errors.mdx#eventerror)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "EventError";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## ExperimentalFeatureNotEnabled
+
+Thrown when an experimental feature is used but not enabled.
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new ExperimentalFeatureNotEnabled(message, errorOptions)
+
+```ts
+new ExperimentalFeatureNotEnabled(message?, errorOptions?): ExperimentalFeatureNotEnabled
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`ExperimentalFeatureNotEnabled`](errors.mdx#experimentalfeaturenotenabled)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "ExperimentalFeatureNotEnabled";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## InvalidCallbackUrl
+
+Thrown when Auth.js is unable to verify a `callbackUrl` value.
+The browser either disabled cookies or the `callbackUrl` is not a valid URL.
+
+Somebody might have tried to manipulate the callback URL that Auth.js uses to redirect the user back to the configured `callbackUrl`/page.
+This could be a malicious hacker trying to redirect the user to a phishing site.
+To prevent this, Auth.js checks if the callback URL is valid and throws this error if it is not.
+
+There is no action required, but it might be an indicator that somebody is trying to attack your application.
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new InvalidCallbackUrl(message, errorOptions)
+
+```ts
+new InvalidCallbackUrl(message?, errorOptions?): InvalidCallbackUrl
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`InvalidCallbackUrl`](errors.mdx#invalidcallbackurl)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "InvalidCallbackUrl";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## InvalidCheck
+
+Thrown when a PKCE, state or nonce OAuth check could not be performed.
+This could happen if the OAuth provider is configured incorrectly or if the browser is blocking cookies.
+
+Learn more at [`checks`](https://authjs.dev/reference/core/providers#checks)
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new InvalidCheck(message, errorOptions)
+
+```ts
+new InvalidCheck(message?, errorOptions?): InvalidCheck
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`InvalidCheck`](errors.mdx#invalidcheck)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "InvalidCheck";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## InvalidEndpoints
+
+One of the configured OAuth or OIDC providers is missing the `authorization`, `token` or `userinfo`, or `issuer` configuration.
+To perform OAuth or OIDC sign in, at least one of these endpoints is required.
+
+Learn more at [`OAuth2Config`](https://authjs.dev/reference/core/providers#oauth2configprofile) or [Guide: OAuth Provider](https://authjs.dev/guides/configuring-oauth-providers)
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new InvalidEndpoints(message, errorOptions)
+
+```ts
+new InvalidEndpoints(message?, errorOptions?): InvalidEndpoints
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`InvalidEndpoints`](errors.mdx#invalidendpoints)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "InvalidEndpoints";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## InvalidProvider
+
+Thrown when an endpoint was incorrectly called without a provider, or with an unsupported provider.
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new InvalidProvider(message, errorOptions)
+
+```ts
+new InvalidProvider(message?, errorOptions?): InvalidProvider
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`InvalidProvider`](errors.mdx#invalidprovider)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "InvalidProvider";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## JWTSessionError
+
+Logged on the server when Auth.js could not decode or encode a JWT-based (`strategy: "jwt"`) session.
+
+Possible causes are either a misconfigured `secret` or a malformed JWT or `encode/decode` methods.
+
+
+<Callout type="info">
+  When this error is logged, the session cookie is destroyed.
+</Callout>
+
+Learn more at [`secret`](https://authjs.dev/reference/core#secret), [`jwt.encode`](https://authjs.dev/reference/core/jwt#encode-1) or [`jwt.decode`](https://authjs.dev/reference/core/jwt#decode-2) for more information.
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new JWTSessionError(message, errorOptions)
+
+```ts
+new JWTSessionError(message?, errorOptions?): JWTSessionError
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`JWTSessionError`](errors.mdx#jwtsessionerror)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "JWTSessionError";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## MissingAdapter
+
+Thrown if Auth.js is misconfigured. This could happen if you configured an Email provider but did not set up a database adapter,
+or tried using a `strategy: "database"` session without a database adapter.
+In both cases, make sure you either remove the configuration or add the missing adapter.
+
+Learn more at [Database Adapters](https://authjs.dev/getting-started/database), [Email provider](https://authjs.dev/getting-started/authentication/email) or [Concept: Database session strategy](https://authjs.dev/concepts/session-strategies#database-session)
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new MissingAdapter(message, errorOptions)
+
+```ts
+new MissingAdapter(message?, errorOptions?): MissingAdapter
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`MissingAdapter`](errors.mdx#missingadapter)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "MissingAdapter";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## MissingAdapterMethods
+
+Thrown similarily to [`MissingAdapter`](https://authjs.dev/reference/core/errors#missingadapter), but only some required methods were missing.
+
+Make sure you either remove the configuration or add the missing methods to the adapter.
+
+Learn more at [Database Adapters](https://authjs.dev/getting-started/database)
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new MissingAdapterMethods(message, errorOptions)
+
+```ts
+new MissingAdapterMethods(message?, errorOptions?): MissingAdapterMethods
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`MissingAdapterMethods`](errors.mdx#missingadaptermethods)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "MissingAdapterMethods";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## MissingAuthorize
+
+Thrown when a Credentials provider is missing the `authorize` configuration.
+To perform credentials sign in, the `authorize` method is required.
+
+Learn more at [Credentials provider](https://authjs.dev/getting-started/authentication/credentials)
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new MissingAuthorize(message, errorOptions)
+
+```ts
+new MissingAuthorize(message?, errorOptions?): MissingAuthorize
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`MissingAuthorize`](errors.mdx#missingauthorize)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "MissingAuthorize";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## MissingCSRF
+
+Error for missing CSRF tokens in client-side actions (`signIn`, `signOut`, `useSession#update`).
+Thrown when actions lack the double submit cookie, essential for CSRF protection.
+
+CSRF ([Cross-Site Request Forgery](https://owasp.org/www-community/attacks/csrf))
+is an attack leveraging authenticated user credentials for unauthorized actions.
+
+Double submit cookie pattern, a CSRF defense, requires matching values in a cookie
+and request parameter. More on this at [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Glossary/CSRF).
+
+### Extends
+
+- [`SignInError`](errors.mdx#signinerror)
+
+### Constructors
+
+#### new MissingCSRF(message, errorOptions)
+
+```ts
+new MissingCSRF(message?, errorOptions?): MissingCSRF
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`MissingCSRF`](errors.mdx#missingcsrf)
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`constructor`](errors.mdx#constructors-27)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`cause`](errors.mdx#cause-27)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`message`](errors.mdx#message-27)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`name`](errors.mdx#name-27)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`stack`](errors.mdx#stack-27)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`type`](errors.mdx#type-53)
+
+#### kind
+
+```ts
+static kind: string = "signIn";
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`kind`](errors.mdx#kind-7)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`prepareStackTrace`](errors.mdx#preparestacktrace-27)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`stackTraceLimit`](errors.mdx#stacktracelimit-27)
+
+#### type
+
+```ts
+static type: string = "MissingCSRF";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`captureStackTrace`](errors.mdx#capturestacktrace-27)
+
+***
+
+## MissingSecret
+
+Auth.js requires a secret or multiple secrets to be set, but none was not found. This is used to encrypt cookies, JWTs and other sensitive data.
+
+
+<Callout type="info">
+  If you are using a framework like Next.js, we try to automatically infer the secret from the `AUTH_SECRET`, `AUTH_SECRET_1`, etc. environment variables.
+Alternatively, you can also explicitly set the [`AuthConfig.secret`](https://authjs.dev/reference/core#secret) option.
+</Callout>
+
+
+<Callout type="default">
+  To generate a random string, you can use the Auth.js CLI: `npx auth secret`
+</Callout>
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new MissingSecret(message, errorOptions)
+
+```ts
+new MissingSecret(message?, errorOptions?): MissingSecret
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`MissingSecret`](errors.mdx#missingsecret)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "MissingSecret";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## MissingWebAuthnAutocomplete
+
+Thrown when a WebAuthn provider has `enableConditionalUI` set to `true` but no formField has `webauthn` in its autocomplete param.
+
+The `webauthn` autocomplete param is required for conditional UI to work.
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new MissingWebAuthnAutocomplete(message, errorOptions)
+
+```ts
+new MissingWebAuthnAutocomplete(message?, errorOptions?): MissingWebAuthnAutocomplete
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`MissingWebAuthnAutocomplete`](errors.mdx#missingwebauthnautocomplete)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "MissingWebAuthnAutocomplete";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## OAuthAccountNotLinked
+
+Thrown when an Email address is already associated with an account
+but the user is trying an OAuth account that is not linked to it.
+
+For security reasons, Auth.js does not automatically link OAuth accounts to existing accounts if the user is not signed in.
+
+
+<Callout type="default">
+  If you trust the OAuth provider to have verified the user's email address,
+you can enable automatic account linking by setting [`allowDangerousEmailAccountLinking: true`](https://authjs.dev/reference/core/providers#allowdangerousemailaccountlinking)
+in the provider configuration.
+</Callout>
+
+### Extends
+
+- [`SignInError`](errors.mdx#signinerror)
+
+### Constructors
+
+#### new OAuthAccountNotLinked(message, errorOptions)
+
+```ts
+new OAuthAccountNotLinked(message?, errorOptions?): OAuthAccountNotLinked
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`OAuthAccountNotLinked`](errors.mdx#oauthaccountnotlinked)
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`constructor`](errors.mdx#constructors-27)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`cause`](errors.mdx#cause-27)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`message`](errors.mdx#message-27)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`name`](errors.mdx#name-27)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`stack`](errors.mdx#stack-27)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`type`](errors.mdx#type-53)
+
+#### kind
+
+```ts
+static kind: string = "signIn";
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`kind`](errors.mdx#kind-7)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`prepareStackTrace`](errors.mdx#preparestacktrace-27)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`stackTraceLimit`](errors.mdx#stacktracelimit-27)
+
+#### type
+
+```ts
+static type: string = "OAuthAccountNotLinked";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`captureStackTrace`](errors.mdx#capturestacktrace-27)
+
+***
+
+## OAuthCallbackError
+
+Thrown when an OAuth provider returns an error during the sign in process.
+This could happen for example if the user denied access to the application or there was a configuration error.
+
+For a full list of possible reasons, check out the specification [Authorization Code Grant: Error Response](https://www.rfc-editor.org/rfc/rfc6749#section-4.1.2.1)
+
+### Extends
+
+- [`SignInError`](errors.mdx#signinerror)
+
+### Constructors
+
+#### new OAuthCallbackError(message, errorOptions)
+
+```ts
+new OAuthCallbackError(message?, errorOptions?): OAuthCallbackError
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`OAuthCallbackError`](errors.mdx#oauthcallbackerror)
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`constructor`](errors.mdx#constructors-27)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`cause`](errors.mdx#cause-27)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`message`](errors.mdx#message-27)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`name`](errors.mdx#name-27)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`stack`](errors.mdx#stack-27)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`type`](errors.mdx#type-53)
+
+#### kind
+
+```ts
+static kind: string = "signIn";
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`kind`](errors.mdx#kind-7)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`prepareStackTrace`](errors.mdx#preparestacktrace-27)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`stackTraceLimit`](errors.mdx#stacktracelimit-27)
+
+#### type
+
+```ts
+static type: string = "OAuthCallbackError";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`captureStackTrace`](errors.mdx#capturestacktrace-27)
+
+***
+
+## OAuthProfileParseError
+
+This error occurs during an OAuth sign in attempt when the provider's
+response could not be parsed. This could for example happen if the provider's API
+changed, or the [`OAuth2Config.profile`](https://authjs.dev/reference/core/providers#oauth2configprofile) method is not implemented correctly.
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new OAuthProfileParseError(message, errorOptions)
+
+```ts
+new OAuthProfileParseError(message?, errorOptions?): OAuthProfileParseError
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`OAuthProfileParseError`](errors.mdx#oauthprofileparseerror)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "OAuthProfileParseError";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## OAuthSignInError
+
+Happens when login by [OAuth](https://authjs.dev/getting-started/authentication/oauth) could not be started.
+
+Possible causes are:
+- The Authorization Server is not compliant with the [OAuth 2.0](https://www.ietf.org/rfc/rfc6749.html) or the [OIDC](https://openid.net/specs/openid-connect-core-1_0.html) specification.
+  Check the details in the error message.
+
+
+<Callout type="default">
+  Check out `[auth][details]` in the logs to know which provider failed.
+
+### Example
+
+```sh
+[auth][details]: { "provider": "github" }
+```
+</Callout>
+
+### Extends
+
+- [`SignInError`](errors.mdx#signinerror)
+
+### Constructors
+
+#### new OAuthSignInError(message, errorOptions)
+
+```ts
+new OAuthSignInError(message?, errorOptions?): OAuthSignInError
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`OAuthSignInError`](errors.mdx#oauthsigninerror)
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`constructor`](errors.mdx#constructors-27)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`cause`](errors.mdx#cause-27)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`message`](errors.mdx#message-27)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`name`](errors.mdx#name-27)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`stack`](errors.mdx#stack-27)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`type`](errors.mdx#type-53)
+
+#### kind
+
+```ts
+static kind: string = "signIn";
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`kind`](errors.mdx#kind-7)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`prepareStackTrace`](errors.mdx#preparestacktrace-27)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`stackTraceLimit`](errors.mdx#stacktracelimit-27)
+
+#### type
+
+```ts
+static type: string = "OAuthSignInError";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`SignInError`](errors.mdx#signinerror).[`captureStackTrace`](errors.mdx#capturestacktrace-27)
+
+***
+
+## SessionTokenError
+
+Logged on the server when Auth.js could not retrieve a session from the database (`strategy: "database"`).
+
+The database adapter might be misconfigured or the database is not reachable.
+
+Learn more at [Concept: Database session strategy](https://authjs.dev/concepts/session-strategies#database)
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new SessionTokenError(message, errorOptions)
+
+```ts
+new SessionTokenError(message?, errorOptions?): SessionTokenError
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`SessionTokenError`](errors.mdx#sessiontokenerror)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "SessionTokenError";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## SignInError
+
+Base error class for all Auth.js errors.
+It's optimized to be printed in the server logs in a nicely formatted way
+via the [`logger.error`](https://authjs.dev/reference/core#logger) option.
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new SignInError(message, errorOptions)
+
+```ts
+new SignInError(message?, errorOptions?): SignInError
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`SignInError`](errors.mdx#signinerror)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### kind
+
+```ts
+static kind: string = "signIn";
+```
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## SignOutError
+
+Represents an error that occurs during the sign-out process. This error
+is logged when there are issues in terminating a user's session, either
+by failing to delete the session from the database (in database session
+strategies) or encountering issues during other parts of the sign-out
+process, such as emitting sign-out events or clearing session cookies.
+
+The session cookie(s) are emptied even if this error is logged.
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new SignOutError(message, errorOptions)
+
+```ts
+new SignOutError(message?, errorOptions?): SignOutError
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`SignOutError`](errors.mdx#signouterror)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "SignOutError";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## UnknownAction
+
+Auth.js was requested to handle an operation that it does not support.
+
+See [`AuthAction`](https://authjs.dev/reference/core/types#authaction) for the supported actions.
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new UnknownAction(message, errorOptions)
+
+```ts
+new UnknownAction(message?, errorOptions?): UnknownAction
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`UnknownAction`](errors.mdx#unknownaction)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "UnknownAction";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## UnsupportedStrategy
+
+Thrown when a Credentials provider is present but the JWT strategy (`strategy: "jwt"`) is not enabled.
+
+Learn more at [`strategy`](https://authjs.dev/reference/core#strategy) or [Credentials provider](https://authjs.dev/getting-started/authentication/credentials)
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new UnsupportedStrategy(message, errorOptions)
+
+```ts
+new UnsupportedStrategy(message?, errorOptions?): UnsupportedStrategy
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`UnsupportedStrategy`](errors.mdx#unsupportedstrategy)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "UnsupportedStrategy";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## UntrustedHost
+
+Thrown when the `trustHost` option was not set to `true`.
+
+Auth.js requires the `trustHost` option to be set to `true` since it's relying on the request headers' `host` value.
+
+
+<Callout type="info">
+  Official Auth.js libraries might attempt to automatically set the `trustHost` option to `true` if the request is coming from a trusted host on a trusted platform.
+</Callout>
+
+Learn more at [`trustHost`](https://authjs.dev/reference/core#trusthost) or [Guide: Deployment](https://authjs.dev/getting-started/deployment)
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new UntrustedHost(message, errorOptions)
+
+```ts
+new UntrustedHost(message?, errorOptions?): UntrustedHost
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`UntrustedHost`](errors.mdx#untrustedhost)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "UntrustedHost";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## Verification
+
+The user's email/token combination was invalid.
+This could be because the email/token combination was not found in the database,
+or because the token has expired. Ask the user to log in again.
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new Verification(message, errorOptions)
+
+```ts
+new Verification(message?, errorOptions?): Verification
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`Verification`](errors.mdx#verification)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "Verification";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)
+
+***
+
+## WebAuthnVerificationError
+
+Thrown when a WebAuthn provider fails to verify a client response.
+
+### Extends
+
+- [`AuthError`](errors.mdx#autherror)
+
+### Constructors
+
+#### new WebAuthnVerificationError(message, errorOptions)
+
+```ts
+new WebAuthnVerificationError(message?, errorOptions?): WebAuthnVerificationError
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`WebAuthnVerificationError`](errors.mdx#webauthnverificationerror)
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`constructor`](errors.mdx#constructors-3)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`cause`](errors.mdx#cause-3)
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`message`](errors.mdx#message-3)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`name`](errors.mdx#name-3)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stack`](errors.mdx#stack-3)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`type`](errors.mdx#type-6)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`prepareStackTrace`](errors.mdx#preparestacktrace-3)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`stackTraceLimit`](errors.mdx#stacktracelimit-3)
+
+#### type
+
+```ts
+static type: string = "WebAuthnVerificationError";
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`AuthError`](errors.mdx#autherror).[`captureStackTrace`](errors.mdx#capturestacktrace-3)

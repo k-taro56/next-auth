@@ -1,0 +1,227 @@
+import { Callout } from 'nextra/components';
+
+# providers/keycloak
+
+<div style={{backgroundColor: "#000", display: "flex", justifyContent: "space-between", color: "#fff", padding: 16}}>
+<span>Built-in <b>Keycloak</b> integration.</span>
+<a href="https://keycloak.com">
+  <img style={{display: "block"}} src="https://authjs.dev/img/providers/keycloak.svg" height="48" width="48"/>
+</a>
+</div>
+
+## KeycloakProfile
+
+### Extends
+
+- `Record`\<`string`, `any`\>
+
+### Properties
+
+#### acr
+
+```ts
+acr: string;
+```
+
+#### at\_hash
+
+```ts
+at_hash: string;
+```
+
+#### aud
+
+```ts
+aud: string;
+```
+
+#### auth\_time
+
+```ts
+auth_time: number;
+```
+
+#### azp
+
+```ts
+azp: string;
+```
+
+#### email
+
+```ts
+email: string;
+```
+
+#### email\_verified
+
+```ts
+email_verified: boolean;
+```
+
+#### exp
+
+```ts
+exp: number;
+```
+
+#### family\_name
+
+```ts
+family_name: string;
+```
+
+#### given\_name
+
+```ts
+given_name: string;
+```
+
+#### iat
+
+```ts
+iat: number;
+```
+
+#### iss
+
+```ts
+iss: string;
+```
+
+#### jti
+
+```ts
+jti: string;
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+#### picture
+
+```ts
+picture: string;
+```
+
+#### preferred\_username
+
+```ts
+preferred_username: string;
+```
+
+#### session\_state
+
+```ts
+session_state: string;
+```
+
+#### sid
+
+```ts
+sid: string;
+```
+
+#### sub
+
+```ts
+sub: string;
+```
+
+#### typ
+
+```ts
+typ: string;
+```
+
+#### user
+
+```ts
+user: any;
+```
+
+***
+
+## default()
+
+```ts
+default<P>(options): OAuthConfig<P>
+```
+
+Add Keycloak login to your page.
+
+### Setup
+
+#### Callback URL
+```
+https://example.com/api/auth/callback/keycloak
+```
+
+#### Configuration
+```ts
+import { Auth } from "@auth/core"
+import Keycloak from "@auth/core/providers/keycloak"
+
+const request = new Request(origin)
+const response = await Auth(request, {
+  providers: [
+    Keycloak({
+      clientId: KEYCLOAK_CLIENT_ID,
+      clientSecret: KEYCLOAK_CLIENT_SECRET,
+      issuer: KEYCLOAK_ISSUER,
+    }),
+  ],
+})
+```
+
+### Resources
+
+ - [Keycloak OIDC documentation](https://www.keycloak.org/docs/latest/server_admin/#_oidc_clients)
+
+
+<Callout type="default">
+  Create an openid-connect client in Keycloak with "confidential" as the "Access Type".
+</Callout>
+
+
+<Callout type="info">
+  issuer should include the realm – e.g. https://my-keycloak-domain.com/realms/My_Realm
+</Callout>
+### Notes
+
+By default, Auth.js assumes that the Keycloak provider is
+based on the [Open ID Connect](https://openid.net/specs/openid-connect-core-1_0.html) specification.
+
+
+<Callout type="default">
+  The Keycloak provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/keycloak.ts).
+To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/configuring-oauth-providers).
+</Callout>
+
+
+<Callout type="info">
+  ****Disclaimer**** If you think you found a bug in the default configuration, you can [open an issue](https://authjs.dev/new/provider-issue).
+
+Auth.js strictly adheres to the specification and it cannot take responsibility for any deviation from
+the spec by the provider. You can open an issue, but if the problem is non-compliance with the spec,
+we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
+</Callout>
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `P` extends [`KeycloakProfile`](keycloak.mdx#keycloakprofile) |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options` | [`OAuthUserConfig`](../providers.mdx#oauthuserconfigprofile)\<`P`\> |
+
+### Returns
+
+[`OAuthConfig`](../providers.mdx#oauthconfigprofile)\<`P`\>

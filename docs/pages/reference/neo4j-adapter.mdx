@@ -1,0 +1,616 @@
+import { Callout } from 'nextra/components';
+
+# @auth/neo4j-adapter
+
+<div style={{display: "flex", justifyContent: "space-between", alignItems: "center", padding: 16}}>
+ <p>Official <a href="https://neo4j.com/docs/">Neo4j</a> adapter for Auth.js / NextAuth.js.</p>
+ <a href="https://neo4j.com/">
+  <img style={{display: "block"}} src="https://authjs.dev/img/adapters/neo4j.svg" width="128" />
+ </a>
+</div>
+
+## Installation
+
+```bash npm2yarn
+npm install @auth/neo4j-adapter neo4j-driver
+```
+
+## Neo4jOptions
+
+This is the interface of the Neo4j adapter options. The Neo4j adapter takes a [Neo4j session](https://neo4j.com/docs/bolt/current/driver-api/#driver-session) as its only argument.
+
+### Extends
+
+- `Session`
+
+### Methods
+
+#### \_acquireConnection()
+
+```ts
+private _acquireConnection<T>(connectionConsumer): Promise<T>
+```
+
+This method is used by Rediscovery on the neo4j-driver-bolt-protocol package.
+
+##### Type parameters
+
+| Type parameter |
+| :------ |
+| `T` |
+
+##### Parameters
+
+| Parameter | Type | Description |
+| :------ | :------ | :------ |
+| `connectionConsumer` | `ConnectionConsumer`\<`T`\> | The method which will use the connection |
+
+##### Returns
+
+`Promise`\<`T`\>
+
+A connection promise
+
+##### Inherited from
+
+`Session._acquireConnection`
+
+#### \_assertSessionIsOpen()
+
+```ts
+private _assertSessionIsOpen(): void
+```
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+`Session._assertSessionIsOpen`
+
+#### \_beginTransaction()
+
+```ts
+_beginTransaction(
+   accessMode, 
+   txConfig, 
+   apiTelemetryConfig?): TransactionPromise
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `accessMode` | `SessionMode` |
+| `txConfig` | `TxConfig` |
+| `apiTelemetryConfig`? | `NonAutoCommitApiTelemetryConfig` |
+
+##### Returns
+
+`TransactionPromise`
+
+##### Inherited from
+
+`Session._beginTransaction`
+
+#### \_connectionHolderWithMode()
+
+```ts
+_connectionHolderWithMode(mode): ConnectionHolder
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `mode` | `SessionMode` |
+
+##### Returns
+
+`ConnectionHolder`
+
+##### Inherited from
+
+`Session._connectionHolderWithMode`
+
+#### \_onCompleteCallback()
+
+```ts
+private _onCompleteCallback(meta, previousBookmarks?): void
+```
+
+##### Parameters
+
+| Parameter | Type | Description |
+| :------ | :------ | :------ |
+| `meta` | `Object` | Connection metadatada |
+| `meta.bookmark` | `string` \| `string`[] | - |
+| `meta.db`? | `string` | - |
+| `previousBookmarks`? | `Bookmarks` | - |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+`Session._onCompleteCallback`
+
+#### \_onDatabaseNameResolved()
+
+```ts
+private _onDatabaseNameResolved(database?): void
+```
+
+Sets the resolved database name in the session context.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| :------ | :------ | :------ |
+| `database`? | `string` | The resolved database name |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+`Session._onDatabaseNameResolved`
+
+#### \_run()
+
+```ts
+_run<T>(
+   query, 
+   parameters, 
+customRunner): Result<RecordShape>
+```
+
+##### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `T` extends `ResultStreamObserver` | `ResultStreamObserver` |
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `query` | `Query` |
+| `parameters` | `any` |
+| `customRunner` | `ConnectionConsumer`\<`T`\> |
+
+##### Returns
+
+`Result`\<`RecordShape`\>
+
+##### Inherited from
+
+`Session._run`
+
+#### \_runTransaction()
+
+```ts
+_runTransaction<T>(
+   accessMode, 
+   transactionConfig, 
+transactionWork): Promise<T>
+```
+
+##### Type parameters
+
+| Type parameter |
+| :------ |
+| `T` |
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `accessMode` | `SessionMode` |
+| `transactionConfig` | `TxConfig` |
+| `transactionWork` | `TransactionWork`\<`T`\> |
+
+##### Returns
+
+`Promise`\<`T`\>
+
+##### Inherited from
+
+`Session._runTransaction`
+
+#### \_transactionClosed()
+
+```ts
+private _transactionClosed(): void
+```
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+`Session._transactionClosed`
+
+#### \_updateBookmarks()
+
+```ts
+private _updateBookmarks(
+   newBookmarks?, 
+   previousBookmarks?, 
+   database?): void
+```
+
+Update value of the last bookmarks.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| :------ | :------ | :------ |
+| `newBookmarks`? | `Bookmarks` | The new bookmarks. |
+| `previousBookmarks`? | `Bookmarks` | - |
+| `database`? | `string` | - |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+`Session._updateBookmarks`
+
+#### beginTransaction()
+
+```ts
+beginTransaction(transactionConfig?): TransactionPromise
+```
+
+Begin a new transaction in this session. A session can have at most one transaction running at a time, if you
+want to run multiple concurrent transactions, you should use multiple concurrent sessions.
+
+While a transaction is open the session cannot be used to run queries outside the transaction.
+
+##### Parameters
+
+| Parameter | Type | Description |
+| :------ | :------ | :------ |
+| `transactionConfig`? | `TransactionConfig` | Configuration for the new auto-commit transaction. |
+
+##### Returns
+
+`TransactionPromise`
+
+New Transaction.
+
+##### Inherited from
+
+`Session.beginTransaction`
+
+#### close()
+
+```ts
+close(): Promise<void>
+```
+
+Close this session.
+
+##### Returns
+
+`Promise`\<`void`\>
+
+##### Inherited from
+
+`Session.close`
+
+#### executeRead()
+
+```ts
+executeRead<T>(transactionWork, transactionConfig?): Promise<T>
+```
+
+Execute given unit of work in a READ transaction.
+
+Transaction will automatically be committed unless the given function throws or returns a rejected promise.
+Some failures of the given function or the commit itself will be retried with exponential backoff with initial
+delay of 1 second and maximum retry time of 30 seconds. Maximum retry time is configurable via driver config's
+`maxTransactionRetryTime` property in milliseconds.
+
+##### Type parameters
+
+| Type parameter |
+| :------ |
+| `T` |
+
+##### Parameters
+
+| Parameter | Type | Description |
+| :------ | :------ | :------ |
+| `transactionWork` | `ManagedTransactionWork`\<`T`\> | Callback that executes operations against<br />a given Transaction. |
+| `transactionConfig`? | `TransactionConfig` | Configuration for all transactions started to execute the unit of work. |
+
+##### Returns
+
+`Promise`\<`T`\>
+
+Resolved promise as returned by the given function or rejected promise when given
+function or commit fails.
+
+##### Inherited from
+
+`Session.executeRead`
+
+#### executeWrite()
+
+```ts
+executeWrite<T>(transactionWork, transactionConfig?): Promise<T>
+```
+
+Execute given unit of work in a WRITE transaction.
+
+Transaction will automatically be committed unless the given function throws or returns a rejected promise.
+Some failures of the given function or the commit itself will be retried with exponential backoff with initial
+delay of 1 second and maximum retry time of 30 seconds. Maximum retry time is configurable via driver config's
+`maxTransactionRetryTime` property in milliseconds.
+
+##### Type parameters
+
+| Type parameter |
+| :------ |
+| `T` |
+
+##### Parameters
+
+| Parameter | Type | Description |
+| :------ | :------ | :------ |
+| `transactionWork` | `ManagedTransactionWork`\<`T`\> | Callback that executes operations against<br />a given Transaction. |
+| `transactionConfig`? | `TransactionConfig` | Configuration for all transactions started to execute the unit of work. |
+
+##### Returns
+
+`Promise`\<`T`\>
+
+Resolved promise as returned by the given function or rejected promise when given
+function or commit fails.
+
+##### Inherited from
+
+`Session.executeWrite`
+
+#### ~~lastBookmark()~~
+
+```ts
+lastBookmark(): string[]
+```
+
+Return the bookmarks received following the last completed Transaction.
+
+##### Returns
+
+`string`[]
+
+A reference to a previous transaction.
+
+##### Inherited from
+
+`Session.lastBookmark`
+
+##### Deprecated
+
+This method will be removed in version 6.0. Please, use Session#lastBookmarks instead.
+
+##### See
+
+[Session#lastBookmarks](neo4j-adapter.mdx#lastbookmarks)
+
+#### lastBookmarks()
+
+```ts
+lastBookmarks(): string[]
+```
+
+Return the bookmarks received following the last completed Transaction.
+
+##### Returns
+
+`string`[]
+
+A reference to a previous transaction.
+
+##### Inherited from
+
+`Session.lastBookmarks`
+
+#### ~~readTransaction()~~
+
+```ts
+readTransaction<T>(transactionWork, transactionConfig?): Promise<T>
+```
+
+Execute given unit of work in a READ transaction.
+
+Transaction will automatically be committed unless the given function throws or returns a rejected promise.
+Some failures of the given function or the commit itself will be retried with exponential backoff with initial
+delay of 1 second and maximum retry time of 30 seconds. Maximum retry time is configurable via driver config's
+`maxTransactionRetryTime` property in milliseconds.
+
+##### Type parameters
+
+| Type parameter |
+| :------ |
+| `T` |
+
+##### Parameters
+
+| Parameter | Type | Description |
+| :------ | :------ | :------ |
+| `transactionWork` | `TransactionWork`\<`T`\> | Callback that executes operations against<br />a given Transaction. |
+| `transactionConfig`? | `TransactionConfig` | Configuration for all transactions started to execute the unit of work. |
+
+##### Returns
+
+`Promise`\<`T`\>
+
+Resolved promise as returned by the given function or rejected promise when given
+function or commit fails.
+
+##### Inherited from
+
+`Session.readTransaction`
+
+##### Deprecated
+
+This method will be removed in version 6.0. Please, use Session#executeRead instead.
+
+##### See
+
+[Session#executeRead](neo4j-adapter.mdx#executeread)
+
+#### run()
+
+```ts
+run<R>(
+   query, 
+   parameters?, 
+transactionConfig?): Result<R>
+```
+
+Run Cypher query
+Could be called with a query object i.e.: `{text: "MATCH ...", parameters: {param: 1}}`
+or with the query and parameters as separate arguments.
+
+##### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `R` extends `RecordShape` | `RecordShape` |
+
+##### Parameters
+
+| Parameter | Type | Description |
+| :------ | :------ | :------ |
+| `query` | `Query` | Cypher query to execute |
+| `parameters`? | `any` | Map with parameters to use in query |
+| `transactionConfig`? | `TransactionConfig` | Configuration for the new auto-commit transaction. |
+
+##### Returns
+
+`Result`\<`R`\>
+
+New Result.
+
+##### Inherited from
+
+`Session.run`
+
+#### ~~writeTransaction()~~
+
+```ts
+writeTransaction<T>(transactionWork, transactionConfig?): Promise<T>
+```
+
+Execute given unit of work in a WRITE transaction.
+
+Transaction will automatically be committed unless the given function throws or returns a rejected promise.
+Some failures of the given function or the commit itself will be retried with exponential backoff with initial
+delay of 1 second and maximum retry time of 30 seconds. Maximum retry time is configurable via driver config's
+`maxTransactionRetryTime` property in milliseconds.
+
+##### Type parameters
+
+| Type parameter |
+| :------ |
+| `T` |
+
+##### Parameters
+
+| Parameter | Type | Description |
+| :------ | :------ | :------ |
+| `transactionWork` | `TransactionWork`\<`T`\> | Callback that executes operations against<br />a given Transaction. |
+| `transactionConfig`? | `TransactionConfig` | Configuration for all transactions started to execute the unit of work. |
+
+##### Returns
+
+`Promise`\<`T`\>
+
+Resolved promise as returned by the given function or rejected promise when given
+function or commit fails.
+
+##### Inherited from
+
+`Session.writeTransaction`
+
+##### Deprecated
+
+This method will be removed in version 6.0. Please, use Session#executeWrite instead.
+
+##### See
+
+[Session#executeWrite](neo4j-adapter.mdx#executewrite)
+
+***
+
+## format
+
+```ts
+const format: {
+  from: null | T;
+  to: Record<string, unknown>;
+};
+```
+
+### Type declaration
+
+#### from()
+
+Takes a Neo4j object and returns a plain old JavaScript object
+
+##### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `T` | `Record`\<`string`, `unknown`\> |
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `object`? | `Record`\<`string`, `any`\> |
+
+##### Returns
+
+`null` \| `T`
+
+#### to()
+
+Takes a plain old JavaScript object and turns it into a Neo4j compatible object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `object` | `Record`\<`string`, `any`\> |
+
+##### Returns
+
+`Record`\<`string`, `unknown`\>
+
+***
+
+## Neo4jAdapter()
+
+```ts
+Neo4jAdapter(session): Adapter
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `session` | `Session` |
+
+### Returns
+
+[`Adapter`](express/adapters.mdx#adapter)

@@ -1,0 +1,1210 @@
+import { Callout } from 'nextra/components';
+
+# providers/42-school
+
+<div style={{backgroundColor: "#fff", display: "flex", justifyContent: "space-between", color: "#000", padding: 16}}>
+<span>Built-in <b>42School</b> integration.</span>
+<a href="https://api.intra.42.fr//">
+  <img style={{display: "block"}} src="https://authjs.dev/img/providers/42-school.svg" height="48" width="48"/>
+</a>
+</div>
+
+## Achievement
+
+### Properties
+
+#### description
+
+```ts
+description: string;
+```
+
+#### id
+
+```ts
+id: number;
+```
+
+#### image
+
+```ts
+image: null | string;
+```
+
+#### kind
+
+```ts
+kind: "scolarity" | "project" | "pedagogy";
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+#### nbr\_of\_success
+
+```ts
+nbr_of_success: null | number;
+```
+
+#### tier
+
+```ts
+tier: 
+  | "none"
+  | "medium"
+  | "challenge"
+  | "easy"
+  | "hard";
+```
+
+#### users\_url
+
+```ts
+users_url: string;
+```
+
+#### visible
+
+```ts
+visible: boolean;
+```
+
+***
+
+## Campus
+
+### Properties
+
+#### active
+
+```ts
+active: boolean;
+```
+
+#### address
+
+```ts
+address: string;
+```
+
+#### city
+
+```ts
+city: string;
+```
+
+#### country
+
+```ts
+country: string;
+```
+
+#### default\_hidden\_phone
+
+```ts
+default_hidden_phone: boolean;
+```
+
+#### email\_extension
+
+```ts
+email_extension: string;
+```
+
+#### facebook
+
+```ts
+facebook: string;
+```
+
+#### id
+
+```ts
+id: number;
+```
+
+#### language
+
+```ts
+language: {
+  created_at: string;
+  id: number;
+  identifier: string;
+  name: string;
+  updated_at: null | string;
+};
+```
+
+##### created\_at
+
+```ts
+created_at: string;
+```
+
+##### id
+
+```ts
+id: number;
+```
+
+##### identifier
+
+```ts
+identifier: string;
+```
+
+##### name
+
+```ts
+name: string;
+```
+
+##### updated\_at
+
+```ts
+updated_at: null | string;
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+#### time\_zone
+
+```ts
+time_zone: string;
+```
+
+#### twitter
+
+```ts
+twitter: string;
+```
+
+#### users\_count
+
+```ts
+users_count: number;
+```
+
+#### vogsphere\_id
+
+```ts
+vogsphere_id: number;
+```
+
+#### website
+
+```ts
+website: string;
+```
+
+#### zip
+
+```ts
+zip: string;
+```
+
+***
+
+## CampusUser
+
+### Properties
+
+#### campus\_id
+
+```ts
+campus_id: number;
+```
+
+#### created\_at
+
+```ts
+created_at: string;
+```
+
+#### id
+
+```ts
+id: number;
+```
+
+#### is\_primary
+
+```ts
+is_primary: boolean;
+```
+
+#### updated\_at
+
+```ts
+updated_at: null | string;
+```
+
+#### user\_id
+
+```ts
+user_id: number;
+```
+
+***
+
+## CursusUser
+
+### Properties
+
+#### begin\_at
+
+```ts
+begin_at: null | string;
+```
+
+#### blackholed\_at
+
+```ts
+blackholed_at: null | string;
+```
+
+#### created\_at
+
+```ts
+created_at: string;
+```
+
+#### cursus
+
+```ts
+cursus: {
+  created_at: string;
+  id: number;
+  name: string;
+  slug: string;
+};
+```
+
+##### created\_at
+
+```ts
+created_at: string;
+```
+
+##### id
+
+```ts
+id: number;
+```
+
+##### name
+
+```ts
+name: string;
+```
+
+##### slug
+
+```ts
+slug: string;
+```
+
+#### cursus\_id
+
+```ts
+cursus_id: number;
+```
+
+#### end\_at
+
+```ts
+end_at: null | string;
+```
+
+#### grade
+
+```ts
+grade: null | string;
+```
+
+#### has\_coalition
+
+```ts
+has_coalition: boolean;
+```
+
+#### id
+
+```ts
+id: number;
+```
+
+#### level
+
+```ts
+level: number;
+```
+
+#### skills
+
+```ts
+skills: {
+  id: number;
+  level: number;
+  name: string;
+  }[];
+```
+
+#### updated\_at
+
+```ts
+updated_at: null | string;
+```
+
+#### user
+
+```ts
+user: UserData;
+```
+
+***
+
+## ExpertisesUser
+
+### Properties
+
+#### contact\_me
+
+```ts
+contact_me: boolean;
+```
+
+#### created\_at
+
+```ts
+created_at: string;
+```
+
+#### expertise\_id
+
+```ts
+expertise_id: number;
+```
+
+#### id
+
+```ts
+id: number;
+```
+
+#### interested
+
+```ts
+interested: boolean;
+```
+
+#### user\_id
+
+```ts
+user_id: number;
+```
+
+#### value
+
+```ts
+value: number;
+```
+
+***
+
+## FortyTwoProfile
+
+### Extends
+
+- [`UserData`](42-school.mdx#userdata).`Record`\<`string`, `any`\>
+
+### Properties
+
+#### achievements
+
+```ts
+achievements: Achievement[];
+```
+
+#### alumni
+
+```ts
+alumni: boolean;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`alumni`](42-school.mdx#alumni-1)
+
+#### anonymize\_date
+
+```ts
+anonymize_date: string;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`anonymize_date`](42-school.mdx#anonymize_date-1)
+
+#### campus
+
+```ts
+campus: Campus[];
+```
+
+#### campus\_users
+
+```ts
+campus_users: CampusUser[];
+```
+
+#### correction\_point
+
+```ts
+correction_point: number;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`correction_point`](42-school.mdx#correction_point-1)
+
+#### created\_at
+
+```ts
+created_at: string;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`created_at`](42-school.mdx#created_at-9)
+
+#### cursus\_users
+
+```ts
+cursus_users: CursusUser[];
+```
+
+#### displayname
+
+```ts
+displayname: string;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`displayname`](42-school.mdx#displayname-1)
+
+#### email
+
+```ts
+email: string;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`email`](42-school.mdx#email-1)
+
+#### expertises\_users
+
+```ts
+expertises_users: ExpertisesUser[];
+```
+
+#### first\_name
+
+```ts
+first_name: string;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`first_name`](42-school.mdx#first_name-1)
+
+#### groups
+
+```ts
+groups: {
+  id: string;
+  name: string;
+  }[];
+```
+
+#### id
+
+```ts
+id: number;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`id`](42-school.mdx#id-12)
+
+#### image
+
+```ts
+image: Image;
+```
+
+#### image\_url
+
+```ts
+image_url: null | string;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`image_url`](42-school.mdx#image_url-1)
+
+#### is\_launched?
+
+```ts
+is_launched?: boolean;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`is_launched?`](42-school.mdx#is_launched?-1)
+
+#### languages\_users
+
+```ts
+languages_users: LanguagesUser[];
+```
+
+#### last\_name
+
+```ts
+last_name: string;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`last_name`](42-school.mdx#last_name-1)
+
+#### location
+
+```ts
+location: null | string;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`location`](42-school.mdx#location-1)
+
+#### login
+
+```ts
+login: string;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`login`](42-school.mdx#login-1)
+
+#### partnerships
+
+```ts
+partnerships: any[];
+```
+
+#### patroned
+
+```ts
+patroned: any[];
+```
+
+#### patroning
+
+```ts
+patroning: any[];
+```
+
+#### phone
+
+```ts
+phone: null | string;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`phone`](42-school.mdx#phone-1)
+
+#### pool\_month
+
+```ts
+pool_month: null | string;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`pool_month`](42-school.mdx#pool_month-1)
+
+#### pool\_year
+
+```ts
+pool_year: null | string;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`pool_year`](42-school.mdx#pool_year-1)
+
+#### projects\_users
+
+```ts
+projects_users: ProjectUser[];
+```
+
+#### roles
+
+```ts
+roles: {
+  id: string;
+  name: string;
+  }[];
+```
+
+#### staff?
+
+```ts
+staff?: boolean;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`staff?`](42-school.mdx#staff?-1)
+
+#### titles
+
+```ts
+titles: {
+  id: string;
+  name: string;
+  }[];
+```
+
+#### titles\_users
+
+```ts
+titles_users: TitlesUser[];
+```
+
+#### updated\_at
+
+```ts
+updated_at: null | string;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`updated_at`](42-school.mdx#updated_at-6)
+
+#### url
+
+```ts
+url: string;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`url`](42-school.mdx#url-1)
+
+#### user
+
+```ts
+user: any;
+```
+
+#### usual\_first\_name
+
+```ts
+usual_first_name: null | string;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`usual_first_name`](42-school.mdx#usual_first_name-1)
+
+#### usual\_full\_name
+
+```ts
+usual_full_name: null | string;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`usual_full_name`](42-school.mdx#usual_full_name-1)
+
+#### wallet
+
+```ts
+wallet: number;
+```
+
+##### Inherited from
+
+[`UserData`](42-school.mdx#userdata).[`wallet`](42-school.mdx#wallet-1)
+
+***
+
+## Image
+
+### Properties
+
+#### link
+
+```ts
+link: string;
+```
+
+#### versions
+
+```ts
+versions: {
+  large: string;
+  medium: string;
+  micro: string;
+  small: string;
+};
+```
+
+##### large
+
+```ts
+large: string;
+```
+
+##### medium
+
+```ts
+medium: string;
+```
+
+##### micro
+
+```ts
+micro: string;
+```
+
+##### small
+
+```ts
+small: string;
+```
+
+***
+
+## LanguagesUser
+
+### Properties
+
+#### created\_at
+
+```ts
+created_at: string;
+```
+
+#### id
+
+```ts
+id: number;
+```
+
+#### language\_id
+
+```ts
+language_id: number;
+```
+
+#### position
+
+```ts
+position: number;
+```
+
+#### user\_id
+
+```ts
+user_id: number;
+```
+
+***
+
+## ProjectUser
+
+### Properties
+
+#### created\_at
+
+```ts
+created_at: string;
+```
+
+#### current\_team\_id
+
+```ts
+current_team_id: number;
+```
+
+#### cursus\_ids
+
+```ts
+cursus_ids: number[];
+```
+
+#### final\_mark
+
+```ts
+final_mark: null | number;
+```
+
+#### id
+
+```ts
+id: number;
+```
+
+#### marked
+
+```ts
+marked: boolean;
+```
+
+#### marked\_at
+
+```ts
+marked_at: null | string;
+```
+
+#### occurrence
+
+```ts
+occurrence: number;
+```
+
+#### project
+
+```ts
+project: {
+  id: number;
+  name: string;
+  parent_id: null | number;
+  slug: string;
+};
+```
+
+##### id
+
+```ts
+id: number;
+```
+
+##### name
+
+```ts
+name: string;
+```
+
+##### parent\_id
+
+```ts
+parent_id: null | number;
+```
+
+##### slug
+
+```ts
+slug: string;
+```
+
+#### retriable\_at
+
+```ts
+retriable_at: null | string;
+```
+
+#### status
+
+```ts
+status: "in_progress" | "finished";
+```
+
+#### updated\_at
+
+```ts
+updated_at: null | string;
+```
+
+#### validated?
+
+```ts
+validated?: null | boolean;
+```
+
+***
+
+## TitlesUser
+
+### Properties
+
+#### created\_at
+
+```ts
+created_at: string;
+```
+
+#### id
+
+```ts
+id: number;
+```
+
+#### selected
+
+```ts
+selected: boolean;
+```
+
+#### title\_id
+
+```ts
+title_id: number;
+```
+
+#### updated\_at
+
+```ts
+updated_at: null | string;
+```
+
+#### user\_id
+
+```ts
+user_id: number;
+```
+
+***
+
+## UserData
+
+### Extended by
+
+- [`FortyTwoProfile`](42-school.mdx#fortytwoprofile)
+
+### Properties
+
+#### alumni
+
+```ts
+alumni: boolean;
+```
+
+#### anonymize\_date
+
+```ts
+anonymize_date: string;
+```
+
+#### correction\_point
+
+```ts
+correction_point: number;
+```
+
+#### created\_at
+
+```ts
+created_at: string;
+```
+
+#### displayname
+
+```ts
+displayname: string;
+```
+
+#### email
+
+```ts
+email: string;
+```
+
+#### first\_name
+
+```ts
+first_name: string;
+```
+
+#### id
+
+```ts
+id: number;
+```
+
+#### image\_url
+
+```ts
+image_url: null | string;
+```
+
+#### is\_launched?
+
+```ts
+is_launched?: boolean;
+```
+
+#### last\_name
+
+```ts
+last_name: string;
+```
+
+#### location
+
+```ts
+location: null | string;
+```
+
+#### login
+
+```ts
+login: string;
+```
+
+#### phone
+
+```ts
+phone: null | string;
+```
+
+#### pool\_month
+
+```ts
+pool_month: null | string;
+```
+
+#### pool\_year
+
+```ts
+pool_year: null | string;
+```
+
+#### staff?
+
+```ts
+staff?: boolean;
+```
+
+#### updated\_at
+
+```ts
+updated_at: null | string;
+```
+
+#### url
+
+```ts
+url: string;
+```
+
+#### usual\_first\_name
+
+```ts
+usual_first_name: null | string;
+```
+
+#### usual\_full\_name
+
+```ts
+usual_full_name: null | string;
+```
+
+#### wallet
+
+```ts
+wallet: number;
+```
+
+***
+
+## default()
+
+```ts
+default<P>(options): OAuthConfig<P>
+```
+
+Add 42School login to your page.
+
+### Setup
+
+#### Callback URL
+```
+https://example.com/api/auth/callback/42-school
+```
+
+#### Configuration
+```ts
+import { Auth } from "@auth/core"
+import FortyTwoSchool from "@auth/core/providers/42-school"
+
+const request = new Request(origin)
+const response = await Auth(request, {
+  providers: [
+    FortyTwoSchool({
+      clientId: FORTY_TWO_SCHOOL_CLIENT_ID,
+      clientSecret: FORTY_TWO_SCHOOL_CLIENT_SECRET,
+    }),
+  ],
+})
+```
+
+### Resources
+
+ - [42School OAuth documentation](https://api.intra.42.fr/apidoc/guides/web_application_flow)
+
+### Notes
+
+
+<Callout type="info">
+  42 returns a field on `Account` called `created_at` which is a number. See the [docs](https://api.intra.42.fr/apidoc/guides/getting_started#make-basic-requests). Make sure to add this field to your database schema, in case if you are using an [Adapter](https://authjs.dev/reference/core/adapters).
+</Callout>
+By default, Auth.js assumes that the 42School provider is
+based on the [OAuth 2](https://www.rfc-editor.org/rfc/rfc6749.html) specification.
+
+
+<Callout type="default">
+  The 42School provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/42-school.ts).
+To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/configuring-oauth-providers).
+</Callout>
+
+
+<Callout type="info">
+  ****Disclaimer**** If you think you found a bug in the default configuration, you can [open an issue](https://authjs.dev/new/provider-issue).
+
+Auth.js strictly adheres to the specification and it cannot take responsibility for any deviation from
+the spec by the provider. You can open an issue, but if the problem is non-compliance with the spec,
+we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
+</Callout>
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `P` extends [`FortyTwoProfile`](42-school.mdx#fortytwoprofile) |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options` | [`OAuthUserConfig`](../providers.mdx#oauthuserconfigprofile)\<`P`\> |
+
+### Returns
+
+[`OAuthConfig`](../providers.mdx#oauthconfigprofile)\<`P`\>

@@ -1,0 +1,119 @@
+import { Callout } from 'nextra/components';
+
+# providers/webex
+
+<div style={{backgroundColor: "#000", display: "flex", justifyContent: "space-between", color: "#fff", padding: 16}}>
+<span>Built-in <b>Webex</b> integration.</span>
+<a href="https://webex.com">
+  <img style={{display: "block"}} src="https://authjs.dev/img/providers/webex.svg" height="48" width="48"/>
+</a>
+</div>
+
+## WebexProfile
+
+The returned user profile from Webex when using the profile callback.
+
+Please refer to [People - Get My Own Details](https://developer.webex.com/docs/api/v1/people/get-my-own-details)
+on Webex Developer portal for additional fields. Returned fields may vary depending on the user's role, the OAuth
+integration's scope, and the organization the OAuth integration belongs to.
+
+### Extends
+
+- `Record`\<`string`, `any`\>
+
+### Properties
+
+#### avatar?
+
+```ts
+optional avatar: string;
+```
+
+#### displayName?
+
+```ts
+optional displayName: string;
+```
+
+#### emails
+
+```ts
+emails: string[];
+```
+
+#### id
+
+```ts
+id: string;
+```
+
+***
+
+## default()
+
+```ts
+default<P>(config): OAuthConfig<P>
+```
+
+Add Webex login to your page.
+
+### Setup
+
+#### Callback URL
+```
+https://example.com/api/auth/callback/webex
+```
+
+#### Configuration
+```ts
+import { Auth } from "@auth/core"
+import Webex from "@auth/core/providers/webex"
+
+const request = new Request(origin)
+const response = await Auth(request, {
+  providers: [
+    Webex({ clientId: WEBEX_CLIENT_ID, clientSecret: WEBEX_CLIENT_SECRET }),
+  ],
+})
+```
+
+### Resources
+
+- [Webex OAuth 2.0 Integration Guide](https://developer.webex.com/docs/integrations)
+- [Login with Webex](https://developer.webex.com/docs/login-with-webex)
+
+### Notes
+
+By default, Auth.js assumes that the Webex provider is
+based on the [OAuth 2](https://www.rfc-editor.org/rfc/rfc6749.html) specification.
+
+
+<Callout type="default">
+  The Webex provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/webex.ts).
+To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/configuring-oauth-providers).
+</Callout>
+
+
+<Callout type="info">
+  ****Disclaimer**** If you think you found a bug in the default configuration, you can [open an issue](https://authjs.dev/new/provider-issue).
+
+Auth.js strictly adheres to the specification and it cannot take responsibility for any deviation from
+the spec by the provider. You can open an issue, but if the problem is non-compliance with the spec,
+we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
+</Callout>
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `P` extends [`WebexProfile`](webex.mdx#webexprofile) |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `config` | [`OAuthUserConfig`](../providers.mdx#oauthuserconfigprofile)\<`P`\> & \{ `apiBaseUrl`: `string`; } |
+
+### Returns
+
+[`OAuthConfig`](../providers.mdx#oauthconfigprofile)\<`P`\>

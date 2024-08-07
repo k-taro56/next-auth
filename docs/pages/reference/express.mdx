@@ -1,0 +1,915 @@
+import { Callout } from 'nextra/components';
+
+# @auth/express
+
+
+<Callout type="warning">
+  `@auth/express` is currently experimental. The API _will_ change in the future.
+</Callout>
+
+Express Auth is the official Express integration for Auth.js.
+It provides a simple way to add authentication to your Express app in a few lines of code.
+
+## Installation
+```bash npm2yarn
+npm install @auth/express
+```
+
+## Usage
+
+```ts filename="src/routes/auth.route.ts"
+import { ExpressAuth } from "@auth/express"
+import GitHub from "@auth/express/providers/github"
+import express from "express"
+
+const app = express()
+
+// If app is served through a proxy, trust the proxy to allow HTTPS protocol to be detected
+// https://expressjs.com/en/guide/behind-proxies.html
+app.set('trust proxy', true)
+app.use("/auth/*", ExpressAuth({ providers: [ GitHub ] }))
+```
+
+Don't forget to set the `AUTH_SECRET` environment variable. This should be a minimum of 32 characters, random string. On UNIX systems you can use `openssl rand -hex 32` or check out `https://generate-secret.vercel.app/32`.
+
+You will also need to load the environment variables into your runtime environment. For example in Node.js with a package like [`dotenv`](https://www.npmjs.com/package/dotenv) or `Deno.env` in Deno.
+
+### Provider Configuration
+The callback URL used by the [providers](https://authjs.dev/reference/core/providers) must be set to the following, unless you mount the `ExpressAuth` handler on a different path:
+
+```
+[origin]/auth/callback/[provider]
+```
+
+## Signing in and signing out
+Once your application is mounted you can sign in or out by making requests to the following [REST API endpoints](https://authjs.dev/reference/core/types#authaction) from your client-side code.
+NB: Make sure to include the `csrfToken` in the request body for all sign-in and sign-out requests.
+
+## Managing the session
+If you are using Express with a template engine (e.g EJS, Pug), you can make the session data available to all routes via middleware as follows
+
+```ts filename="app.ts"
+import { getSession } from "@auth/express"
+
+export function authSession(req: Request, res: Response, next: NextFunction) {
+  res.locals.session = await getSession(req)
+  next()
+}
+
+app.use(authSession)
+
+// Now in your route
+app.get("/", (req, res) => {
+  const { session } = res.locals
+  res.render("index", { user: session?.user })
+})
+```
+
+## Authorization
+You can protect routes by checking for the presence of a session and then redirect to a login page if the session is not present.
+This can either be done per route, or for a group of routes using a middleware such as the following:
+
+```ts
+export async function authenticatedUser(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const session = res.locals.session ?? (await getSession(req, authConfig))
+  if (!session?.user) {
+    res.redirect("/login")
+  } else {
+    next()
+  }
+}
+```
+
+### Per Route
+To protect a single route, simply add the middleware to the route as follows:
+```ts filename="app.ts"
+// This route is protected
+app.get("/profile", authenticatedUser, (req, res) => {
+  const { session } = res.locals
+  res.render("profile", { user: session?.user })
+})
+
+// This route is not protected
+app.get("/", (req, res) => {
+  res.render("index")
+})
+
+app.use("/", root)
+```
+### Per Group of Routes
+To protect a group of routes, define a router and add the middleware to the router as follows:
+
+```ts filename="routes/protected.route.ts"
+import { Router } from "express"
+
+const router = Router()
+
+router.use(authenticatedUser) // All routes defined after this will be protected
+
+router.get("/", (req, res) => {
+  res.render("protected")
+})
+
+export default router
+```
+
+Then we mount the router as follows:
+```ts filename="app.ts"
+import protected from "./routes/protected.route"
+
+app.use("/protected", protected)
+```
+
+## AuthError
+
+Base error class for all Auth.js errors.
+It's optimized to be printed in the server logs in a nicely formatted way
+via the [`logger.error`](https://authjs.dev/reference/core#logger) option.
+
+### Extends
+
+- `Error`
+
+### Constructors
+
+#### new AuthError(message, errorOptions)
+
+```ts
+new AuthError(message?, errorOptions?): AuthError
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`AuthError`](express.mdx#autherror)
+
+##### Overrides
+
+`Error.constructor`
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Overrides
+
+`Error.cause`
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+`Error.message`
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+`Error.name`
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+`Error.stack`
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+`Error.prepareStackTrace`
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+`Error.stackTraceLimit`
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+`Error.captureStackTrace`
+
+***
+
+## CredentialsSignin
+
+Can be thrown from the `authorize` callback of the Credentials provider.
+When an error occurs during the `authorize` callback, two things can happen:
+1. The user is redirected to the signin page, with `error=CredentialsSignin&code=credentials` in the URL. `code` is configurable.
+2. If you throw this error in a framework that handles form actions server-side, this error is thrown, instead of redirecting the user, so you'll need to handle.
+
+### Extends
+
+- [`SignInError`](core/errors.mdx#signinerror)
+
+### Constructors
+
+#### new CredentialsSignin(message, errorOptions)
+
+```ts
+new CredentialsSignin(message?, errorOptions?): CredentialsSignin
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `message`? | `string` \| `ErrorOptions` |
+| `errorOptions`? | `ErrorOptions` |
+
+##### Returns
+
+[`CredentialsSignin`](express.mdx#credentialssignin)
+
+##### Inherited from
+
+[`SignInError`](core/errors.mdx#signinerror).[`constructor`](core/errors.mdx#constructors-27)
+
+### Properties
+
+#### cause?
+
+```ts
+optional cause: Record<string, unknown> & {
+  err: Error;
+};
+```
+
+##### Type declaration
+
+###### err?
+
+```ts
+optional err: Error;
+```
+
+##### Inherited from
+
+[`SignInError`](core/errors.mdx#signinerror).[`cause`](core/errors.mdx#cause-27)
+
+#### code
+
+```ts
+code: string;
+```
+
+The error code that is set in the `code` query parameter of the redirect URL.
+
+⚠ NOTE: This property is going to be included in the URL, so make sure it does not hint at sensitive errors.
+
+The full error is always logged on the server, if you need to debug.
+
+Generally, we don't recommend hinting specifically if the user had either a wrong username or password specifically,
+try rather something like "Invalid credentials".
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+[`SignInError`](core/errors.mdx#signinerror).[`message`](core/errors.mdx#message-27)
+
+#### name
+
+```ts
+name: string;
+```
+
+##### Inherited from
+
+[`SignInError`](core/errors.mdx#signinerror).[`name`](core/errors.mdx#name-27)
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+[`SignInError`](core/errors.mdx#signinerror).[`stack`](core/errors.mdx#stack-27)
+
+#### type
+
+```ts
+type: ErrorType;
+```
+
+The error type. Used to identify the error in the logs.
+
+##### Inherited from
+
+[`SignInError`](core/errors.mdx#signinerror).[`type`](core/errors.mdx#type-53)
+
+#### kind
+
+```ts
+static kind: string;
+```
+
+##### Inherited from
+
+[`SignInError`](core/errors.mdx#signinerror).[`kind`](core/errors.mdx#kind-7)
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+[`SignInError`](core/errors.mdx#signinerror).[`prepareStackTrace`](core/errors.mdx#preparestacktrace-27)
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+[`SignInError`](core/errors.mdx#signinerror).[`stackTraceLimit`](core/errors.mdx#stacktracelimit-27)
+
+#### type
+
+```ts
+static type: string;
+```
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+[`SignInError`](core/errors.mdx#signinerror).[`captureStackTrace`](core/errors.mdx#capturestacktrace-27)
+
+***
+
+## Account
+
+Usually contains information about the provider being used
+and also extends `TokenSet`, which is different tokens returned by OAuth Providers.
+
+### Extends
+
+- `Partial`\<`OpenIDTokenEndpointResponse`\>
+
+### Properties
+
+#### access\_token?
+
+```ts
+optional readonly access_token: string;
+```
+
+##### Inherited from
+
+`Partial.access_token`
+
+#### authorization\_details?
+
+```ts
+optional readonly authorization_details: AuthorizationDetails[];
+```
+
+##### Inherited from
+
+`Partial.authorization_details`
+
+#### expires\_at?
+
+```ts
+optional expires_at: number;
+```
+
+Calculated value based on OAuth2TokenEndpointResponse.expires_in.
+
+It is the absolute timestamp (in seconds) when the OAuth2TokenEndpointResponse.access_token expires.
+
+This value can be used for implementing token rotation together with OAuth2TokenEndpointResponse.refresh_token.
+
+##### See
+
+ - https://authjs.dev/guides/refresh-token-rotation#database-strategy
+ - https://www.rfc-editor.org/rfc/rfc6749#section-5.1
+
+#### expires\_in?
+
+```ts
+optional readonly expires_in: number;
+```
+
+##### Inherited from
+
+`Partial.expires_in`
+
+#### id\_token?
+
+```ts
+optional readonly id_token: string;
+```
+
+##### Inherited from
+
+`Partial.id_token`
+
+#### provider
+
+```ts
+provider: string;
+```
+
+Provider's id for this account. Eg.: "google"
+
+#### providerAccountId
+
+```ts
+providerAccountId: string;
+```
+
+This value depends on the type of the provider being used to create the account.
+- oauth/oidc: The OAuth account's id, returned from the `profile()` callback.
+- email: The user's email address.
+- credentials: `id` returned from the `authorize()` callback
+
+#### refresh\_token?
+
+```ts
+optional readonly refresh_token: string;
+```
+
+##### Inherited from
+
+`Partial.refresh_token`
+
+#### scope?
+
+```ts
+optional readonly scope: string;
+```
+
+##### Inherited from
+
+`Partial.scope`
+
+#### token\_type?
+
+```ts
+optional readonly token_type: Lowercase<string>;
+```
+
+NOTE: because the value is case insensitive it is always returned lowercased
+
+##### Inherited from
+
+`Partial.token_type`
+
+#### type
+
+```ts
+type: ProviderType;
+```
+
+Provider's type for this account
+
+#### userId?
+
+```ts
+optional userId: string;
+```
+
+id of the user this account belongs to
+
+##### See
+
+https://authjs.dev/reference/core/adapters#adapteruser
+
+***
+
+## DefaultSession
+
+### Extended by
+
+- [`Session`](express.mdx#session)
+
+### Properties
+
+#### expires
+
+```ts
+expires: string;
+```
+
+#### user?
+
+```ts
+optional user: User;
+```
+
+***
+
+## Profile
+
+The user info returned from your OAuth provider.
+
+### See
+
+https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims
+
+### Indexable
+
+ \[`claim`: `string`\]: `unknown`
+
+### Properties
+
+#### address?
+
+```ts
+optional address: null | {
+  country: null | string;
+  formatted: null | string;
+  locality: null | string;
+  postal_code: null | string;
+  region: null | string;
+  street_address: null | string;
+};
+```
+
+#### birthdate?
+
+```ts
+optional birthdate: null | string;
+```
+
+#### email?
+
+```ts
+optional email: null | string;
+```
+
+#### email\_verified?
+
+```ts
+optional email_verified: null | boolean;
+```
+
+#### family\_name?
+
+```ts
+optional family_name: null | string;
+```
+
+#### gender?
+
+```ts
+optional gender: null | string;
+```
+
+#### given\_name?
+
+```ts
+optional given_name: null | string;
+```
+
+#### id?
+
+```ts
+optional id: null | string;
+```
+
+#### locale?
+
+```ts
+optional locale: null | string;
+```
+
+#### middle\_name?
+
+```ts
+optional middle_name: null | string;
+```
+
+#### name?
+
+```ts
+optional name: null | string;
+```
+
+#### nickname?
+
+```ts
+optional nickname: null | string;
+```
+
+#### phone\_number?
+
+```ts
+optional phone_number: null | string;
+```
+
+#### picture?
+
+```ts
+optional picture: any;
+```
+
+#### preferred\_username?
+
+```ts
+optional preferred_username: null | string;
+```
+
+#### profile?
+
+```ts
+optional profile: null | string;
+```
+
+#### sub?
+
+```ts
+optional sub: null | string;
+```
+
+#### updated\_at?
+
+```ts
+optional updated_at: null | string | number | Date;
+```
+
+#### website?
+
+```ts
+optional website: null | string;
+```
+
+#### zoneinfo?
+
+```ts
+optional zoneinfo: null | string;
+```
+
+***
+
+## Session
+
+The active session of the logged in user.
+
+### Extends
+
+- [`DefaultSession`](express.mdx#defaultsession)
+
+### Properties
+
+#### expires
+
+```ts
+expires: string;
+```
+
+##### Inherited from
+
+[`DefaultSession`](express.mdx#defaultsession).[`expires`](express.mdx#expires)
+
+#### user?
+
+```ts
+optional user: User;
+```
+
+##### Inherited from
+
+[`DefaultSession`](express.mdx#defaultsession).[`user`](express.mdx#user)
+
+***
+
+## User
+
+The shape of the returned object in the OAuth providers' `profile` callback,
+available in the `jwt` and `session` callbacks,
+or the second parameter of the `session` callback, when using a database.
+
+### Extended by
+
+- [`AdapterUser`](express/adapters.mdx#adapteruser)
+
+### Properties
+
+#### email?
+
+```ts
+optional email: null | string;
+```
+
+#### id?
+
+```ts
+optional id: string;
+```
+
+#### image?
+
+```ts
+optional image: null | string;
+```
+
+#### name?
+
+```ts
+optional name: null | string;
+```
+
+***
+
+## ExpressAuthConfig
+
+```ts
+type ExpressAuthConfig: Omit<AuthConfig, "raw">;
+```
+
+***
+
+## GetSessionResult
+
+```ts
+type GetSessionResult: Promise<Session | null>;
+```
+
+***
+
+## ExpressAuth()
+
+```ts
+ExpressAuth(config): (req, res, next) => Promise<void>
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `config` | [`ExpressAuthConfig`](express.mdx#expressauthconfig) |
+
+### Returns
+
+`Function`
+
+> #### Parameters
+>
+> | Parameter | Type |
+> | :------ | :------ |
+> | `req` | `Request`\<`ParamsDictionary`, `any`, `any`, `ParsedQs`, `Record`\<`string`, `any`\>\> |
+> | `res` | `Response`\<`any`, `Record`\<`string`, `any`\>\> |
+> | `next` | `NextFunction` |
+>
+> #### Returns
+>
+> `Promise`\<`void`\>
+>
+
+***
+
+## getSession()
+
+```ts
+getSession(req, config): GetSessionResult
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `req` | `Request`\<`ParamsDictionary`, `any`, `any`, `ParsedQs`, `Record`\<`string`, `any`\>\> |
+| `config` | [`ExpressAuthConfig`](express.mdx#expressauthconfig) |
+
+### Returns
+
+[`GetSessionResult`](express.mdx#getsessionresult)

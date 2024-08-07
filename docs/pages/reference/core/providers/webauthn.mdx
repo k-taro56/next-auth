@@ -1,0 +1,420 @@
+import { Callout } from 'nextra/components';
+
+# providers/webauthn
+
+## WebAuthnConfig
+
+Shared across all [ProviderType](../providers.mdx#providertype)
+
+### Extends
+
+- [`CommonProviderOptions`](../providers.mdx#commonprovideroptions)
+
+### Properties
+
+#### authenticationOptions?
+
+```ts
+optional authenticationOptions: Partial<ConfigurableAuthenticationOptions>;
+```
+
+Authentication options that are passed to
+
+##### Simplewebauthn
+
+during authentication.
+
+#### enableConditionalUI
+
+```ts
+enableConditionalUI: boolean;
+```
+
+Enable conditional UI.
+
+NOTE: Only one provider can have this option enabled at a time. Defaults to `true`.
+
+#### formFields
+
+```ts
+formFields: Record<string, CredentialInput>;
+```
+
+Form fields displayed in the default Passkey sign in/up form.
+These are not validated or enforced beyond the default Auth.js authentication page.
+
+By default it displays an email field.
+
+#### getRelayingParty()
+
+```ts
+getRelayingParty: (options, request) => RelayingParty;
+```
+
+Function that returns the relaying party for the current request.
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options` | `InternalOptions`\<`"webauthn"`\> |
+| `request` | `RequestInternal` |
+
+##### Returns
+
+[`RelayingParty`](webauthn.mdx#relayingparty-1)
+
+#### getUserInfo
+
+```ts
+getUserInfo: GetUserInfo;
+```
+
+Function that returns the user info that the authenticator will use during registration and authentication.
+
+- It accepts the provider options, the request object, and returns the user info.
+- If the request contains an existing user's data (e.g. email address), the function must return the existing user and `exists` must be `true`.
+- If the request contains enough information to create a new user, the function must return a new user info and `exists` must be `false`.
+- If the request does not contain enough information to create a new user, the function must return `null`.
+
+It should not have any side effects (i.e. it shall not modify the database).
+
+During passkey creation:
+ - The passkey's user ID will be a random string.
+ - The passkey's user name will be user.email
+ - The passkey's user display name will be user.name, if present, or user.email
+
+By default, it looks for and uses the "email" request parameter to look up the user in the database.
+
+#### id
+
+```ts
+id: string;
+```
+
+Uniquely identifies the provider in AuthConfig.providers
+It's also part of the URL
+
+##### Inherited from
+
+[`CommonProviderOptions`](../providers.mdx#commonprovideroptions).[`id`](../providers.mdx#id-1)
+
+#### name
+
+```ts
+name: string;
+```
+
+The provider name used on the default sign-in page's sign-in button.
+For example if it's "Google", the corresponding button will say:
+"Sign in with Google"
+
+##### Inherited from
+
+[`CommonProviderOptions`](../providers.mdx#commonprovideroptions).[`name`](../providers.mdx#name-1)
+
+#### registrationOptions
+
+```ts
+registrationOptions: Partial<ConfigurableRegistrationOptions>;
+```
+
+Registration options that are passed to
+
+##### Simplewebauthn
+
+during registration.
+
+#### relayingParty?
+
+```ts
+optional relayingParty: Partial<RelayingPartyArray>;
+```
+
+Relaying party (RP) configuration
+
+If not provided, the request URL will be used.
+
+#### simpleWebAuthn
+
+```ts
+simpleWebAuthn: {
+  generateAuthenticationOptions: (options?) => Promise<PublicKeyCredentialRequestOptionsJSON>;
+  generateRegistrationOptions: (options) => Promise<PublicKeyCredentialCreationOptionsJSON>;
+  verifyAuthenticationResponse: (options) => Promise<VerifiedAuthenticationResponse>;
+  verifyRegistrationResponse: (options) => Promise<VerifiedRegistrationResponse>;
+};
+```
+
+SimpleWebAuthn instance to use for registration and authentication.
+
+##### generateAuthenticationOptions()
+
+```ts
+generateAuthenticationOptions: (options?) => Promise<PublicKeyCredentialRequestOptionsJSON>;
+```
+
+Prepare a value to pass into navigator.credentials.get(...) for authenticator "login"
+
+###### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options`? | `GenerateAuthenticationOptionsOpts` |
+
+###### Returns
+
+`Promise`\<`PublicKeyCredentialRequestOptionsJSON`\>
+
+##### generateRegistrationOptions()
+
+```ts
+generateRegistrationOptions: (options) => Promise<PublicKeyCredentialCreationOptionsJSON>;
+```
+
+Prepare a value to pass into navigator.credentials.create(...) for authenticator "registration"
+
+**Options:**
+
+###### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options` | `GenerateRegistrationOptionsOpts` |
+
+###### Returns
+
+`Promise`\<`PublicKeyCredentialCreationOptionsJSON`\>
+
+##### verifyAuthenticationResponse()
+
+```ts
+verifyAuthenticationResponse: (options) => Promise<VerifiedAuthenticationResponse>;
+```
+
+Verify that the user has legitimately completed the login process
+
+**Options:**
+
+###### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options` | `VerifyAuthenticationResponseOpts` |
+
+###### Returns
+
+`Promise`\<`VerifiedAuthenticationResponse`\>
+
+##### verifyRegistrationResponse()
+
+```ts
+verifyRegistrationResponse: (options) => Promise<VerifiedRegistrationResponse>;
+```
+
+Verify that the user has legitimately completed the registration process
+
+**Options:**
+
+###### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options` | `VerifyRegistrationResponseOpts` |
+
+###### Returns
+
+`Promise`\<`VerifiedRegistrationResponse`\>
+
+#### simpleWebAuthnBrowserVersion
+
+```ts
+simpleWebAuthnBrowserVersion: false | SemverString;
+```
+
+Version of SimpleWebAuthn browser script to load in the sign in page.
+
+This is only loaded if the provider has conditional UI enabled. If set to false, it won't load any script.
+Defaults to `v9.0.0`.
+
+#### type
+
+```ts
+type: "webauthn";
+```
+
+See [ProviderType](../providers.mdx#providertype)
+
+##### Overrides
+
+[`CommonProviderOptions`](../providers.mdx#commonprovideroptions).[`type`](../providers.mdx#type-1)
+
+#### verifyAuthenticationOptions?
+
+```ts
+optional verifyAuthenticationOptions: Partial<ConfigurableVerifyAuthenticationOptions>;
+```
+
+Verify Authentication options that are passed to
+
+##### Simplewebauthn
+
+during authentication.
+
+#### verifyRegistrationOptions?
+
+```ts
+optional verifyRegistrationOptions: Partial<ConfigurableVerifyRegistrationOptions>;
+```
+
+Verify Registration options that are passed to
+
+##### Simplewebauthn
+
+during registration.
+
+***
+
+## GetUserInfo()
+
+```ts
+type GetUserInfo: (options, request) => Promise<{
+  exists: true;
+  user: User;
+  } | {
+  exists: false;
+  user: Omit<User, "id">;
+} | null>;
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options` | `InternalOptions`\<[`WebAuthnProviderType`](webauthn.mdx#webauthnprovidertype)\> |
+| `request` | `RequestInternal` |
+
+### Returns
+
+`Promise`\<\{
+  `exists`: `true`;
+  `user`: [`User`](../types.mdx#user-2);
+  } \| \{
+  `exists`: `false`;
+  `user`: `Omit`\<[`User`](../types.mdx#user-2), `"id"`\>;
+  } \| `null`\>
+
+***
+
+## RelayingParty
+
+```ts
+type RelayingParty: {
+  id: string;
+  name: string;
+  origin: string;
+};
+```
+
+### Type declaration
+
+#### id
+
+```ts
+id: string;
+```
+
+Relaying Party ID. Use the website's domain name.
+
+#### name
+
+```ts
+name: string;
+```
+
+Relaying Party name. Use the website's name.
+
+#### origin
+
+```ts
+origin: string;
+```
+
+Relaying Party origin. Use the website's origin.
+
+***
+
+## WebAuthnProviderType
+
+```ts
+type WebAuthnProviderType: "webauthn";
+```
+
+***
+
+## DEFAULT\_SIMPLEWEBAUTHN\_BROWSER\_VERSION
+
+```ts
+const DEFAULT_SIMPLEWEBAUTHN_BROWSER_VERSION: SemverString = "v9.0.1";
+```
+
+***
+
+## DEFAULT\_WEBAUTHN\_TIMEOUT
+
+```ts
+const DEFAULT_WEBAUTHN_TIMEOUT: number;
+```
+
+***
+
+## default()
+
+```ts
+default(config): WebAuthnConfig
+```
+
+Add WebAuthn login to your page.
+
+### Setup
+
+#### Configuration
+```ts
+import { Auth } from "@auth/core"
+import WebAuthn from "@auth/core/providers/webauthn"
+
+const request = new Request(origin)
+const response = await Auth(request, {
+  providers: [WebAuthn],
+})
+```
+### Resources
+
+- [SimpleWebAuthn - Server side](https://simplewebauthn.dev/docs/packages/server)
+- [SimpleWebAuthn - Client side](https://simplewebauthn.dev/docs/packages/client)
+- [Source code](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/webauthn.ts)
+
+
+<Callout type="default">
+  The WebAuthn provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/webauthn.ts).
+To override the defaults for your use case, check out [customizing the built-in WebAuthn provider](https://authjs.dev/guides/configuring-oauth-providers).
+</Callout>
+
+
+<Callout type="info">
+  ****Disclaimer**** If you think you found a bug in the default configuration, you can [open an issue](https://authjs.dev/new/provider-issue).
+
+Auth.js strictly adheres to the specification and it cannot take responsibility for any deviation from
+the spec by the provider. You can open an issue, but if the problem is non-compliance with the spec,
+we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
+</Callout>
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `config` | `Partial`\<[`WebAuthnConfig`](webauthn.mdx#webauthnconfig)\> |
+
+### Returns
+
+[`WebAuthnConfig`](webauthn.mdx#webauthnconfig)

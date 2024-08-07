@@ -1,0 +1,168 @@
+import { Callout } from 'nextra/components';
+
+# @auth/dynamodb-adapter
+
+<div style={{display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px"}}>
+ <p>Official <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html">DynamoDB</a> adapter for Auth.js / NextAuth.js.</p>
+ <a href="https://docs.aws.amazon.com/dynamodb/index.html">
+  <img style={{display: "block"}} src="https://authjs.dev/img/adapters/dynamodb.png" width="48"/>
+ </a>
+</div>
+
+## Installation
+
+```bash npm2yarn
+npm install next-auth @auth/dynamodb-adapter
+```
+
+## DynamoDBAdapterOptions
+
+### Properties
+
+#### indexName?
+
+```ts
+optional indexName: string;
+```
+
+#### indexPartitionKey?
+
+```ts
+optional indexPartitionKey: string;
+```
+
+#### indexSortKey?
+
+```ts
+optional indexSortKey: string;
+```
+
+#### partitionKey?
+
+```ts
+optional partitionKey: string;
+```
+
+#### sortKey?
+
+```ts
+optional sortKey: string;
+```
+
+#### tableName?
+
+```ts
+optional tableName: string;
+```
+
+***
+
+## format
+
+```ts
+const format: {
+  from: null | T;
+  to: Record<string, unknown>;
+};
+```
+
+### Type declaration
+
+#### from()
+
+Takes a Dynamo object and returns a plain old JavaScript object
+
+##### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `T` | `Record`\<`string`, `unknown`\> |
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `object`? | `Record`\<`string`, `any`\> |
+
+##### Returns
+
+`null` \| `T`
+
+#### to()
+
+Takes a plain old JavaScript object and turns it into a DynamoDB object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `object` | `Record`\<`string`, `any`\> |
+
+##### Returns
+
+`Record`\<`string`, `unknown`\>
+
+***
+
+## DynamoDBAdapter()
+
+```ts
+DynamoDBAdapter(client, options?): Adapter
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `client` | `DynamoDBDocument` |
+| `options`? | [`DynamoDBAdapterOptions`](dynamodb-adapter.mdx#dynamodbadapteroptions) |
+
+### Returns
+
+[`Adapter`](express/adapters.mdx#adapter)
+
+***
+
+## generateUpdateExpression()
+
+```ts
+generateUpdateExpression(object): {
+  ExpressionAttributeNames: Record<string, string>;
+  ExpressionAttributeValues: Record<string, unknown>;
+  UpdateExpression: string;
+}
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `object` | `Record`\<`string`, `any`\> |
+
+### Returns
+
+```ts
+{
+  ExpressionAttributeNames: Record<string, string>;
+  ExpressionAttributeValues: Record<string, unknown>;
+  UpdateExpression: string;
+}
+```
+
+#### ExpressionAttributeNames
+
+```ts
+ExpressionAttributeNames: Record<string, string>;
+```
+
+#### ExpressionAttributeValues
+
+```ts
+ExpressionAttributeValues: Record<string, unknown>;
+```
+
+#### UpdateExpression
+
+```ts
+UpdateExpression: string;
+```

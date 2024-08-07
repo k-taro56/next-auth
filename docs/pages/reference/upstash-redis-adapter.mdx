@@ -1,0 +1,190 @@
+import { Callout } from 'nextra/components';
+
+# @auth/upstash-redis-adapter
+
+<div style={{display: "flex", justifyContent: "space-between", alignItems: "center", padding: 16}}>
+ <p>Official <a href="https://docs.upstash.com/redis">Upstash Redis</a> adapter for Auth.js / NextAuth.js.</p>
+ <a href="https://docs.upstash.com/redis">
+  <img style={{display: "block"}} src="https://authjs.dev/img/adapters/upstash-redis.svg" width="60"/>
+ </a>
+</div>
+
+## Installation
+
+```bash npm2yarn
+npm install @upstash/redis @auth/upstash-redis-adapter
+```
+
+## UpstashRedisAdapterOptions
+
+This is the interface of the Upstash Redis adapter options.
+
+### Properties
+
+#### accountByUserIdPrefix?
+
+```ts
+optional accountByUserIdPrefix: string;
+```
+
+The prefix for the `accountByUserId` key
+
+#### accountKeyPrefix?
+
+```ts
+optional accountKeyPrefix: string;
+```
+
+The prefix for the `account` key
+
+#### baseKeyPrefix?
+
+```ts
+optional baseKeyPrefix: string;
+```
+
+The base prefix for your keys
+
+#### emailKeyPrefix?
+
+```ts
+optional emailKeyPrefix: string;
+```
+
+The prefix for the `emailKey` key
+
+#### sessionByUserIdKeyPrefix?
+
+```ts
+optional sessionByUserIdKeyPrefix: string;
+```
+
+The prefix for the `sessionByUserId` key
+
+#### sessionKeyPrefix?
+
+```ts
+optional sessionKeyPrefix: string;
+```
+
+The prefix for the `sessionKey` key
+
+#### userKeyPrefix?
+
+```ts
+optional userKeyPrefix: string;
+```
+
+The prefix for the `user` key
+
+#### verificationTokenKeyPrefix?
+
+```ts
+optional verificationTokenKeyPrefix: string;
+```
+
+The prefix for the `verificationToken` key
+
+***
+
+## defaultOptions
+
+```ts
+const defaultOptions: {
+  accountByUserIdPrefix: "user:account:by-user-id:";
+  accountKeyPrefix: "user:account:";
+  baseKeyPrefix: "";
+  emailKeyPrefix: "user:email:";
+  sessionByUserIdKeyPrefix: "user:session:by-user-id:";
+  sessionKeyPrefix: "user:session:";
+  userKeyPrefix: "user:";
+  verificationTokenKeyPrefix: "user:token:";
+};
+```
+
+### Type declaration
+
+#### accountByUserIdPrefix
+
+```ts
+accountByUserIdPrefix: string = "user:account:by-user-id:";
+```
+
+#### accountKeyPrefix
+
+```ts
+accountKeyPrefix: string = "user:account:";
+```
+
+#### baseKeyPrefix
+
+```ts
+baseKeyPrefix: string = "";
+```
+
+#### emailKeyPrefix
+
+```ts
+emailKeyPrefix: string = "user:email:";
+```
+
+#### sessionByUserIdKeyPrefix
+
+```ts
+sessionByUserIdKeyPrefix: string = "user:session:by-user-id:";
+```
+
+#### sessionKeyPrefix
+
+```ts
+sessionKeyPrefix: string = "user:session:";
+```
+
+#### userKeyPrefix
+
+```ts
+userKeyPrefix: string = "user:";
+```
+
+#### verificationTokenKeyPrefix
+
+```ts
+verificationTokenKeyPrefix: string = "user:token:";
+```
+
+***
+
+## UpstashRedisAdapter()
+
+```ts
+UpstashRedisAdapter(client, options): Adapter
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `client` | `Redis` |
+| `options` | [`UpstashRedisAdapterOptions`](upstash-redis-adapter.mdx#upstashredisadapteroptions) |
+
+### Returns
+
+[`Adapter`](express/adapters.mdx#adapter)
+
+***
+
+## hydrateDates()
+
+```ts
+hydrateDates(json): any
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `json` | `object` |
+
+### Returns
+
+`any`

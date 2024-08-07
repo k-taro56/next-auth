@@ -1,0 +1,80 @@
+import { Callout } from 'nextra/components';
+
+# @auth/supabase-adapter
+
+<div style={{display: "flex", justifyContent: "space-between", alignItems: "center", padding: 16}}>
+ <p>Official <a href="https://supabase.com/docs">Supabase</a> adapter for Auth.js / NextAuth.js.</p>
+ <a href="https://supabase.com/">
+  <img style={{display: "block"}} src="https://authjs.dev/img/adapters/supabase.svg" width="50"/>
+ </a>
+</div>
+
+## Installation
+
+```bash npm2yarn
+npm install @supabase/supabase-js @auth/supabase-adapter
+```
+
+## SupabaseAdapterOptions
+
+This is the interface of the Supabase adapter options.
+
+### Properties
+
+#### secret
+
+```ts
+secret: string;
+```
+
+The secret to grant access to the database
+
+#### url
+
+```ts
+url: string;
+```
+
+The URL of your Supabase database
+
+***
+
+## SupabaseAdapter()
+
+```ts
+SupabaseAdapter(options): Adapter
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options` | [`SupabaseAdapterOptions`](supabase-adapter.mdx#supabaseadapteroptions) |
+
+### Returns
+
+[`Adapter`](express/adapters.mdx#adapter)
+
+***
+
+## format()
+
+```ts
+format<T>(obj): T
+```
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `T` |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `obj` | `Record`\<`string`, `any`\> |
+
+### Returns
+
+`T`

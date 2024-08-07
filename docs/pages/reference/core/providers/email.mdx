@@ -1,0 +1,183 @@
+import { Callout } from 'nextra/components';
+
+# providers/email
+
+## EmailConfig
+
+Shared across all [ProviderType](../providers.mdx#providertype)
+
+### Extends
+
+- [`CommonProviderOptions`](../providers.mdx#commonprovideroptions)
+
+### Properties
+
+#### apiKey?
+
+```ts
+optional apiKey: string;
+```
+
+Used with HTTP-based email providers.
+
+#### from
+
+```ts
+from: string;
+```
+
+#### generateVerificationToken()?
+
+```ts
+optional generateVerificationToken: () => Awaitable<string>;
+```
+
+##### Returns
+
+[`Awaitable`](../types.mdx#awaitablet)\<`string`\>
+
+#### id
+
+```ts
+id: string;
+```
+
+Uniquely identifies the provider in AuthConfig.providers
+It's also part of the URL
+
+##### Overrides
+
+[`CommonProviderOptions`](../providers.mdx#commonprovideroptions).[`id`](../providers.mdx#id-1)
+
+#### maxAge
+
+```ts
+maxAge: number;
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+The provider name used on the default sign-in page's sign-in button.
+For example if it's "Google", the corresponding button will say:
+"Sign in with Google"
+
+##### Overrides
+
+[`CommonProviderOptions`](../providers.mdx#commonprovideroptions).[`name`](../providers.mdx#name-1)
+
+#### normalizeIdentifier()?
+
+```ts
+optional normalizeIdentifier: (identifier) => string;
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `identifier` | `string` |
+
+##### Returns
+
+`string`
+
+#### options
+
+```ts
+options: EmailUserConfig;
+```
+
+#### secret?
+
+```ts
+optional secret: string;
+```
+
+Used to hash the verification token.
+
+#### sendVerificationRequest()
+
+```ts
+sendVerificationRequest: (params) => Awaitable<void>;
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `params` | `Object` |
+| `params.expires` | `Date` |
+| `params.identifier` | `string` |
+| `params.provider` | [`EmailConfig`](email.mdx#emailconfig) |
+| `params.request` | [`Request`]( https://developer.mozilla.org/en-US/docs/Web/API/Request ) |
+| `params.theme` | [`Theme`](../types.mdx#theme) |
+| `params.token` | `string` |
+| `params.url` | `string` |
+
+##### Returns
+
+[`Awaitable`](../types.mdx#awaitablet)\<`void`\>
+
+#### server?
+
+```ts
+optional server: AllTransportOptions;
+```
+
+Used with SMTP-based email providers.
+
+#### type
+
+```ts
+type: "email";
+```
+
+See [ProviderType](../providers.mdx#providertype)
+
+##### Overrides
+
+[`CommonProviderOptions`](../providers.mdx#commonprovideroptions).[`type`](../providers.mdx#type-1)
+
+***
+
+## EmailProviderType
+
+```ts
+type EmailProviderType: "email";
+```
+
+***
+
+## EmailUserConfig
+
+```ts
+type EmailUserConfig: Omit<Partial<EmailConfig>, "options" | "type">;
+```
+
+***
+
+## ~~default()~~
+
+```ts
+default(config): NodemailerConfig
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `config` | [`NodemailerUserConfig`](nodemailer.mdx#nodemaileruserconfig) |
+
+### Returns
+
+[`NodemailerConfig`](nodemailer.mdx#nodemailerconfig)
+
+### Deprecated
+
+Import this provider from the `providers/nodemailer` submodule instead of `providers/email`.
+
+To log in with nodemailer, change `signIn("email")` to `signIn("nodemailer")`

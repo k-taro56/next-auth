@@ -1,0 +1,1777 @@
+import { Callout } from 'nextra/components';
+
+# lib/sqlite
+
+## DefaultSQLiteAccountsTable
+
+```ts
+type DefaultSQLiteAccountsTable: SQLiteTableWithColumns<{
+  columns: {
+     access_token: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     expires_at: DefaultSQLiteColumn<{
+        columnType: "SQLiteInteger";
+        data: number;
+        dataType: "number";
+        notNull: boolean;
+     }>;
+     id_token: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     provider: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     providerAccountId: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     refresh_token: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     scope: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     session_state: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     token_type: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     type: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     userId: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+  };
+  dialect: "sqlite";
+  name: string;
+  schema: string | undefined;
+}>;
+```
+
+### Type declaration
+
+#### columns
+
+```ts
+columns: {
+  access_token: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  expires_at: DefaultSQLiteColumn<{
+     columnType: "SQLiteInteger";
+     data: number;
+     dataType: "number";
+     notNull: boolean;
+  }>;
+  id_token: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  provider: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  providerAccountId: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  refresh_token: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  scope: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  session_state: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  token_type: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  type: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  userId: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+};
+```
+
+#### columns.access\_token
+
+```ts
+access_token: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.expires\_at
+
+```ts
+expires_at: DefaultSQLiteColumn<{
+  columnType: "SQLiteInteger";
+  data: number;
+  dataType: "number";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteInteger";
+```
+
+###### data
+
+```ts
+data: number;
+```
+
+###### dataType
+
+```ts
+dataType: "number";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.id\_token
+
+```ts
+id_token: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.provider
+
+```ts
+provider: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.providerAccountId
+
+```ts
+providerAccountId: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.refresh\_token
+
+```ts
+refresh_token: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.scope
+
+```ts
+scope: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.session\_state
+
+```ts
+session_state: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.token\_type
+
+```ts
+token_type: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.type
+
+```ts
+type: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.userId
+
+```ts
+userId: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### dialect
+
+```ts
+dialect: "sqlite";
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+#### schema
+
+```ts
+schema: string | undefined;
+```
+
+***
+
+## DefaultSQLiteAuthenticatorTable
+
+```ts
+type DefaultSQLiteAuthenticatorTable: SQLiteTableWithColumns<{
+  columns: {
+     counter: DefaultSQLiteColumn<{
+        columnType: "SQLiteInteger";
+        data: number;
+        dataType: "number";
+        notNull: true;
+     }>;
+     credentialBackedUp: DefaultSQLiteColumn<{
+        columnType: "SQLiteBoolean";
+        data: boolean;
+        dataType: "boolean";
+        notNull: true;
+     }>;
+     credentialDeviceType: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     credentialID: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     credentialPublicKey: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     providerAccountId: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     transports: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: false;
+     }>;
+     userId: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+  };
+  dialect: "sqlite";
+  name: string;
+  schema: string | undefined;
+}>;
+```
+
+### Type declaration
+
+#### columns
+
+```ts
+columns: {
+  counter: DefaultSQLiteColumn<{
+     columnType: "SQLiteInteger";
+     data: number;
+     dataType: "number";
+     notNull: true;
+  }>;
+  credentialBackedUp: DefaultSQLiteColumn<{
+     columnType: "SQLiteBoolean";
+     data: boolean;
+     dataType: "boolean";
+     notNull: true;
+  }>;
+  credentialDeviceType: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  credentialID: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  credentialPublicKey: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  providerAccountId: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  transports: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: false;
+  }>;
+  userId: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+};
+```
+
+#### columns.counter
+
+```ts
+counter: DefaultSQLiteColumn<{
+  columnType: "SQLiteInteger";
+  data: number;
+  dataType: "number";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteInteger";
+```
+
+###### data
+
+```ts
+data: number;
+```
+
+###### dataType
+
+```ts
+dataType: "number";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.credentialBackedUp
+
+```ts
+credentialBackedUp: DefaultSQLiteColumn<{
+  columnType: "SQLiteBoolean";
+  data: boolean;
+  dataType: "boolean";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteBoolean";
+```
+
+###### data
+
+```ts
+data: boolean;
+```
+
+###### dataType
+
+```ts
+dataType: "boolean";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.credentialDeviceType
+
+```ts
+credentialDeviceType: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.credentialID
+
+```ts
+credentialID: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.credentialPublicKey
+
+```ts
+credentialPublicKey: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.providerAccountId
+
+```ts
+providerAccountId: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.transports
+
+```ts
+transports: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: false;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: false;
+```
+
+#### columns.userId
+
+```ts
+userId: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### dialect
+
+```ts
+dialect: "sqlite";
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+#### schema
+
+```ts
+schema: string | undefined;
+```
+
+***
+
+## DefaultSQLiteSchema
+
+```ts
+type DefaultSQLiteSchema: {
+  accountsTable: DefaultSQLiteAccountsTable;
+  authenticatorsTable: DefaultSQLiteAuthenticatorTable;
+  sessionsTable: DefaultSQLiteSessionsTable;
+  usersTable: DefaultSQLiteUsersTable;
+  verificationTokensTable: DefaultSQLiteVerificationTokenTable;
+};
+```
+
+### Type declaration
+
+#### accountsTable
+
+```ts
+accountsTable: DefaultSQLiteAccountsTable;
+```
+
+#### authenticatorsTable?
+
+```ts
+optional authenticatorsTable: DefaultSQLiteAuthenticatorTable;
+```
+
+#### sessionsTable?
+
+```ts
+optional sessionsTable: DefaultSQLiteSessionsTable;
+```
+
+#### usersTable
+
+```ts
+usersTable: DefaultSQLiteUsersTable;
+```
+
+#### verificationTokensTable?
+
+```ts
+optional verificationTokensTable: DefaultSQLiteVerificationTokenTable;
+```
+
+***
+
+## DefaultSQLiteSessionsTable
+
+```ts
+type DefaultSQLiteSessionsTable: SQLiteTableWithColumns<{
+  columns: {
+     expires: DefaultSQLiteColumn<{
+        columnType: "SQLiteTimestamp";
+        data: Date;
+        dataType: "date";
+        notNull: true;
+     }>;
+     sessionToken: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        isPrimaryKey: true;
+        notNull: true;
+     }>;
+     userId: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+  };
+  dialect: "sqlite";
+  name: string;
+  schema: string | undefined;
+}>;
+```
+
+### Type declaration
+
+#### columns
+
+```ts
+columns: {
+  expires: DefaultSQLiteColumn<{
+     columnType: "SQLiteTimestamp";
+     data: Date;
+     dataType: "date";
+     notNull: true;
+  }>;
+  sessionToken: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     isPrimaryKey: true;
+     notNull: true;
+  }>;
+  userId: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+};
+```
+
+#### columns.expires
+
+```ts
+expires: DefaultSQLiteColumn<{
+  columnType: "SQLiteTimestamp";
+  data: Date;
+  dataType: "date";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteTimestamp";
+```
+
+###### data
+
+```ts
+data: Date;
+```
+
+###### dataType
+
+```ts
+dataType: "date";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.sessionToken
+
+```ts
+sessionToken: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  isPrimaryKey: true;
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### isPrimaryKey
+
+```ts
+isPrimaryKey: true;
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.userId
+
+```ts
+userId: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### dialect
+
+```ts
+dialect: "sqlite";
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+#### schema
+
+```ts
+schema: string | undefined;
+```
+
+***
+
+## DefaultSQLiteUsersTable
+
+```ts
+type DefaultSQLiteUsersTable: SQLiteTableWithColumns<{
+  columns: {
+     email: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     emailVerified: DefaultSQLiteColumn<{
+        columnType: "SQLiteTimestamp";
+        data: Date;
+        dataType: "date";
+        notNull: boolean;
+     }>;
+     id: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        isPrimaryKey: true;
+        notNull: true;
+     }>;
+     image: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+     name: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: boolean;
+     }>;
+  };
+  dialect: "sqlite";
+  name: string;
+  schema: string | undefined;
+}>;
+```
+
+### Type declaration
+
+#### columns
+
+```ts
+columns: {
+  email: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  emailVerified: DefaultSQLiteColumn<{
+     columnType: "SQLiteTimestamp";
+     data: Date;
+     dataType: "date";
+     notNull: boolean;
+  }>;
+  id: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     isPrimaryKey: true;
+     notNull: true;
+  }>;
+  image: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+  name: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: boolean;
+  }>;
+};
+```
+
+#### columns.email
+
+```ts
+email: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.emailVerified
+
+```ts
+emailVerified: DefaultSQLiteColumn<{
+  columnType: "SQLiteTimestamp";
+  data: Date;
+  dataType: "date";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteTimestamp";
+```
+
+###### data
+
+```ts
+data: Date;
+```
+
+###### dataType
+
+```ts
+dataType: "date";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.id
+
+```ts
+id: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  isPrimaryKey: true;
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### isPrimaryKey
+
+```ts
+isPrimaryKey: true;
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.image
+
+```ts
+image: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### columns.name
+
+```ts
+name: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: boolean;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: boolean;
+```
+
+#### dialect
+
+```ts
+dialect: "sqlite";
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+#### schema
+
+```ts
+schema: string | undefined;
+```
+
+***
+
+## DefaultSQLiteVerificationTokenTable
+
+```ts
+type DefaultSQLiteVerificationTokenTable: SQLiteTableWithColumns<{
+  columns: {
+     expires: DefaultSQLiteColumn<{
+        columnType: "SQLiteTimestamp";
+        data: Date;
+        dataType: "date";
+        notNull: true;
+     }>;
+     identifier: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+     token: DefaultSQLiteColumn<{
+        columnType: "SQLiteText";
+        data: string;
+        dataType: "string";
+        notNull: true;
+     }>;
+  };
+  dialect: "sqlite";
+  name: string;
+  schema: string | undefined;
+}>;
+```
+
+### Type declaration
+
+#### columns
+
+```ts
+columns: {
+  expires: DefaultSQLiteColumn<{
+     columnType: "SQLiteTimestamp";
+     data: Date;
+     dataType: "date";
+     notNull: true;
+  }>;
+  identifier: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+  token: DefaultSQLiteColumn<{
+     columnType: "SQLiteText";
+     data: string;
+     dataType: "string";
+     notNull: true;
+  }>;
+};
+```
+
+#### columns.expires
+
+```ts
+expires: DefaultSQLiteColumn<{
+  columnType: "SQLiteTimestamp";
+  data: Date;
+  dataType: "date";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteTimestamp";
+```
+
+###### data
+
+```ts
+data: Date;
+```
+
+###### dataType
+
+```ts
+dataType: "date";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.identifier
+
+```ts
+identifier: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### columns.token
+
+```ts
+token: DefaultSQLiteColumn<{
+  columnType: "SQLiteText";
+  data: string;
+  dataType: "string";
+  notNull: true;
+}>;
+```
+
+##### Type declaration
+
+###### columnType
+
+```ts
+columnType: "SQLiteText";
+```
+
+###### data
+
+```ts
+data: string;
+```
+
+###### dataType
+
+```ts
+dataType: "string";
+```
+
+###### notNull
+
+```ts
+notNull: true;
+```
+
+#### dialect
+
+```ts
+dialect: "sqlite";
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+#### schema
+
+```ts
+schema: string | undefined;
+```
+
+***
+
+## SQLiteDrizzleAdapter()
+
+```ts
+SQLiteDrizzleAdapter(client, schema?): Adapter
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `client` | `BaseSQLiteDatabase`\<`"sync"` \| `"async"`, `any`, `any`, `ExtractTablesWithRelations`\<`any`\>\> |
+| `schema`? | [`DefaultSQLiteSchema`](sqlite.mdx#defaultsqliteschema) |
+
+### Returns
+
+[`Adapter`](../../express/adapters.mdx#adapter)
+
+***
+
+## defineTables()
+
+```ts
+defineTables(schema): Required<DefaultSQLiteSchema>
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `schema` | `Partial`\<[`DefaultSQLiteSchema`](sqlite.mdx#defaultsqliteschema)\> |
+
+### Returns
+
+`Required`\<[`DefaultSQLiteSchema`](sqlite.mdx#defaultsqliteschema)\>

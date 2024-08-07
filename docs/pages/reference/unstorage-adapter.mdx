@@ -1,0 +1,237 @@
+import { Callout } from 'nextra/components';
+
+# @auth/unstorage-adapter
+
+<div style={{display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px"}}>
+ <p>Official <a href="https://unstorage.unjs.io/">Unstorage</a> adapter for Auth.js / NextAuth.js.</p>
+ <a href="https://unstorage.unjs.io/">
+  <img style={{display: "block"}} src="https://authjs.dev/img/adapters/unstorage.svg" width="60"/>
+ </a>
+</div>
+
+## Installation
+
+```bash npm2yarn
+npm install unstorage @auth/unstorage-adapter
+```
+
+## UnstorageAdapterOptions
+
+This is the interface of the Unstorage adapter options.
+
+### Properties
+
+#### accountByUserIdPrefix?
+
+```ts
+optional accountByUserIdPrefix: string;
+```
+
+The prefix for the `accountByUserId` key
+
+#### accountKeyPrefix?
+
+```ts
+optional accountKeyPrefix: string;
+```
+
+The prefix for the `account` key
+
+#### authenticatorKeyPrefix?
+
+```ts
+optional authenticatorKeyPrefix: string;
+```
+
+The prefix for the `authenticator` key
+
+#### authenticatorUserKeyPrefix?
+
+```ts
+optional authenticatorUserKeyPrefix: string;
+```
+
+The prefix for the `authenticator-by-user-id` key
+
+#### baseKeyPrefix?
+
+```ts
+optional baseKeyPrefix: string;
+```
+
+The base prefix for your keys
+
+#### emailKeyPrefix?
+
+```ts
+optional emailKeyPrefix: string;
+```
+
+The prefix for the `emailKey` key
+
+#### sessionByUserIdKeyPrefix?
+
+```ts
+optional sessionByUserIdKeyPrefix: string;
+```
+
+The prefix for the `sessionByUserId` key
+
+#### sessionKeyPrefix?
+
+```ts
+optional sessionKeyPrefix: string;
+```
+
+The prefix for the `sessionKey` key
+
+#### useItemRaw?
+
+```ts
+optional useItemRaw: boolean;
+```
+
+Use `getItemRaw/setItemRaw` instead of `getItem/setItem`.
+
+This is an experimental feature. Please check [unjs/unstorage#142](https://github.com/unjs/unstorage/issues/142) for more information.
+
+#### userKeyPrefix?
+
+```ts
+optional userKeyPrefix: string;
+```
+
+The prefix for the `user` key
+
+#### verificationTokenKeyPrefix?
+
+```ts
+optional verificationTokenKeyPrefix: string;
+```
+
+The prefix for the `verificationToken` key
+
+***
+
+## defaultOptions
+
+```ts
+const defaultOptions: {
+  accountByUserIdPrefix: "user:account:by-user-id:";
+  accountKeyPrefix: "user:account:";
+  authenticatorKeyPrefix: "authenticator:";
+  authenticatorUserKeyPrefix: "authenticator:by-user-id:";
+  baseKeyPrefix: "";
+  emailKeyPrefix: "user:email:";
+  sessionByUserIdKeyPrefix: "user:session:by-user-id:";
+  sessionKeyPrefix: "user:session:";
+  useItemRaw: false;
+  userKeyPrefix: "user:";
+  verificationTokenKeyPrefix: "user:token:";
+};
+```
+
+### Type declaration
+
+#### accountByUserIdPrefix
+
+```ts
+accountByUserIdPrefix: string = "user:account:by-user-id:";
+```
+
+#### accountKeyPrefix
+
+```ts
+accountKeyPrefix: string = "user:account:";
+```
+
+#### authenticatorKeyPrefix
+
+```ts
+authenticatorKeyPrefix: string = "authenticator:";
+```
+
+#### authenticatorUserKeyPrefix
+
+```ts
+authenticatorUserKeyPrefix: string = "authenticator:by-user-id:";
+```
+
+#### baseKeyPrefix
+
+```ts
+baseKeyPrefix: string = "";
+```
+
+#### emailKeyPrefix
+
+```ts
+emailKeyPrefix: string = "user:email:";
+```
+
+#### sessionByUserIdKeyPrefix
+
+```ts
+sessionByUserIdKeyPrefix: string = "user:session:by-user-id:";
+```
+
+#### sessionKeyPrefix
+
+```ts
+sessionKeyPrefix: string = "user:session:";
+```
+
+#### useItemRaw
+
+```ts
+useItemRaw: boolean = false;
+```
+
+#### userKeyPrefix
+
+```ts
+userKeyPrefix: string = "user:";
+```
+
+#### verificationTokenKeyPrefix
+
+```ts
+verificationTokenKeyPrefix: string = "user:token:";
+```
+
+***
+
+## UnstorageAdapter()
+
+```ts
+UnstorageAdapter(storage, options): Adapter
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `storage` | `Storage`\<`StorageValue`\> |
+| `options` | [`UnstorageAdapterOptions`](unstorage-adapter.mdx#unstorageadapteroptions) |
+
+### Returns
+
+[`Adapter`](express/adapters.mdx#adapter)
+
+***
+
+## hydrateDates()
+
+```ts
+hydrateDates(json): any
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `json` | `Record`\<`string`, `any`\> |
+
+### Returns
+
+`any`

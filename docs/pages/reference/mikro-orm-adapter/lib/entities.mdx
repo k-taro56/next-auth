@@ -1,0 +1,371 @@
+import { Callout } from 'nextra/components';
+
+# lib/entities
+
+## Account
+
+### Implements
+
+- `RemoveIndex`\<[`AdapterAccount`](../../express/adapters.mdx#adapteraccount)\>
+
+### Constructors
+
+#### new Account(undefined)
+
+```ts
+new Account(): Account
+```
+
+##### Returns
+
+[`Account`](entities.mdx#account)
+
+### Properties
+
+#### access\_token?
+
+```ts
+optional access_token: string;
+```
+
+##### Implementation of
+
+`RemoveIndex.access_token`
+
+#### expires\_at?
+
+```ts
+optional expires_at: number;
+```
+
+##### Implementation of
+
+`RemoveIndex.expires_at`
+
+#### id
+
+```ts
+id: string;
+```
+
+#### id\_token?
+
+```ts
+optional id_token: string;
+```
+
+##### Implementation of
+
+`RemoveIndex.id_token`
+
+#### provider
+
+```ts
+provider: string;
+```
+
+##### Implementation of
+
+`RemoveIndex.provider`
+
+#### providerAccountId
+
+```ts
+providerAccountId: string;
+```
+
+##### Implementation of
+
+`RemoveIndex.providerAccountId`
+
+#### refresh\_token?
+
+```ts
+optional refresh_token: string;
+```
+
+##### Implementation of
+
+`RemoveIndex.refresh_token`
+
+#### scope?
+
+```ts
+optional scope: string;
+```
+
+##### Implementation of
+
+`RemoveIndex.scope`
+
+#### session\_state?
+
+```ts
+optional session_state: JsonValue;
+```
+
+#### token\_type?
+
+```ts
+optional token_type: Lowercase<string>;
+```
+
+##### Implementation of
+
+`RemoveIndex.token_type`
+
+#### type
+
+```ts
+type: AdapterAccountType;
+```
+
+##### Implementation of
+
+`RemoveIndex.type`
+
+#### user
+
+```ts
+user: User;
+```
+
+#### userId
+
+```ts
+userId: string;
+```
+
+##### Implementation of
+
+`RemoveIndex.userId`
+
+***
+
+## Session
+
+A session holds information about a user's current signin state.
+
+### Implements
+
+- [`AdapterSession`](../../express/adapters.mdx#adaptersession)
+
+### Constructors
+
+#### new Session(undefined)
+
+```ts
+new Session(): Session
+```
+
+##### Returns
+
+[`Session`](entities.mdx#session)
+
+### Properties
+
+#### expires
+
+```ts
+expires: Date;
+```
+
+The absolute date when the session expires.
+
+If a session is accessed prior to its expiry date,
+it will be extended based on the `maxAge` option as defined in by `SessionOptions.maxAge`.
+It is never extended more than once in a period defined by `SessionOptions.updateAge`.
+
+If a session is accessed past its expiry date,
+it will be removed from the database to clean up inactive sessions.
+
+##### Implementation of
+
+[`AdapterSession`](../../express/adapters.mdx#adaptersession).[`expires`](../../express/adapters.mdx#expires)
+
+#### id
+
+```ts
+id: string;
+```
+
+#### sessionToken
+
+```ts
+sessionToken: string;
+```
+
+A randomly generated value that is used to look up the session in the database
+when using `"database"` `AuthConfig.strategy` option.
+This value is saved in a secure, HTTP-Only cookie on the client.
+
+##### Implementation of
+
+[`AdapterSession`](../../express/adapters.mdx#adaptersession).[`sessionToken`](../../express/adapters.mdx#sessiontoken)
+
+#### user
+
+```ts
+user: User;
+```
+
+#### userId
+
+```ts
+userId: string;
+```
+
+Connects the active session to a user in the database
+
+##### Implementation of
+
+[`AdapterSession`](../../express/adapters.mdx#adaptersession).[`userId`](../../express/adapters.mdx#userid-2)
+
+***
+
+## User
+
+### Implements
+
+- `RemoveIndex`\<[`AdapterUser`](../../express/adapters.mdx#adapteruser)\>
+
+### Constructors
+
+#### new User(undefined)
+
+```ts
+new User(): User
+```
+
+##### Returns
+
+[`User`](entities.mdx#user-2)
+
+### Properties
+
+#### accounts
+
+```ts
+accounts: Collection<Account, object>;
+```
+
+#### email
+
+```ts
+email: string = "";
+```
+
+##### Implementation of
+
+`RemoveIndex.email`
+
+#### emailVerified
+
+```ts
+emailVerified: null | Date = null;
+```
+
+##### Implementation of
+
+`RemoveIndex.emailVerified`
+
+#### id
+
+```ts
+id: string;
+```
+
+##### Implementation of
+
+`RemoveIndex.id`
+
+#### image?
+
+```ts
+optional image: null | string;
+```
+
+##### Implementation of
+
+`RemoveIndex.image`
+
+#### name?
+
+```ts
+optional name: null | string;
+```
+
+##### Implementation of
+
+`RemoveIndex.name`
+
+#### sessions
+
+```ts
+sessions: Collection<Session, object>;
+```
+
+***
+
+## VerificationToken
+
+A verification token is a temporary token that is used to sign in a user via their email address.
+It is created when a user signs in with an [Email provider](https://authjs.dev/getting-started/authentication/email).
+When the user clicks the link in the email, the token and email is sent back to the server
+where it is hashed and compared to the value in the database.
+If the tokens and emails match, and the token hasn't expired yet, the user is signed in.
+The token is then deleted from the database.
+
+### Implements
+
+- [`VerificationToken`](../../express/adapters.mdx#verificationtoken)
+
+### Constructors
+
+#### new VerificationToken(undefined)
+
+```ts
+new VerificationToken(): VerificationToken
+```
+
+##### Returns
+
+[`VerificationToken`](entities.mdx#verificationtoken)
+
+### Properties
+
+#### expires
+
+```ts
+expires: Date;
+```
+
+The absolute date when the token expires.
+
+##### Implementation of
+
+[`VerificationToken`](../../express/adapters.mdx#verificationtoken).[`expires`](../../express/adapters.mdx#expires-1)
+
+#### identifier
+
+```ts
+identifier: string;
+```
+
+The user's email address.
+
+##### Implementation of
+
+[`VerificationToken`](../../express/adapters.mdx#verificationtoken).[`identifier`](../../express/adapters.mdx#identifier)
+
+#### token
+
+```ts
+token: string;
+```
+
+A [hashed](https://en.wikipedia.org/wiki/Hash_function) token, using the `AuthConfig.secret` value.
+
+##### Implementation of
+
+[`VerificationToken`](../../express/adapters.mdx#verificationtoken).[`token`](../../express/adapters.mdx#token)

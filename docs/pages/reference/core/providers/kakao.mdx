@@ -1,0 +1,452 @@
+import { Callout } from 'nextra/components';
+
+# providers/kakao
+
+<div style={{backgroundColor: "#000", display: "flex", justifyContent: "space-between", color: "#fff", padding: 16}}>
+<span>Built-in <b>Kakao</b> integration.</span>
+<a href="https://www.kakaocorp.com/page/">
+  <img style={{display: "block"}} src="https://authjs.dev/img/providers/kakao.svg" height="48" width="48"/>
+</a>
+</div>
+
+## KakaoProfile
+
+https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api#req-user-info
+type from : https://gist.github.com/ziponia/cdce1ebd88f979b2a6f3f53416b56a77
+
+### Extends
+
+- `Record`\<`string`, `any`\>
+
+### Properties
+
+#### connected\_at?
+
+```ts
+optional connected_at: string;
+```
+
+#### has\_signed\_up?
+
+```ts
+optional has_signed_up: boolean;
+```
+
+#### id
+
+```ts
+id: number;
+```
+
+#### kakao\_account?
+
+```ts
+optional kakao_account: {
+  age_range: AgeRange;
+  age_range_needs_agreement: boolean;
+  birthday: string;
+  birthday_needs_agreement: boolean;
+  birthday_type: Birthday;
+  birthyear: string;
+  birthyear_needs_agreement: boolean;
+  ci: string;
+  ci_authenticated_at: string;
+  ci_needs_agreement: boolean;
+  email: string;
+  email_needs_agreement: boolean;
+  gender: Gender;
+  gender_needs_agreement: boolean;
+  is_email_valid: boolean;
+  is_email_verified: boolean;
+  name: string;
+  name_needs_agreement: boolean;
+  phone_number: string;
+  phone_number_needs_agreement: boolean;
+  profile: {
+     is_default_image: boolean;
+     nickname: string;
+     profile_image_url: string;
+     thumbnail_image_url: string;
+  };
+  profile_image_needs_agreement: boolean;
+  profile_needs_agreement: boolean;
+  profile_nickname_needs_agreement: boolean;
+};
+```
+
+##### age\_range?
+
+```ts
+optional age_range: AgeRange;
+```
+
+##### age\_range\_needs\_agreement?
+
+```ts
+optional age_range_needs_agreement: boolean;
+```
+
+##### birthday?
+
+```ts
+optional birthday: string;
+```
+
+##### birthday\_needs\_agreement?
+
+```ts
+optional birthday_needs_agreement: boolean;
+```
+
+##### birthday\_type?
+
+```ts
+optional birthday_type: Birthday;
+```
+
+##### birthyear?
+
+```ts
+optional birthyear: string;
+```
+
+##### birthyear\_needs\_agreement?
+
+```ts
+optional birthyear_needs_agreement: boolean;
+```
+
+##### ci?
+
+```ts
+optional ci: string;
+```
+
+##### ci\_authenticated\_at?
+
+```ts
+optional ci_authenticated_at: string;
+```
+
+##### ci\_needs\_agreement?
+
+```ts
+optional ci_needs_agreement: boolean;
+```
+
+##### email?
+
+```ts
+optional email: string;
+```
+
+##### email\_needs\_agreement?
+
+```ts
+optional email_needs_agreement: boolean;
+```
+
+##### gender?
+
+```ts
+optional gender: Gender;
+```
+
+##### gender\_needs\_agreement?
+
+```ts
+optional gender_needs_agreement: boolean;
+```
+
+##### is\_email\_valid?
+
+```ts
+optional is_email_valid: boolean;
+```
+
+##### is\_email\_verified?
+
+```ts
+optional is_email_verified: boolean;
+```
+
+##### name?
+
+```ts
+optional name: string;
+```
+
+##### name\_needs\_agreement?
+
+```ts
+optional name_needs_agreement: boolean;
+```
+
+##### phone\_number?
+
+```ts
+optional phone_number: string;
+```
+
+##### phone\_number\_needs\_agreement?
+
+```ts
+optional phone_number_needs_agreement: boolean;
+```
+
+##### profile?
+
+```ts
+optional profile: {
+  is_default_image: boolean;
+  nickname: string;
+  profile_image_url: string;
+  thumbnail_image_url: string;
+};
+```
+
+##### profile.is\_default\_image?
+
+```ts
+optional is_default_image: boolean;
+```
+
+##### profile.nickname?
+
+```ts
+optional nickname: string;
+```
+
+##### profile.profile\_image\_url?
+
+```ts
+optional profile_image_url: string;
+```
+
+##### profile.thumbnail\_image\_url?
+
+```ts
+optional thumbnail_image_url: string;
+```
+
+##### profile\_image\_needs\_agreement?
+
+```ts
+optional profile_image_needs_agreement: boolean;
+```
+
+##### profile\_needs\_agreement?
+
+```ts
+optional profile_needs_agreement: boolean;
+```
+
+##### profile\_nickname\_needs\_agreement?
+
+```ts
+optional profile_nickname_needs_agreement: boolean;
+```
+
+#### properties?
+
+```ts
+optional properties: {
+  id: string;
+  msg_blocked: boolean;
+  nickname: string;
+  profile_image: string;
+  registered_at: string;
+  status: string;
+  thumbnail_image: string;
+};
+```
+
+##### id?
+
+```ts
+optional id: string;
+```
+
+##### msg\_blocked?
+
+```ts
+optional msg_blocked: boolean;
+```
+
+##### nickname?
+
+```ts
+optional nickname: string;
+```
+
+##### profile\_image?
+
+```ts
+optional profile_image: string;
+```
+
+##### registered\_at?
+
+```ts
+optional registered_at: string;
+```
+
+##### status?
+
+```ts
+optional status: string;
+```
+
+##### thumbnail\_image?
+
+```ts
+optional thumbnail_image: string;
+```
+
+#### synched\_at?
+
+```ts
+optional synched_at: string;
+```
+
+***
+
+## AgeRange
+
+```ts
+type AgeRange: 
+  | "1-9"
+  | "10-14"
+  | "15-19"
+  | "20-29"
+  | "30-39"
+  | "40-49"
+  | "50-59"
+  | "60-69"
+  | "70-79"
+  | "80-89"
+  | "90-";
+```
+
+***
+
+## Birthday
+
+```ts
+type Birthday: "SOLAR" | "LUNAR";
+```
+
+***
+
+## DateTime
+
+```ts
+type DateTime: string;
+```
+
+***
+
+## Gender
+
+```ts
+type Gender: "female" | "male";
+```
+
+***
+
+## default()
+
+```ts
+default<P>(options): OAuthConfig<P>
+```
+
+Add Kakao login to your page.
+
+### Setup
+
+#### Callback URL
+```
+https://example.com/api/auth/callback/kakao
+```
+
+#### Configuration
+```ts
+import { Auth } from "@auth/core"
+import Kakao from "@auth/core/providers/kakao"
+
+const request = new Request(origin)
+const response = await Auth(request, {
+  providers: [
+    Kakao({ clientId: KAKAO_CLIENT_ID, clientSecret: KAKAO_CLIENT_SECRET }),
+  ],
+})
+```
+
+### Resources
+
+ - [Kakao OAuth documentation](https://developers.kakao.com/product/kakaoLogin)
+ - [Kakao OAuth configuration](https://developers.kakao.com/docs/latest/en/kakaologin/common)
+
+## Configuration
+Create a provider and a Kakao application at https://developers.kakao.com/console/app. In the settings of the app under Kakao Login, activate web app, change consent items and configure callback URL.
+
+### Notes
+
+By default, Auth.js assumes that the Kakao provider is
+based on the [OAuth 2](https://www.rfc-editor.org/rfc/rfc6749.html) specification.
+
+The "Authorized redirect URIs" used when creating the credentials must include your full domain and end in the callback path. For example;
+
+![스크린샷 2023-11-28 오후 9 27 41](https://github.com/nextauthjs/next-auth/assets/66895208/7d4c2df6-45a6-4937-bb10-4b47c987bff4)
+
+- For production: `https://{YOUR_DOMAIN}/api/auth/callback/kakao`
+- For development: `http://localhost:3000/api/auth/callback/kakao`
+
+
+<Callout type="default">
+  The Kakao provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/kakao.ts).
+To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/configuring-oauth-providers).
+</Callout>
+
+
+<Callout type="default">
+  Kakao's client key is in **Summary(It is written as 요약정보 in Korean.) tab's App Keys Field**
+(My Application > App Settings > Summary)
+
+![스크린샷 2023-11-28 오후 9 47 17](https://github.com/nextauthjs/next-auth/assets/66895208/a87e5705-26b9-4f83-99d7-6df097a3632c)
+
+Kakao's clientSecret key is in **Security(It is written as 보안 in Korean.) tab's App Keys Field**
+(My Application > Product Settings > Kakao Login > Security)
+
+![스크린샷 2023-11-28 오후 9 38 25](https://github.com/nextauthjs/next-auth/assets/66895208/6a763921-4f70-40f4-a3e1-9abc78276d45)
+</Callout>
+
+
+<Callout type="default">
+  Kakao dev console has a button at the top right to change from KR to ENG
+</Callout>
+
+
+<Callout type="info">
+  ****Disclaimer**** If you think you found a bug in the default configuration, you can [open an issue](https://authjs.dev/new/provider-issue).
+
+Auth.js strictly adheres to the specification and it cannot take responsibility for any deviation from
+the spec by the provider. You can open an issue, but if the problem is non-compliance with the spec,
+we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
+</Callout>
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `P` extends [`KakaoProfile`](kakao.mdx#kakaoprofile) |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options` | [`OAuthUserConfig`](../providers.mdx#oauthuserconfigprofile)\<`P`\> |
+
+### Returns
+
+[`OAuthConfig`](../providers.mdx#oauthconfigprofile)\<`P`\>

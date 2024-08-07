@@ -1,0 +1,330 @@
+import { Callout } from 'nextra/components';
+
+# providers/gitlab
+
+<div style={{backgroundColor: "#000", display: "flex", justifyContent: "space-between", color: "#fff", padding: 16}}>
+<span>Built-in <b>GitLab</b> integration.</span>
+<a href="https://gitlab.com">
+  <img style={{display: "block"}} src="https://authjs.dev/img/providers/gitlab.svg" height="48" width="48"/>
+</a>
+</div>
+
+## GitLabProfile
+
+### Extends
+
+- `Record`\<`string`, `any`\>
+
+### Properties
+
+#### avatar\_url
+
+```ts
+avatar_url: string;
+```
+
+#### bio
+
+```ts
+bio: string;
+```
+
+#### bot
+
+```ts
+bot: boolean;
+```
+
+#### can\_create\_group
+
+```ts
+can_create_group: boolean;
+```
+
+#### can\_create\_project
+
+```ts
+can_create_project: boolean;
+```
+
+#### color\_scheme\_id
+
+```ts
+color_scheme_id: number;
+```
+
+#### commit\_email
+
+```ts
+commit_email: string;
+```
+
+#### confirmed\_at
+
+```ts
+confirmed_at: string;
+```
+
+#### created\_at
+
+```ts
+created_at: string;
+```
+
+#### current\_sign\_in\_at
+
+```ts
+current_sign_in_at: string;
+```
+
+#### email
+
+```ts
+email: string;
+```
+
+#### external
+
+```ts
+external: boolean;
+```
+
+#### extra\_shared\_runners\_minutes\_limit
+
+```ts
+extra_shared_runners_minutes_limit: number;
+```
+
+#### followers
+
+```ts
+followers: number;
+```
+
+#### following
+
+```ts
+following: number;
+```
+
+#### id
+
+```ts
+id: number;
+```
+
+#### identities
+
+```ts
+identities: {
+  extern_uid: string;
+  provider: string;
+  }[];
+```
+
+#### job\_title
+
+```ts
+job_title: string;
+```
+
+#### last\_activity\_on
+
+```ts
+last_activity_on: string;
+```
+
+#### last\_sign\_in\_at
+
+```ts
+last_sign_in_at: string;
+```
+
+#### linkedin
+
+```ts
+linkedin: string;
+```
+
+#### local\_time
+
+```ts
+local_time: string;
+```
+
+#### location?
+
+```ts
+optional location: string;
+```
+
+#### name
+
+```ts
+name: string;
+```
+
+#### organization
+
+```ts
+organization: string;
+```
+
+#### private\_profile
+
+```ts
+private_profile: boolean;
+```
+
+#### projects\_limit
+
+```ts
+projects_limit: number;
+```
+
+#### pronouns
+
+```ts
+pronouns: string;
+```
+
+#### public\_email
+
+```ts
+public_email: string;
+```
+
+#### shared\_runners\_minutes\_limit
+
+```ts
+shared_runners_minutes_limit: number;
+```
+
+#### skype
+
+```ts
+skype: string;
+```
+
+#### state
+
+```ts
+state: string;
+```
+
+#### theme\_id
+
+```ts
+theme_id: number;
+```
+
+#### twitter
+
+```ts
+twitter: string;
+```
+
+#### two\_factor\_enabled
+
+```ts
+two_factor_enabled: boolean;
+```
+
+#### username
+
+```ts
+username: string;
+```
+
+#### web\_url
+
+```ts
+web_url: string;
+```
+
+#### website\_url
+
+```ts
+website_url: string;
+```
+
+#### work\_information?
+
+```ts
+optional work_information: string;
+```
+
+***
+
+## default()
+
+```ts
+default<P>(options): OAuthConfig<P>
+```
+
+Add GitLab login to your page.
+
+### Setup
+
+#### Callback URL
+```
+https://example.com/api/auth/callback/gitlab
+```
+
+#### Configuration
+```ts
+import { Auth } from "@auth/core"
+import GitLab from "@auth/core/providers/gitlab"
+
+const request = new Request(origin)
+const response = await Auth(request, {
+  providers: [
+    GitLab({ clientId: GITLAB_CLIENT_ID, clientSecret: GITLAB_CLIENT_SECRET }),
+  ],
+})
+```
+
+### Resources
+
+ - [GitLab OAuth documentation](https://docs.gitlab.com/ee/api/oauth2.html)
+
+### Notes
+
+By default, Auth.js assumes that the GitLab provider is
+based on the [OAuth 2](https://www.rfc-editor.org/rfc/rfc6749.html) specification.
+
+
+<Callout type="default">
+  Enable the `read_user` option in scope if you want to save the users email address on sign up.
+</Callout>
+
+
+<Callout type="default">
+  The GitLab provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/gitlab.ts).
+To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/configuring-oauth-providers).
+</Callout>
+
+
+<Callout type="info">
+  ****Disclaimer**** If you think you found a bug in the default configuration, you can [open an issue](https://authjs.dev/new/provider-issue).
+
+Auth.js strictly adheres to the specification and it cannot take responsibility for any deviation from
+the spec by the provider. You can open an issue, but if the problem is non-compliance with the spec,
+we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
+</Callout>
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `P` extends [`GitLabProfile`](gitlab.mdx#gitlabprofile) |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options` | [`OAuthUserConfig`](../providers.mdx#oauthuserconfigprofile)\<`P`\> |
+
+### Returns
+
+[`OAuthConfig`](../providers.mdx#oauthconfigprofile)\<`P`\>

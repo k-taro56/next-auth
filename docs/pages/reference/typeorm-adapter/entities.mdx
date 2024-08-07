@@ -1,0 +1,247 @@
+import { Callout } from 'nextra/components';
+
+# entities
+
+## AccountEntity
+
+### Constructors
+
+#### new AccountEntity(undefined)
+
+```ts
+new AccountEntity(): AccountEntity
+```
+
+##### Returns
+
+[`AccountEntity`](entities.mdx#accountentity)
+
+### Properties
+
+#### access\_token
+
+```ts
+access_token: null | string;
+```
+
+#### expires\_at
+
+```ts
+expires_at: null | number;
+```
+
+#### id
+
+```ts
+id: string;
+```
+
+#### id\_token
+
+```ts
+id_token: null | string;
+```
+
+#### provider
+
+```ts
+provider: string;
+```
+
+#### providerAccountId
+
+```ts
+providerAccountId: string;
+```
+
+#### refresh\_token
+
+```ts
+refresh_token: null | string;
+```
+
+#### scope
+
+```ts
+scope: null | string;
+```
+
+#### session\_state
+
+```ts
+session_state: null | string;
+```
+
+#### token\_type
+
+```ts
+token_type: null | string;
+```
+
+#### type
+
+```ts
+type: string;
+```
+
+#### user
+
+```ts
+user: UserEntity;
+```
+
+#### userId
+
+```ts
+userId: string;
+```
+
+***
+
+## SessionEntity
+
+### Constructors
+
+#### new SessionEntity(undefined)
+
+```ts
+new SessionEntity(): SessionEntity
+```
+
+##### Returns
+
+[`SessionEntity`](entities.mdx#sessionentity)
+
+### Properties
+
+#### expires
+
+```ts
+expires: string;
+```
+
+#### id
+
+```ts
+id: string;
+```
+
+#### sessionToken
+
+```ts
+sessionToken: string;
+```
+
+#### user
+
+```ts
+user: UserEntity;
+```
+
+#### userId
+
+```ts
+userId: string;
+```
+
+***
+
+## UserEntity
+
+### Constructors
+
+#### new UserEntity(undefined)
+
+```ts
+new UserEntity(): UserEntity
+```
+
+##### Returns
+
+[`UserEntity`](entities.mdx#userentity)
+
+### Properties
+
+#### accounts
+
+```ts
+accounts: AccountEntity[];
+```
+
+#### email
+
+```ts
+email: null | string;
+```
+
+#### emailVerified
+
+```ts
+emailVerified: null | string;
+```
+
+#### id
+
+```ts
+id: string;
+```
+
+#### image
+
+```ts
+image: null | string;
+```
+
+#### name
+
+```ts
+name: null | string;
+```
+
+#### sessions
+
+```ts
+sessions: SessionEntity[];
+```
+
+***
+
+## VerificationTokenEntity
+
+### Constructors
+
+#### new VerificationTokenEntity(undefined)
+
+```ts
+new VerificationTokenEntity(): VerificationTokenEntity
+```
+
+##### Returns
+
+[`VerificationTokenEntity`](entities.mdx#verificationtokenentity)
+
+### Properties
+
+#### expires
+
+```ts
+expires: string;
+```
+
+#### id
+
+```ts
+id: string;
+```
+
+#### identifier
+
+```ts
+identifier: string;
+```
+
+#### token
+
+```ts
+token: string;
+```

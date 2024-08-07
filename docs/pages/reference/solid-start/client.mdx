@@ -1,0 +1,76 @@
+import { Callout } from 'nextra/components';
+
+# client
+
+## SignInAuthorizationParams
+
+```ts
+type SignInAuthorizationParams: string | string[][] | Record<string, string> | URLSearchParams;
+```
+
+Match `inputType` of `new URLSearchParams(inputType)`
+
+***
+
+## signIn()
+
+```ts
+signIn<P>(
+   providerId?, 
+   options?, 
+authorizationParams?): Promise<undefined | Response>
+```
+
+Client-side method to initiate a signin flow
+or send the user to the signin page listing all possible providers.
+Automatically adds the CSRF token to the request.
+
+```ts
+import { signIn } from "@auth/solid-start/client"
+signIn()
+signIn("provider") // example: signIn("github")
+```
+
+### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `P` extends `undefined` \| [`RedirectableProviderType`](../core/providers.mdx#redirectableprovidertype) | `undefined` |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `providerId`? | `LiteralUnion`\<`P` extends [`RedirectableProviderType`](../core/providers.mdx#redirectableprovidertype) ? P \| BuiltInProviderType : [`BuiltInProviderType`](../core/providers.mdx#builtinprovidertype), `string`\> |
+| `options`? | `SignInOptions` |
+| `authorizationParams`? | [`SignInAuthorizationParams`](client.mdx#signinauthorizationparams) |
+
+### Returns
+
+`Promise`\<`undefined` \| [`Response`]( https://developer.mozilla.org/en-US/docs/Web/API/Response )\>
+
+***
+
+## signOut()
+
+```ts
+signOut(options?): Promise<void>
+```
+
+Signs the user out, by removing the session cookie.
+Automatically adds the CSRF token to the request.
+
+```ts
+import { signOut } from "@auth/solid-start/client"
+signOut()
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options`? | `SignOutParams`\<`true`\> |
+
+### Returns
+
+`Promise`\<`void`\>

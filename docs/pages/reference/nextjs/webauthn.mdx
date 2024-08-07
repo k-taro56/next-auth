@@ -1,0 +1,33 @@
+import { Callout } from 'nextra/components';
+
+# webauthn
+
+## signIn()
+
+```ts
+signIn<P>(
+   provider?, 
+   options?, 
+authorizationParams?): Promise<P extends RedirectableProviderType ? SignInResponse | undefined : undefined>
+```
+
+Initiate a signin flow or send the user to the signin page listing all possible providers.
+Handles CSRF protection.
+
+### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `P` extends `undefined` \| [`RedirectableProviderType`](../core/providers.mdx#redirectableprovidertype) | `undefined` |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `provider`? | [`LiteralUnion`](react.mdx#literaluniontu)\<`P` extends [`RedirectableProviderType`](../core/providers.mdx#redirectableprovidertype) ? BuiltInProviderType \| P : [`BuiltInProviderType`](../core/providers.mdx#builtinprovidertype)\> |
+| `options`? | [`SignInOptions`](react.mdx#signinoptions) |
+| `authorizationParams`? | `SignInAuthorizationParams` |
+
+### Returns
+
+`Promise`\<`P` extends [`RedirectableProviderType`](../core/providers.mdx#redirectableprovidertype) ? [`SignInResponse`](react.mdx#signinresponse) \| `undefined` : `undefined`\>

@@ -1,0 +1,581 @@
+import { Callout } from 'nextra/components';
+
+# models
+
+## Account
+
+```ts
+const Account: {
+  access_token: {
+     type: DataTypes.STRING;
+  };
+  expires_at: {
+     type: DataTypes.INTEGER;
+  };
+  id: {
+     defaultValue: DataTypes.UUIDV4;
+     primaryKey: true;
+     type: DataTypes.UUID;
+  };
+  id_token: {
+     type: DataTypes.TEXT;
+  };
+  provider: {
+     allowNull: false;
+     type: DataTypes.STRING;
+  };
+  providerAccountId: {
+     allowNull: false;
+     type: DataTypes.STRING;
+  };
+  refresh_token: {
+     type: DataTypes.STRING;
+  };
+  scope: {
+     type: DataTypes.STRING;
+  };
+  session_state: {
+     type: DataTypes.STRING;
+  };
+  token_type: {
+     type: DataTypes.STRING;
+  };
+  type: {
+     allowNull: false;
+     type: DataTypes.STRING;
+  };
+  userId: {
+     type: DataTypes.UUID;
+  };
+};
+```
+
+### Type declaration
+
+#### access\_token
+
+```ts
+access_token: {
+  type: DataTypes.STRING;
+};
+```
+
+#### access\_token.type
+
+```ts
+type: StringDataTypeConstructor = DataTypes.STRING;
+```
+
+#### expires\_at
+
+```ts
+expires_at: {
+  type: DataTypes.INTEGER;
+};
+```
+
+#### expires\_at.type
+
+```ts
+type: IntegerDataTypeConstructor = DataTypes.INTEGER;
+```
+
+#### id
+
+```ts
+id: {
+  defaultValue: DataTypes.UUIDV4;
+  primaryKey: true;
+  type: DataTypes.UUID;
+};
+```
+
+#### id.defaultValue
+
+```ts
+defaultValue: AbstractDataTypeConstructor = DataTypes.UUIDV4;
+```
+
+#### id.primaryKey
+
+```ts
+primaryKey: boolean = true;
+```
+
+#### id.type
+
+```ts
+type: AbstractDataTypeConstructor = DataTypes.UUID;
+```
+
+#### id\_token
+
+```ts
+id_token: {
+  type: DataTypes.TEXT;
+};
+```
+
+#### id\_token.type
+
+```ts
+type: TextDataTypeConstructor = DataTypes.TEXT;
+```
+
+#### provider
+
+```ts
+provider: {
+  allowNull: false;
+  type: DataTypes.STRING;
+};
+```
+
+#### provider.allowNull
+
+```ts
+allowNull: boolean = false;
+```
+
+#### provider.type
+
+```ts
+type: StringDataTypeConstructor = DataTypes.STRING;
+```
+
+#### providerAccountId
+
+```ts
+providerAccountId: {
+  allowNull: false;
+  type: DataTypes.STRING;
+};
+```
+
+#### providerAccountId.allowNull
+
+```ts
+allowNull: boolean = false;
+```
+
+#### providerAccountId.type
+
+```ts
+type: StringDataTypeConstructor = DataTypes.STRING;
+```
+
+#### refresh\_token
+
+```ts
+refresh_token: {
+  type: DataTypes.STRING;
+};
+```
+
+#### refresh\_token.type
+
+```ts
+type: StringDataTypeConstructor = DataTypes.STRING;
+```
+
+#### scope
+
+```ts
+scope: {
+  type: DataTypes.STRING;
+};
+```
+
+#### scope.type
+
+```ts
+type: StringDataTypeConstructor = DataTypes.STRING;
+```
+
+#### session\_state
+
+```ts
+session_state: {
+  type: DataTypes.STRING;
+};
+```
+
+#### session\_state.type
+
+```ts
+type: StringDataTypeConstructor = DataTypes.STRING;
+```
+
+#### token\_type
+
+```ts
+token_type: {
+  type: DataTypes.STRING;
+};
+```
+
+#### token\_type.type
+
+```ts
+type: StringDataTypeConstructor = DataTypes.STRING;
+```
+
+#### type
+
+```ts
+type: {
+  allowNull: false;
+  type: DataTypes.STRING;
+};
+```
+
+#### type.allowNull
+
+```ts
+allowNull: boolean = false;
+```
+
+#### type.type
+
+```ts
+type: StringDataTypeConstructor = DataTypes.STRING;
+```
+
+#### userId
+
+```ts
+userId: {
+  type: DataTypes.UUID;
+};
+```
+
+#### userId.type
+
+```ts
+type: AbstractDataTypeConstructor = DataTypes.UUID;
+```
+
+***
+
+## Session
+
+```ts
+const Session: {
+  expires: {
+     allowNull: false;
+     type: DataTypes.DATE;
+  };
+  id: {
+     defaultValue: DataTypes.UUIDV4;
+     primaryKey: true;
+     type: DataTypes.UUID;
+  };
+  sessionToken: {
+     allowNull: false;
+     type: DataTypes.STRING;
+     unique: "sessionToken";
+  };
+  userId: {
+     type: DataTypes.UUID;
+  };
+};
+```
+
+### Type declaration
+
+#### expires
+
+```ts
+expires: {
+  allowNull: false;
+  type: DataTypes.DATE;
+};
+```
+
+#### expires.allowNull
+
+```ts
+allowNull: boolean = false;
+```
+
+#### expires.type
+
+```ts
+type: DateDataTypeConstructor = DataTypes.DATE;
+```
+
+#### id
+
+```ts
+id: {
+  defaultValue: DataTypes.UUIDV4;
+  primaryKey: true;
+  type: DataTypes.UUID;
+};
+```
+
+#### id.defaultValue
+
+```ts
+defaultValue: AbstractDataTypeConstructor = DataTypes.UUIDV4;
+```
+
+#### id.primaryKey
+
+```ts
+primaryKey: boolean = true;
+```
+
+#### id.type
+
+```ts
+type: AbstractDataTypeConstructor = DataTypes.UUID;
+```
+
+#### sessionToken
+
+```ts
+sessionToken: {
+  allowNull: false;
+  type: DataTypes.STRING;
+  unique: "sessionToken";
+};
+```
+
+#### sessionToken.allowNull
+
+```ts
+allowNull: boolean = false;
+```
+
+#### sessionToken.type
+
+```ts
+type: StringDataTypeConstructor = DataTypes.STRING;
+```
+
+#### sessionToken.unique
+
+```ts
+unique: string = "sessionToken";
+```
+
+#### userId
+
+```ts
+userId: {
+  type: DataTypes.UUID;
+};
+```
+
+#### userId.type
+
+```ts
+type: AbstractDataTypeConstructor = DataTypes.UUID;
+```
+
+***
+
+## User
+
+```ts
+const User: {
+  email: {
+     type: DataTypes.STRING;
+     unique: "email";
+  };
+  emailVerified: {
+     type: DataTypes.DATE;
+  };
+  id: {
+     defaultValue: DataTypes.UUIDV4;
+     primaryKey: true;
+     type: DataTypes.UUID;
+  };
+  image: {
+     type: DataTypes.STRING;
+  };
+  name: {
+     type: DataTypes.STRING;
+  };
+};
+```
+
+### Type declaration
+
+#### email
+
+```ts
+email: {
+  type: DataTypes.STRING;
+  unique: "email";
+};
+```
+
+#### email.type
+
+```ts
+type: StringDataTypeConstructor = DataTypes.STRING;
+```
+
+#### email.unique
+
+```ts
+unique: string = "email";
+```
+
+#### emailVerified
+
+```ts
+emailVerified: {
+  type: DataTypes.DATE;
+};
+```
+
+#### emailVerified.type
+
+```ts
+type: DateDataTypeConstructor = DataTypes.DATE;
+```
+
+#### id
+
+```ts
+id: {
+  defaultValue: DataTypes.UUIDV4;
+  primaryKey: true;
+  type: DataTypes.UUID;
+};
+```
+
+#### id.defaultValue
+
+```ts
+defaultValue: AbstractDataTypeConstructor = DataTypes.UUIDV4;
+```
+
+#### id.primaryKey
+
+```ts
+primaryKey: boolean = true;
+```
+
+#### id.type
+
+```ts
+type: AbstractDataTypeConstructor = DataTypes.UUID;
+```
+
+#### image
+
+```ts
+image: {
+  type: DataTypes.STRING;
+};
+```
+
+#### image.type
+
+```ts
+type: StringDataTypeConstructor = DataTypes.STRING;
+```
+
+#### name
+
+```ts
+name: {
+  type: DataTypes.STRING;
+};
+```
+
+#### name.type
+
+```ts
+type: StringDataTypeConstructor = DataTypes.STRING;
+```
+
+***
+
+## VerificationToken
+
+```ts
+const VerificationToken: {
+  expires: {
+     allowNull: false;
+     type: DataTypes.DATE;
+  };
+  identifier: {
+     allowNull: false;
+     type: DataTypes.STRING;
+  };
+  token: {
+     primaryKey: true;
+     type: DataTypes.STRING;
+  };
+};
+```
+
+### Type declaration
+
+#### expires
+
+```ts
+expires: {
+  allowNull: false;
+  type: DataTypes.DATE;
+};
+```
+
+#### expires.allowNull
+
+```ts
+allowNull: boolean = false;
+```
+
+#### expires.type
+
+```ts
+type: DateDataTypeConstructor = DataTypes.DATE;
+```
+
+#### identifier
+
+```ts
+identifier: {
+  allowNull: false;
+  type: DataTypes.STRING;
+};
+```
+
+#### identifier.allowNull
+
+```ts
+allowNull: boolean = false;
+```
+
+#### identifier.type
+
+```ts
+type: StringDataTypeConstructor = DataTypes.STRING;
+```
+
+#### token
+
+```ts
+token: {
+  primaryKey: true;
+  type: DataTypes.STRING;
+};
+```
+
+#### token.primaryKey
+
+```ts
+primaryKey: boolean = true;
+```
+
+#### token.type
+
+```ts
+type: StringDataTypeConstructor = DataTypes.STRING;
+```

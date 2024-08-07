@@ -1,0 +1,1053 @@
+import { Callout } from 'nextra/components';
+
+# providers
+
+## CredentialInput
+
+Re-exports [CredentialInput](providers/credentials.mdx#credentialinput)
+
+## CredentialsConfig
+
+Re-exports [CredentialsConfig](providers/credentials.mdx#credentialsconfigcredentialsinputs)
+
+## CredentialsProviderType
+
+Re-exports [CredentialsProviderType](providers/credentials.mdx#credentialsprovidertype)
+
+## EmailConfig
+
+Re-exports [EmailConfig](providers/email.mdx#emailconfig)
+
+## EmailProviderType
+
+Re-exports [EmailProviderType](providers/email.mdx#emailprovidertype)
+
+## EmailUserConfig
+
+Re-exports [EmailUserConfig](providers/email.mdx#emailuserconfig)
+
+## AppProvider
+
+Shared across all [ProviderType](providers.mdx#providertype)
+
+### Extends
+
+- [`CommonProviderOptions`](providers.mdx#commonprovideroptions)
+
+### Properties
+
+#### callbackUrl
+
+```ts
+callbackUrl: string;
+```
+
+#### id
+
+```ts
+id: string;
+```
+
+Uniquely identifies the provider in AuthConfig.providers
+It's also part of the URL
+
+##### Inherited from
+
+[`CommonProviderOptions`](providers.mdx#commonprovideroptions).[`id`](providers.mdx#id-1)
+
+#### name
+
+```ts
+name: string;
+```
+
+The provider name used on the default sign-in page's sign-in button.
+For example if it's "Google", the corresponding button will say:
+"Sign in with Google"
+
+##### Inherited from
+
+[`CommonProviderOptions`](providers.mdx#commonprovideroptions).[`name`](providers.mdx#name-1)
+
+#### signinUrl
+
+```ts
+signinUrl: string;
+```
+
+#### type
+
+```ts
+type: ProviderType;
+```
+
+See [ProviderType](providers.mdx#providertype)
+
+##### Inherited from
+
+[`CommonProviderOptions`](providers.mdx#commonprovideroptions).[`type`](providers.mdx#type-1)
+
+***
+
+## CommonProviderOptions
+
+Shared across all [ProviderType](providers.mdx#providertype)
+
+### Extended by
+
+- [`CredentialsConfig`](providers/credentials.mdx#credentialsconfigcredentialsinputs)
+- [`EmailConfig`](providers/email.mdx#emailconfig)
+- [`AppProvider`](providers.mdx#appprovider)
+- [`WebAuthnConfig`](providers/webauthn.mdx#webauthnconfig)
+- [`OAuth2Config`](providers.mdx#oauth2configprofile)
+
+### Properties
+
+#### id
+
+```ts
+id: string;
+```
+
+Uniquely identifies the provider in AuthConfig.providers
+It's also part of the URL
+
+#### name
+
+```ts
+name: string;
+```
+
+The provider name used on the default sign-in page's sign-in button.
+For example if it's "Google", the corresponding button will say:
+"Sign in with Google"
+
+#### type
+
+```ts
+type: ProviderType;
+```
+
+See [ProviderType](providers.mdx#providertype)
+
+***
+
+## OAuth2Config\<Profile\>
+
+TODO: Document
+
+### Extends
+
+- [`CommonProviderOptions`](providers.mdx#commonprovideroptions).`PartialIssuer`
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `Profile` |
+
+### Properties
+
+#### account?
+
+```ts
+optional account: AccountCallback;
+```
+
+Receives the full [TokenSet](types.mdx#tokenset) returned by the OAuth provider, and returns a subset.
+It is used to create the account associated with a user in the database.
+
+
+<Callout type="info">
+  You need to adjust your database's [Account model](https://authjs.dev/reference/core/adapters#account) to match the returned properties.
+Check out the documentation of your [database adapter](https://authjs.dev/reference/core/adapters) for more information.
+</Callout>
+
+Defaults to: `access_token`, `id_token`, `refresh_token`, `expires_at`, `scope`, `token_type`, `session_state`
+
+##### Example
+
+```ts
+import GitHub from "@auth/core/providers/github"
+// ...
+GitHub({
+  account(account) {
+    // https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/refreshing-user-access-tokens#refreshing-a-user-access-token-with-a-refresh-token
+    const refresh_token_expires_at =
+      Math.floor(Date.now() / 1000) + Number(account.refresh_token_expires_in)
+    return {
+      access_token: account.access_token,
+      expires_at: account.expires_at,
+      refresh_token: account.refresh_token,
+      refresh_token_expires_at
+    }
+  }
+})
+```
+
+##### See
+
+ - [Database Adapter: Account model](https://authjs.dev/reference/core/adapters#account)
+ - https://openid.net/specs/openid-connect-core-1_0.html#TokenResponse
+ - https://www.ietf.org/rfc/rfc6749.html#section-5.1
+
+#### allowDangerousEmailAccountLinking?
+
+```ts
+optional allowDangerousEmailAccountLinking: boolean;
+```
+
+Normally, when you sign in with an OAuth provider and another account
+with the same email address already exists,
+the accounts are not linked automatically.
+
+Automatic account linking on sign in is not secure
+between arbitrary providers and is disabled by default.
+Learn more in our [Security FAQ](https://authjs.dev/concepts#security).
+
+However, it may be desirable to allow automatic account linking if you trust that the provider involved has securely verified the email address
+associated with the account. Set `allowDangerousEmailAccountLinking: true`
+to enable automatic account linking.
+
+#### authorization?
+
+```ts
+optional authorization: string | AuthorizationEndpointHandler;
+```
+
+The login process will be initiated by sending the user to this URL.
+
+[Authorization endpoint](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1)
+
+#### checks?
+
+```ts
+optional checks: ("none" | "state" | "pkce")[];
+```
+
+The CSRF protection performed on the callback endpoint.
+
+##### Default
+
+```ts
+["pkce"]
+```
+
+##### Note
+
+When `redirectProxyUrl` or [AuthConfig.redirectProxyUrl](../core.mdx#redirectproxyurl) is set,
+`"state"` will be added to checks automatically.
+
+[RFC 7636 - Proof Key for Code Exchange by OAuth Public Clients (PKCE)](https://www.rfc-editor.org/rfc/rfc7636.html#section-4) |
+[RFC 6749 - The OAuth 2.0 Authorization Framework](https://www.rfc-editor.org/rfc/rfc6749.html#section-4.1.1) |
+[OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) |
+
+#### client?
+
+```ts
+optional client: Partial<Client>;
+```
+
+Pass overrides to the underlying OAuth library.
+See [`oauth4webapi` client](https://github.com/panva/oauth4webapi/blob/main/docs/interfaces/Client.md) for details.
+
+#### clientId?
+
+```ts
+optional clientId: string;
+```
+
+#### clientSecret?
+
+```ts
+optional clientSecret: string;
+```
+
+#### id
+
+```ts
+id: string;
+```
+
+Identifies the provider when you want to sign in to
+a specific provider.
+
+##### Example
+
+```ts
+signIn('github') // "github" is the provider ID
+```
+
+##### Overrides
+
+[`CommonProviderOptions`](providers.mdx#commonprovideroptions).[`id`](providers.mdx#id-1)
+
+#### issuer?
+
+```ts
+optional issuer: string;
+```
+
+##### Overrides
+
+`PartialIssuer.issuer`
+
+#### jwks\_endpoint
+
+```ts
+jwks_endpoint: any;
+```
+
+##### Inherited from
+
+`PartialIssuer.jwks_endpoint`
+
+#### name
+
+```ts
+name: string;
+```
+
+The name of the provider. shown on the default sign in page.
+
+##### Overrides
+
+[`CommonProviderOptions`](providers.mdx#commonprovideroptions).[`name`](providers.mdx#name-1)
+
+#### profile?
+
+```ts
+optional profile: ProfileCallback<Profile>;
+```
+
+Receives the full [Profile](providers.mdx#oauth2configprofile) returned by the OAuth provider, and returns a subset.
+It is used to create the user in the database.
+
+Defaults to: `id`, `email`, `name`, `image`
+
+##### See
+
+[Database Adapter: User model](https://authjs.dev/reference/core/adapters#user)
+
+#### redirectProxyUrl?
+
+```ts
+optional redirectProxyUrl: string;
+```
+
+#### style?
+
+```ts
+optional style: OAuthProviderButtonStyles;
+```
+
+#### token?
+
+```ts
+optional token: string | TokenEndpointHandler;
+```
+
+#### type
+
+```ts
+type: "oauth";
+```
+
+See [ProviderType](providers.mdx#providertype)
+
+##### Overrides
+
+[`CommonProviderOptions`](providers.mdx#commonprovideroptions).[`type`](providers.mdx#type-1)
+
+#### userinfo?
+
+```ts
+optional userinfo: string | UserinfoEndpointHandler;
+```
+
+#### wellKnown?
+
+```ts
+optional wellKnown: string;
+```
+
+OpenID Connect (OIDC) compliant providers can configure
+this instead of `authorize`/`token`/`userinfo` options
+without further configuration needed in most cases.
+You can still use the `authorize`/`token`/`userinfo`
+options for advanced control.
+
+[Authorization Server Metadata](https://datatracker.ietf.org/doc/html/rfc8414#section-3)
+
+***
+
+## OAuthProviderButtonStyles
+
+### Properties
+
+#### ~~bg?~~
+
+```ts
+optional bg: string;
+```
+
+##### Deprecated
+
+Please use 'brandColor' instead
+
+#### brandColor?
+
+```ts
+optional brandColor: string;
+```
+
+#### logo?
+
+```ts
+optional logo: string;
+```
+
+#### ~~text?~~
+
+```ts
+optional text: string;
+```
+
+##### Deprecated
+
+***
+
+## OIDCConfig\<Profile\>
+
+Extension of the [OAuth2Config](providers.mdx#oauth2configprofile).
+
+### See
+
+https://openid.net/specs/openid-connect-core-1_0.html
+
+### Extends
+
+- `Omit`\<[`OAuth2Config`](providers.mdx#oauth2configprofile)\<`Profile`\>, `"type"` \| `"checks"`\>
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `Profile` |
+
+### Properties
+
+#### account?
+
+```ts
+optional account: AccountCallback;
+```
+
+Receives the full [TokenSet](types.mdx#tokenset) returned by the OAuth provider, and returns a subset.
+It is used to create the account associated with a user in the database.
+
+
+<Callout type="info">
+  You need to adjust your database's [Account model](https://authjs.dev/reference/core/adapters#account) to match the returned properties.
+Check out the documentation of your [database adapter](https://authjs.dev/reference/core/adapters) for more information.
+</Callout>
+
+Defaults to: `access_token`, `id_token`, `refresh_token`, `expires_at`, `scope`, `token_type`, `session_state`
+
+##### Example
+
+```ts
+import GitHub from "@auth/core/providers/github"
+// ...
+GitHub({
+  account(account) {
+    // https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/refreshing-user-access-tokens#refreshing-a-user-access-token-with-a-refresh-token
+    const refresh_token_expires_at =
+      Math.floor(Date.now() / 1000) + Number(account.refresh_token_expires_in)
+    return {
+      access_token: account.access_token,
+      expires_at: account.expires_at,
+      refresh_token: account.refresh_token,
+      refresh_token_expires_at
+    }
+  }
+})
+```
+
+##### See
+
+ - [Database Adapter: Account model](https://authjs.dev/reference/core/adapters#account)
+ - https://openid.net/specs/openid-connect-core-1_0.html#TokenResponse
+ - https://www.ietf.org/rfc/rfc6749.html#section-5.1
+
+##### Inherited from
+
+`Omit.account`
+
+#### allowDangerousEmailAccountLinking?
+
+```ts
+optional allowDangerousEmailAccountLinking: boolean;
+```
+
+Normally, when you sign in with an OAuth provider and another account
+with the same email address already exists,
+the accounts are not linked automatically.
+
+Automatic account linking on sign in is not secure
+between arbitrary providers and is disabled by default.
+Learn more in our [Security FAQ](https://authjs.dev/concepts#security).
+
+However, it may be desirable to allow automatic account linking if you trust that the provider involved has securely verified the email address
+associated with the account. Set `allowDangerousEmailAccountLinking: true`
+to enable automatic account linking.
+
+##### Inherited from
+
+`Omit.allowDangerousEmailAccountLinking`
+
+#### authorization?
+
+```ts
+optional authorization: string | AuthorizationEndpointHandler;
+```
+
+The login process will be initiated by sending the user to this URL.
+
+[Authorization endpoint](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1)
+
+##### Inherited from
+
+`Omit.authorization`
+
+#### checks?
+
+```ts
+optional checks: ("none" | "state" | "nonce" | "pkce")[];
+```
+
+#### client?
+
+```ts
+optional client: Partial<Client>;
+```
+
+Pass overrides to the underlying OAuth library.
+See [`oauth4webapi` client](https://github.com/panva/oauth4webapi/blob/main/docs/interfaces/Client.md) for details.
+
+##### Inherited from
+
+`Omit.client`
+
+#### clientId?
+
+```ts
+optional clientId: string;
+```
+
+##### Inherited from
+
+`Omit.clientId`
+
+#### clientSecret?
+
+```ts
+optional clientSecret: string;
+```
+
+##### Inherited from
+
+`Omit.clientSecret`
+
+#### id
+
+```ts
+id: string;
+```
+
+Identifies the provider when you want to sign in to
+a specific provider.
+
+##### Example
+
+```ts
+signIn('github') // "github" is the provider ID
+```
+
+##### Inherited from
+
+`Omit.id`
+
+#### idToken?
+
+```ts
+optional idToken: boolean;
+```
+
+If set to `false`, the `userinfo_endpoint` will be fetched for the user data.
+
+##### Note
+
+An `id_token` is still required to be returned during the authorization flow.
+
+#### issuer?
+
+```ts
+optional issuer: string;
+```
+
+##### Inherited from
+
+`Omit.issuer`
+
+#### jwks\_endpoint
+
+```ts
+jwks_endpoint: any;
+```
+
+##### Inherited from
+
+`Omit.jwks_endpoint`
+
+#### name
+
+```ts
+name: string;
+```
+
+The name of the provider. shown on the default sign in page.
+
+##### Inherited from
+
+`Omit.name`
+
+#### profile?
+
+```ts
+optional profile: ProfileCallback<Profile>;
+```
+
+Receives the full [Profile](providers.mdx#oauth2configprofile) returned by the OAuth provider, and returns a subset.
+It is used to create the user in the database.
+
+Defaults to: `id`, `email`, `name`, `image`
+
+##### See
+
+[Database Adapter: User model](https://authjs.dev/reference/core/adapters#user)
+
+##### Inherited from
+
+`Omit.profile`
+
+#### redirectProxyUrl?
+
+```ts
+optional redirectProxyUrl: string;
+```
+
+##### Inherited from
+
+`Omit.redirectProxyUrl`
+
+#### style?
+
+```ts
+optional style: OAuthProviderButtonStyles;
+```
+
+##### Inherited from
+
+`Omit.style`
+
+#### token?
+
+```ts
+optional token: string | TokenEndpointHandler;
+```
+
+##### Inherited from
+
+`Omit.token`
+
+#### type
+
+```ts
+type: "oidc";
+```
+
+#### userinfo?
+
+```ts
+optional userinfo: string | UserinfoEndpointHandler;
+```
+
+##### Inherited from
+
+`Omit.userinfo`
+
+#### wellKnown?
+
+```ts
+optional wellKnown: string;
+```
+
+OpenID Connect (OIDC) compliant providers can configure
+this instead of `authorize`/`token`/`userinfo` options
+without further configuration needed in most cases.
+You can still use the `authorize`/`token`/`userinfo`
+options for advanced control.
+
+[Authorization Server Metadata](https://datatracker.ietf.org/doc/html/rfc8414#section-3)
+
+##### Inherited from
+
+`Omit.wellKnown`
+
+***
+
+## AccountCallback()
+
+```ts
+type AccountCallback: (tokens) => TokenSet | undefined | void;
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `tokens` | [`TokenSet`](types.mdx#tokenset) |
+
+### Returns
+
+[`TokenSet`](types.mdx#tokenset) \| `undefined` \| `void`
+
+***
+
+## AppProviders
+
+```ts
+type AppProviders: (Provider | ReturnType<BuiltInProviders[keyof BuiltInProviders]>)[];
+```
+
+***
+
+## AuthorizationEndpointHandler
+
+```ts
+type AuthorizationEndpointHandler: EndpointHandler<AuthorizationParameters>;
+```
+
+***
+
+## BuiltInProviderType
+
+```ts
+type BuiltInProviderType: RedirectableProviderType | OAuthProviderType | WebAuthnProviderType;
+```
+
+***
+
+## BuiltInProviders
+
+```ts
+type BuiltInProviders: Record<OAuthProviderType, (config) => OAuthConfig<any>> & Record<CredentialsProviderType, typeof default> & Record<EmailProviderType, typeof default> & Record<WebAuthnProviderType, (config) => WebAuthnConfig>;
+```
+
+***
+
+## OAuthChecks
+
+```ts
+type OAuthChecks: OpenIDCallbackChecks | OAuthCallbackChecks;
+```
+
+***
+
+## OAuthConfig\<Profile\>
+
+```ts
+type OAuthConfig<Profile>: OIDCConfig<Profile> | OAuth2Config<Profile>;
+```
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `Profile` |
+
+***
+
+## OAuthEndpointType
+
+```ts
+type OAuthEndpointType: "authorization" | "token" | "userinfo";
+```
+
+***
+
+## OAuthProviderType
+
+```ts
+type OAuthProviderType: 
+  | "42-school"
+  | "apple"
+  | "asgardeo"
+  | "auth0"
+  | "authentik"
+  | "azure-ad-b2c"
+  | "azure-ad"
+  | "azure-devops"
+  | "bankid-no"
+  | "battlenet"
+  | "beyondidentity"
+  | "box"
+  | "boxyhq-saml"
+  | "bungie"
+  | "click-up"
+  | "cognito"
+  | "coinbase"
+  | "descope"
+  | "discord"
+  | "dribbble"
+  | "dropbox"
+  | "duende-identity-server6"
+  | "eveonline"
+  | "facebook"
+  | "faceit"
+  | "foursquare"
+  | "freshbooks"
+  | "fusionauth"
+  | "github"
+  | "gitlab"
+  | "google"
+  | "hubspot"
+  | "identity-server4"
+  | "instagram"
+  | "kakao"
+  | "keycloak"
+  | "line"
+  | "linkedin"
+  | "mailchimp"
+  | "mailru"
+  | "mastodon"
+  | "mattermost"
+  | "medium"
+  | "microsoft-entra-id"
+  | "naver"
+  | "netlify"
+  | "netsuite"
+  | "nodemailer"
+  | "notion"
+  | "okta"
+  | "onelogin"
+  | "ory-hydra"
+  | "osso"
+  | "osu"
+  | "passage"
+  | "passkey"
+  | "patreon"
+  | "pinterest"
+  | "pipedrive"
+  | "postmark"
+  | "reddit"
+  | "resend"
+  | "salesforce"
+  | "sendgrid"
+  | "simplelogin"
+  | "slack"
+  | "spotify"
+  | "strava"
+  | "threads"
+  | "tiktok"
+  | "todoist"
+  | "trakt"
+  | "twitch"
+  | "twitter"
+  | "united-effects"
+  | "vk"
+  | "webauthn"
+  | "webex"
+  | "wikimedia"
+  | "wordpress"
+  | "workos"
+  | "yandex"
+  | "zitadel"
+  | "zoho"
+  | "zoom";
+```
+
+***
+
+## OAuthUserConfig\<Profile\>
+
+```ts
+type OAuthUserConfig<Profile>: Omit<Partial<OAuthConfig<Profile>>, "options" | "type">;
+```
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `Profile` |
+
+***
+
+## OIDCConfigInternal\<Profile\>
+
+```ts
+type OIDCConfigInternal<Profile>: OAuthConfigInternal<Profile> & {
+  checks: OIDCConfig<Profile>["checks"];
+  idToken: OIDCConfig<Profile>["idToken"];
+};
+```
+
+### Type declaration
+
+#### checks
+
+```ts
+checks: OIDCConfig<Profile>["checks"];
+```
+
+#### idToken
+
+```ts
+idToken: OIDCConfig<Profile>["idToken"];
+```
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `Profile` |
+
+***
+
+## OIDCUserConfig\<Profile\>
+
+```ts
+type OIDCUserConfig<Profile>: Omit<Partial<OIDCConfig<Profile>>, "options" | "type">;
+```
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `Profile` |
+
+***
+
+## ProfileCallback()\<Profile\>
+
+```ts
+type ProfileCallback<Profile>: (profile, tokens) => Awaitable<User>;
+```
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `Profile` |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `profile` | `Profile` |
+| `tokens` | [`TokenSet`](types.mdx#tokenset) |
+
+### Returns
+
+[`Awaitable`](types.mdx#awaitablet)\<[`User`](types.mdx#user-2)\>
+
+***
+
+## Provider\<P\>
+
+```ts
+type Provider<P>: 
+  | OIDCConfig<P>
+  | OAuth2Config<P>
+  | EmailConfig
+  | CredentialsConfig
+  | WebAuthnConfig & InternalProviderOptions | (...args) => 
+  | OAuth2Config<P>
+  | OIDCConfig<P>
+  | EmailConfig
+  | CredentialsConfig
+  | WebAuthnConfig & InternalProviderOptions & InternalProviderOptions;
+```
+
+Must be a supported authentication provider config:
+- [OAuthConfig](providers.mdx#oauthconfigprofile)
+- EmailConfigInternal
+- CredentialsConfigInternal
+
+For more information, see the guides:
+
+### See
+
+ - [OAuth/OIDC guide](https://authjs.dev/guides/providers/custom-provider)
+ - [Email (Passwordless) guide](https://authjs.dev/guides/providers/email)
+ - [Credentials guide](https://authjs.dev/guides/providers/credentials)
+
+### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `P` extends [`Profile`](types.mdx#profile) | `any` |
+
+***
+
+## ProviderType
+
+```ts
+type ProviderType: 
+  | "oidc"
+  | "oauth"
+  | "email"
+  | "credentials"
+  | WebAuthnProviderType;
+```
+
+Providers passed to Auth.js must define one of these types.
+
+### See
+
+ - [RFC 6749 - The OAuth 2.0 Authorization Framework](https://www.rfc-editor.org/rfc/rfc6749.html#section-2.3)
+ - [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)
+ - [Email or Passwordless Authentication](https://authjs.dev/concepts/oauth)
+ - [Credentials-based Authentication](https://authjs.dev/concepts/credentials)
+
+***
+
+## RedirectableProviderType
+
+```ts
+type RedirectableProviderType: "email" | "credentials";
+```
+
+***
+
+## TokenEndpointHandler
+
+```ts
+type TokenEndpointHandler: EndpointHandler<UrlParams, {
+  checks: OAuthChecks;
+  params: CallbackParamsType;
+  }, {
+  tokens: TokenSet;
+}>;
+```
+
+***
+
+## UserinfoEndpointHandler
+
+```ts
+type UserinfoEndpointHandler: EndpointHandler<UrlParams, {
+  tokens: TokenSet;
+}, Profile>;
+```

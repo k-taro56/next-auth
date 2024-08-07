@@ -1,0 +1,389 @@
+import { Callout } from 'nextra/components';
+
+# providers/github
+
+<div style={{backgroundColor: "#24292f", display: "flex", justifyContent: "space-between", color: "#fff", padding: 16}}>
+<span>Built-in <b>GitHub</b> integration.</span>
+<a href="https://github.com">
+  <img style={{display: "block"}} src="https://authjs.dev/img/providers/github.svg" height="48" width="48"/>
+</a>
+</div>
+
+## GitHubEmail
+
+### Properties
+
+#### email
+
+```ts
+email: string;
+```
+
+#### primary
+
+```ts
+primary: boolean;
+```
+
+#### verified
+
+```ts
+verified: boolean;
+```
+
+#### visibility
+
+```ts
+visibility: "public" | "private";
+```
+
+***
+
+## GitHubProfile
+
+### See
+
+[Get the authenticated user](https://docs.github.com/en/rest/users/users#get-the-authenticated-user)
+
+### Indexable
+
+ \[`claim`: `string`\]: `unknown`
+
+### Properties
+
+#### avatar\_url
+
+```ts
+avatar_url: string;
+```
+
+#### bio
+
+```ts
+bio: null | string;
+```
+
+#### blog
+
+```ts
+blog: null | string;
+```
+
+#### collaborators?
+
+```ts
+optional collaborators: number;
+```
+
+#### company
+
+```ts
+company: null | string;
+```
+
+#### created\_at
+
+```ts
+created_at: string;
+```
+
+#### disk\_usage?
+
+```ts
+optional disk_usage: number;
+```
+
+#### email
+
+```ts
+email: null | string;
+```
+
+#### events\_url
+
+```ts
+events_url: string;
+```
+
+#### followers
+
+```ts
+followers: number;
+```
+
+#### followers\_url
+
+```ts
+followers_url: string;
+```
+
+#### following
+
+```ts
+following: number;
+```
+
+#### following\_url
+
+```ts
+following_url: string;
+```
+
+#### gists\_url
+
+```ts
+gists_url: string;
+```
+
+#### gravatar\_id
+
+```ts
+gravatar_id: null | string;
+```
+
+#### hireable
+
+```ts
+hireable: null | boolean;
+```
+
+#### html\_url
+
+```ts
+html_url: string;
+```
+
+#### id
+
+```ts
+id: number;
+```
+
+#### location
+
+```ts
+location: null | string;
+```
+
+#### login
+
+```ts
+login: string;
+```
+
+#### name
+
+```ts
+name: null | string;
+```
+
+#### node\_id
+
+```ts
+node_id: string;
+```
+
+#### organizations\_url
+
+```ts
+organizations_url: string;
+```
+
+#### owned\_private\_repos?
+
+```ts
+optional owned_private_repos: number;
+```
+
+#### plan?
+
+```ts
+optional plan: {
+  collaborators: number;
+  name: string;
+  private_repos: number;
+  space: number;
+};
+```
+
+##### collaborators
+
+```ts
+collaborators: number;
+```
+
+##### name
+
+```ts
+name: string;
+```
+
+##### private\_repos
+
+```ts
+private_repos: number;
+```
+
+##### space
+
+```ts
+space: number;
+```
+
+#### private\_gists?
+
+```ts
+optional private_gists: number;
+```
+
+#### public\_gists
+
+```ts
+public_gists: number;
+```
+
+#### public\_repos
+
+```ts
+public_repos: number;
+```
+
+#### received\_events\_url
+
+```ts
+received_events_url: string;
+```
+
+#### repos\_url
+
+```ts
+repos_url: string;
+```
+
+#### site\_admin
+
+```ts
+site_admin: boolean;
+```
+
+#### starred\_url
+
+```ts
+starred_url: string;
+```
+
+#### subscriptions\_url
+
+```ts
+subscriptions_url: string;
+```
+
+#### suspended\_at?
+
+```ts
+optional suspended_at: null | string;
+```
+
+#### total\_private\_repos?
+
+```ts
+optional total_private_repos: number;
+```
+
+#### twitter\_username?
+
+```ts
+optional twitter_username: null | string;
+```
+
+#### two\_factor\_authentication
+
+```ts
+two_factor_authentication: boolean;
+```
+
+#### type
+
+```ts
+type: string;
+```
+
+#### updated\_at
+
+```ts
+updated_at: string;
+```
+
+#### url
+
+```ts
+url: string;
+```
+
+***
+
+## default()
+
+```ts
+default(config): OAuthConfig<GitHubProfile>
+```
+
+Add GitHub login to your page and make requests to [GitHub APIs](https://docs.github.com/en/rest).
+
+### Setup
+
+#### Callback URL
+```
+https://example.com/api/auth/callback/github
+```
+
+#### Configuration
+```ts
+import { Auth } from "@auth/core"
+import GitHub from "@auth/core/providers/github"
+
+const request = new Request(origin)
+const response = await Auth(request, {
+  providers: [
+    GitHub({ clientId: GITHUB_CLIENT_ID, clientSecret: GITHUB_CLIENT_SECRET }),
+  ],
+})
+```
+
+### Resources
+
+- [GitHub - Creating an OAuth App](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app)
+- [GitHub - Authorizing OAuth Apps](https://docs.github.com/en/developers/apps/building-oauth-apps/authorizing-oauth-apps)
+- [GitHub - Configure your GitHub OAuth Apps](https://github.com/settings/developers)
+- [Learn more about OAuth](https://authjs.dev/concepts/oauth)
+- [Source code](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/github.ts)
+
+### Notes
+
+By default, Auth.js assumes that the GitHub provider is
+based on the [OAuth 2](https://www.rfc-editor.org/rfc/rfc6749.html) specification.
+
+
+<Callout type="default">
+  The GitHub provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/github.ts).
+To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/configuring-oauth-providers).
+</Callout>
+
+
+<Callout type="info">
+  ****Disclaimer**** If you think you found a bug in the default configuration, you can [open an issue](https://authjs.dev/new/provider-issue).
+
+Auth.js strictly adheres to the specification and it cannot take responsibility for any deviation from
+the spec by the provider. You can open an issue, but if the problem is non-compliance with the spec,
+we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
+</Callout>
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `config` | [`OAuthUserConfig`](../providers.mdx#oauthuserconfigprofile)\<[`GitHubProfile`](github.mdx#githubprofile)\> & \{ `enterprise`: \{ `baseUrl`: `string`; }; } |
+
+### Returns
+
+[`OAuthConfig`](../providers.mdx#oauthconfigprofile)\<[`GitHubProfile`](github.mdx#githubprofile)\>

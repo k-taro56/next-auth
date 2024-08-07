@@ -1,0 +1,95 @@
+import { Callout } from 'nextra/components';
+
+# client
+
+## SignInOptions
+
+### Extends
+
+- `Record`\<`string`, `unknown`\>
+
+### Properties
+
+#### callbackUrl?
+
+```ts
+optional callbackUrl: string;
+```
+
+Specify to which URL the user will be redirected after signing in. Defaults to the page URL the sign-in is initiated from.
+
+[Documentation](https://next-auth.js.org/getting-started/client#specifying-a-callbackurl)
+
+#### redirect?
+
+```ts
+optional redirect: boolean;
+```
+
+[Documentation](https://next-auth.js.org/getting-started/client#using-the-redirect-false-option)
+
+***
+
+## SignInAuthorizationParams
+
+```ts
+type SignInAuthorizationParams: string | string[][] | Record<string, string> | URLSearchParams;
+```
+
+Match `inputType` of `new URLSearchParams(inputType)`
+
+***
+
+## signIn()
+
+```ts
+signIn<P>(
+   providerId?, 
+   options?, 
+authorizationParams?): Promise<undefined | Response>
+```
+
+Client-side method to initiate a signin flow
+or send the user to the signin page listing all possible providers.
+
+[Documentation](https://authjs.dev/reference/sveltekit/client#signin)
+
+### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `P` extends `undefined` \| [`RedirectableProviderType`](../core/providers.mdx#redirectableprovidertype) | `undefined` |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `providerId`? | [`LiteralUnion`](types.mdx#literaluniontu)\<`P` extends [`RedirectableProviderType`](../core/providers.mdx#redirectableprovidertype) ? BuiltInProviderType \| P : [`BuiltInProviderType`](../core/providers.mdx#builtinprovidertype)\> |
+| `options`? | [`SignInOptions`](client.mdx#signinoptions) |
+| `authorizationParams`? | [`SignInAuthorizationParams`](client.mdx#signinauthorizationparams) |
+
+### Returns
+
+`Promise`\<`undefined` \| [`Response`]( https://developer.mozilla.org/en-US/docs/Web/API/Response )\>
+
+***
+
+## signOut()
+
+```ts
+signOut(options?): Promise<void>
+```
+
+Signs the user out, by removing the session cookie.
+
+[Documentation](https://authjs.dev/reference/sveltekit/client#signout)
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options`? | `SignOutParams`\<`true`\> |
+
+### Returns
+
+`Promise`\<`void`\>

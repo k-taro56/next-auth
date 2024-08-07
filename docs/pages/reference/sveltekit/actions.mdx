@@ -1,0 +1,70 @@
+import { Callout } from 'nextra/components';
+
+# actions
+
+## auth()
+
+```ts
+auth(event, config): ReturnType<App.Locals["auth"]>
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `event` | `RequestEvent`\<`Partial`\<`Record`\<`string`, `string`\>\>, `null` \| `string`\> |
+| `config` | [`SvelteKitAuthConfig`](types.mdx#sveltekitauthconfig) |
+
+### Returns
+
+`ReturnType`\<`App.Locals`\[`"auth"`\]\>
+
+***
+
+## signIn()
+
+```ts
+signIn(
+   provider, 
+   options, 
+   authorizationParams, 
+   config, 
+event): Promise<any>
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `provider` | `undefined` \| [`BuiltInProviderType`](../core/providers.mdx#builtinprovidertype) \| `string` & \{} |
+| `options` | `undefined` \| `FormData` \| \{ `redirect`: `boolean`; `redirectTo`: `string`; } & `Record`\<`string`, `any`\> |
+| `authorizationParams` |  \| `undefined` \| `string` \| `Record`\<`string`, `string`\> \| [`URLSearchParams`]( https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams ) \| `string`[][] |
+| `config` | [`SvelteKitAuthConfig`](types.mdx#sveltekitauthconfig) |
+| `event` | `RequestEvent`\<`Partial`\<`Record`\<`string`, `string`\>\>, `null` \| `string`\> |
+
+### Returns
+
+`Promise`\<`any`\>
+
+***
+
+## signOut()
+
+```ts
+signOut(
+   options, 
+   config, 
+event): Promise<any>
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options` | `undefined` \| \{ `redirect`: `boolean`; `redirectTo`: `string`; } |
+| `config` | [`SvelteKitAuthConfig`](types.mdx#sveltekitauthconfig) |
+| `event` | `RequestEvent`\<`Partial`\<`Record`\<`string`, `string`\>\>, `null` \| `string`\> |
+
+### Returns
+
+`Promise`\<`any`\>

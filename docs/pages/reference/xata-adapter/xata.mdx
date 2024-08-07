@@ -1,0 +1,353 @@
+import { Callout } from 'nextra/components';
+
+# xata
+
+## XataClient
+
+### Extends
+
+- `DatabaseClient`\<[`DatabaseSchema`](xata.mdx#databaseschema)\>
+
+### Constructors
+
+#### new XataClient(options)
+
+```ts
+new XataClient(options?): XataClient
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options`? | `BaseClientOptions` |
+
+##### Returns
+
+[`XataClient`](xata.mdx#xataclient)
+
+##### Overrides
+
+`DatabaseClient<DatabaseSchema>.constructor`
+
+### Methods
+
+#### getConfig()
+
+```ts
+getConfig(): Promise<{
+  branch: string;
+  databaseURL: string;
+}>
+```
+
+##### Returns
+
+`Promise`\<\{
+  `branch`: `string`;
+  `databaseURL`: `string`;
+  }\>
+
+> ###### branch
+>
+> ```ts
+> branch: string;
+> ```
+>
+> ###### databaseURL
+>
+> ```ts
+> databaseURL: string;
+> ```
+>
+
+##### Inherited from
+
+`DatabaseClient.getConfig`
+
+***
+
+## NextauthAccount
+
+### Properties
+
+#### access\_token?
+
+```ts
+optional access_token: null | string;
+```
+
+#### expires\_at?
+
+```ts
+optional expires_at: null | number;
+```
+
+#### id\_token?
+
+```ts
+optional id_token: null | string;
+```
+
+#### provider?
+
+```ts
+optional provider: null | string;
+```
+
+#### providerAccountId?
+
+```ts
+optional providerAccountId: null | string;
+```
+
+#### refresh\_token?
+
+```ts
+optional refresh_token: null | string;
+```
+
+#### scope?
+
+```ts
+optional scope: null | string;
+```
+
+#### session\_state?
+
+```ts
+optional session_state: null | string;
+```
+
+#### token\_type?
+
+```ts
+optional token_type: null | string;
+```
+
+#### type?
+
+```ts
+optional type: null | string;
+```
+
+#### user?
+
+```ts
+optional user: null | NextauthUserRecord;
+```
+
+***
+
+## NextauthSession
+
+### Properties
+
+#### expires?
+
+```ts
+optional expires: null | Date;
+```
+
+#### sessionToken?
+
+```ts
+optional sessionToken: null | string;
+```
+
+#### user?
+
+```ts
+optional user: null | NextauthUserRecord;
+```
+
+***
+
+## NextauthUser
+
+### Properties
+
+#### email?
+
+```ts
+optional email: null | string;
+```
+
+#### emailVerified?
+
+```ts
+optional emailVerified: null | Date;
+```
+
+#### image?
+
+```ts
+optional image: null | string;
+```
+
+#### name?
+
+```ts
+optional name: null | string;
+```
+
+***
+
+## NextauthUsersAccount
+
+### Properties
+
+#### account?
+
+```ts
+optional account: null | NextauthAccountRecord;
+```
+
+#### user?
+
+```ts
+optional user: null | NextauthUserRecord;
+```
+
+***
+
+## NextauthUsersSession
+
+### Properties
+
+#### session?
+
+```ts
+optional session: null | NextauthSessionRecord;
+```
+
+#### user?
+
+```ts
+optional user: null | NextauthUserRecord;
+```
+
+***
+
+## NextauthVerificationToken
+
+### Properties
+
+#### expires?
+
+```ts
+optional expires: null | Date;
+```
+
+#### identifier?
+
+```ts
+optional identifier: null | string;
+```
+
+#### token?
+
+```ts
+optional token: null | string;
+```
+
+***
+
+## DatabaseSchema
+
+```ts
+type DatabaseSchema: {
+  nextauth_accounts: NextauthAccountRecord;
+  nextauth_sessions: NextauthSessionRecord;
+  nextauth_users: NextauthUserRecord;
+  nextauth_users_accounts: NextauthUsersAccountRecord;
+  nextauth_users_sessions: NextauthUsersSessionRecord;
+  nextauth_verificationTokens: NextauthVerificationTokenRecord;
+};
+```
+
+### Type declaration
+
+#### nextauth\_accounts
+
+```ts
+nextauth_accounts: NextauthAccountRecord;
+```
+
+#### nextauth\_sessions
+
+```ts
+nextauth_sessions: NextauthSessionRecord;
+```
+
+#### nextauth\_users
+
+```ts
+nextauth_users: NextauthUserRecord;
+```
+
+#### nextauth\_users\_accounts
+
+```ts
+nextauth_users_accounts: NextauthUsersAccountRecord;
+```
+
+#### nextauth\_users\_sessions
+
+```ts
+nextauth_users_sessions: NextauthUsersSessionRecord;
+```
+
+#### nextauth\_verificationTokens
+
+```ts
+nextauth_verificationTokens: NextauthVerificationTokenRecord;
+```
+
+***
+
+## NextauthAccountRecord
+
+```ts
+type NextauthAccountRecord: NextauthAccount & XataRecord;
+```
+
+***
+
+## NextauthSessionRecord
+
+```ts
+type NextauthSessionRecord: NextauthSession & XataRecord;
+```
+
+***
+
+## NextauthUserRecord
+
+```ts
+type NextauthUserRecord: NextauthUser & XataRecord;
+```
+
+***
+
+## NextauthUsersAccountRecord
+
+```ts
+type NextauthUsersAccountRecord: NextauthUsersAccount & XataRecord;
+```
+
+***
+
+## NextauthUsersSessionRecord
+
+```ts
+type NextauthUsersSessionRecord: NextauthUsersSession & XataRecord;
+```
+
+***
+
+## NextauthVerificationTokenRecord
+
+```ts
+type NextauthVerificationTokenRecord: NextauthVerificationToken & XataRecord;
+```

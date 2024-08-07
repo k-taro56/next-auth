@@ -1,0 +1,197 @@
+import { Callout } from 'nextra/components';
+
+# lib/client
+
+## HasuraClientError
+
+### Extends
+
+- `Error`
+
+### Constructors
+
+#### new HasuraClientError(errors, query, variables)
+
+```ts
+new HasuraClientError(
+   errors, 
+   query, 
+   variables): HasuraClientError
+```
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `errors` | `any`[] |
+| `query` | `TypedDocumentString`\<`any`, `any`\> |
+| `variables` | `any` |
+
+##### Returns
+
+[`HasuraClientError`](client.mdx#hasuraclienterror)
+
+##### Overrides
+
+`Error.constructor`
+
+### Properties
+
+#### message
+
+```ts
+message: string;
+```
+
+##### Inherited from
+
+`Error.message`
+
+#### name
+
+```ts
+name: string = "HasuraClientError";
+```
+
+##### Overrides
+
+`Error.name`
+
+#### stack?
+
+```ts
+optional stack: string;
+```
+
+##### Inherited from
+
+`Error.stack`
+
+#### prepareStackTrace()?
+
+```ts
+static optional prepareStackTrace: (err, stackTraces) => any;
+```
+
+Optional override for formatting stack traces
+
+##### See
+
+https://v8.dev/docs/stack-trace-api#customizing-stack-traces
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `err` | `Error` |
+| `stackTraces` | `CallSite`[] |
+
+##### Returns
+
+`any`
+
+##### Inherited from
+
+`Error.prepareStackTrace`
+
+#### stackTraceLimit
+
+```ts
+static stackTraceLimit: number;
+```
+
+##### Inherited from
+
+`Error.stackTraceLimit`
+
+### Methods
+
+#### captureStackTrace()
+
+```ts
+static captureStackTrace(targetObject, constructorOpt?): void
+```
+
+Create .stack property on a target object
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `targetObject` | `object` |
+| `constructorOpt`? | `Function` |
+
+##### Returns
+
+`void`
+
+##### Inherited from
+
+`Error.captureStackTrace`
+
+***
+
+## HasuraAdapterClient
+
+### Properties
+
+#### adminSecret
+
+```ts
+adminSecret: string;
+```
+
+`x-hasura-admin-secret` header value
+
+[Hasura Authentication](https://hasura.io/docs/search/?q=x-hasura-admin-secret)
+
+#### endpoint
+
+```ts
+endpoint: string;
+```
+
+***
+
+## client()
+
+```ts
+client(__namedParameters): {
+  run: Promise<T>;
+}
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `__namedParameters` | [`HasuraAdapterClient`](client.mdx#hasuraadapterclient) |
+
+### Returns
+
+```ts
+{
+  run: Promise<T>;
+}
+```
+
+#### run()
+
+##### Type parameters
+
+| Type parameter |
+| :------ |
+| `Q` extends `TypedDocumentString`\<`any`, `any`\> |
+| `T` extends `any` |
+| `V` extends `any` |
+
+##### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `query` | `Q` |
+| `variables`? | `V` |
+
+##### Returns
+
+`Promise`\<`T`\>

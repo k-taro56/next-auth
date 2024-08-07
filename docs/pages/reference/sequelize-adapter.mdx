@@ -1,0 +1,92 @@
+import { Callout } from 'nextra/components';
+
+# @auth/sequelize-adapter
+
+<div style={{display: "flex", justifyContent: "space-between", alignItems: "center", padding: 16}}>
+ <p>Official <a href="https://sequelize.org/docs/v6/getting-started/">Sequilize</a> adapter for Auth.js / NextAuth.js.</p>
+ <a href="https://sequelize.org/">
+  <img style={{display: "block"}} src="https://authjs.dev/img/adapters/sequelize.svg" height="30"/>
+ </a>
+</div>
+
+## Installation
+
+```bash npm2yarn
+npm install next-auth @auth/sequelize-adapter sequelize
+```
+
+## models
+
+Re-exports [models](sequelize-adapter/models.mdx)
+
+## SequelizeAdapterOptions
+
+This is the interface of the Sequelize adapter options.
+
+### Properties
+
+#### models?
+
+```ts
+optional models: Partial<{
+  Account: ModelCtor<AccountInstance>;
+  Session: ModelCtor<SessionInstance>;
+  User: ModelCtor<UserInstance>;
+  VerificationToken: ModelCtor<VerificationTokenInstance>;
+}>;
+```
+
+The [Sequelize Models](https://sequelize.org/docs/v6/core-concepts/model-basics/) related to Auth.js that will be created in your database.
+
+##### Type declaration
+
+###### Account
+
+```ts
+Account: ModelCtor<AccountInstance>;
+```
+
+###### Session
+
+```ts
+Session: ModelCtor<SessionInstance>;
+```
+
+###### User
+
+```ts
+User: ModelCtor<UserInstance>;
+```
+
+###### VerificationToken
+
+```ts
+VerificationToken: ModelCtor<VerificationTokenInstance>;
+```
+
+#### synchronize?
+
+```ts
+optional synchronize: boolean;
+```
+
+Whether to [synchronize](sequelize-adapter.mdx#synchronize) the models or not.
+
+***
+
+## default()
+
+```ts
+default(client, options?): Adapter
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `client` | `Sequelize` |
+| `options`? | [`SequelizeAdapterOptions`](sequelize-adapter.mdx#sequelizeadapteroptions) |
+
+### Returns
+
+[`Adapter`](express/adapters.mdx#adapter)

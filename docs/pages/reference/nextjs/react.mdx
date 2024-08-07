@@ -1,0 +1,444 @@
+import { Callout } from 'nextra/components';
+
+# react
+
+NextAuth.js methods and components that work in [Client components](https://nextjs.org/docs/app/building-your-application/rendering/client-components) and the [Pages Router](https://nextjs.org/docs/pages).
+
+For use in [Server Actions](https://nextjs.org/docs/app/api-reference/functions/server-actions), check out [these methods](https://authjs.dev/guides/upgrade-to-v5#methods)
+
+## GetSessionParams
+
+### Properties
+
+#### broadcast?
+
+```ts
+optional broadcast: boolean;
+```
+
+#### event?
+
+```ts
+optional event: string;
+```
+
+#### triggerEvent?
+
+```ts
+optional triggerEvent: boolean;
+```
+
+***
+
+## SessionProviderProps
+
+If you have session expiry times of 30 days (the default) or more, then you probably don't need to change any of the default options.
+
+However, if you need to customize the session behavior and/or are using short session expiry times, you can pass options to the provider to customize the behavior of the [useSession](react.mdx#usesession) hook.
+
+### Properties
+
+#### basePath?
+
+```ts
+optional basePath: string;
+```
+
+#### baseUrl?
+
+```ts
+optional baseUrl: string;
+```
+
+#### children
+
+```ts
+children: ReactNode;
+```
+
+#### refetchInterval?
+
+```ts
+optional refetchInterval: number;
+```
+
+A time interval (in seconds) after which the session will be re-fetched.
+If set to `0` (default), the session is not polled.
+
+#### refetchOnWindowFocus?
+
+```ts
+optional refetchOnWindowFocus: boolean;
+```
+
+`SessionProvider` automatically refetches the session when the user switches between windows.
+This option activates this behaviour if set to `true` (default).
+
+#### refetchWhenOffline?
+
+```ts
+optional refetchWhenOffline: false;
+```
+
+Set to `false` to stop polling when the device has no internet access offline (determined by `navigator.onLine`)
+
+[`navigator.onLine` documentation](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine/onLine)
+
+#### session?
+
+```ts
+optional session: null | Session;
+```
+
+***
+
+## SignInOptions
+
+### Extends
+
+- `Record`\<`string`, `unknown`\>
+
+### Properties
+
+#### callbackUrl?
+
+```ts
+optional callbackUrl: string;
+```
+
+Specify to which URL the user will be redirected after signing in. Defaults to the page URL the sign-in is initiated from.
+
+[Documentation](https://next-auth.js.org/getting-started/client#specifying-a-callbackurl)
+
+#### redirect?
+
+```ts
+optional redirect: boolean;
+```
+
+[Documentation](https://next-auth.js.org/getting-started/client#using-the-redirect-false-option)
+
+***
+
+## SignInResponse
+
+### Properties
+
+#### code
+
+```ts
+code: undefined | string;
+```
+
+#### error
+
+```ts
+error: undefined | string;
+```
+
+#### ok
+
+```ts
+ok: boolean;
+```
+
+#### status
+
+```ts
+status: number;
+```
+
+#### url
+
+```ts
+url: null | string;
+```
+
+***
+
+## SignOutParams\<R\>
+
+### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `R` extends `boolean` | `true` |
+
+### Properties
+
+#### callbackUrl?
+
+```ts
+optional callbackUrl: string;
+```
+
+[Documentation](https://next-auth.js.org/getting-started/client#specifying-a-callbackurl-1)
+
+#### redirect?
+
+```ts
+optional redirect: R;
+```
+
+[Documentation](https://next-auth.js.org/getting-started/client#using-the-redirect-false-option-1
+
+***
+
+## LiteralUnion\<T, U\>
+
+```ts
+type LiteralUnion<T, U>: T | U & Record<never, never>;
+```
+
+### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `T` extends `U` | - |
+| `U` | `string` |
+
+***
+
+## SessionContextValue\<R\>
+
+```ts
+type SessionContextValue<R>: R extends true ? {
+  data: Session;
+  status: "authenticated";
+  update: UpdateSession;
+  } | {
+  data: null;
+  status: "loading";
+  update: UpdateSession;
+  } : {
+  data: Session;
+  status: "authenticated";
+  update: UpdateSession;
+  } | {
+  data: null;
+  status: "unauthenticated" | "loading";
+  update: UpdateSession;
+};
+```
+
+useSession() returns an object containing three things: a method called [update](react.mdx#updatesession), `data` and `status`.
+
+### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `R` extends `boolean` | `false` |
+
+***
+
+## UpdateSession()
+
+```ts
+type UpdateSession: (data?) => Promise<Session | null>;
+```
+
+### Todo
+
+Document
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `data`? | `any` |
+
+### Returns
+
+`Promise`\<[`Session`](../nextjs.mdx#session-2) \| `null`\>
+
+***
+
+## SessionContext
+
+```ts
+const SessionContext: Context<undefined | {
+  data: Session;
+  status: "authenticated";
+  update: UpdateSession;
+  } | {
+  data: null;
+  status: "loading" | "unauthenticated";
+  update: UpdateSession;
+}>;
+```
+
+***
+
+## \_\_NEXTAUTH
+
+```ts
+const __NEXTAUTH: AuthClientConfig;
+```
+
+***
+
+## SessionProvider()
+
+```ts
+SessionProvider(props): Element
+```
+
+[React Context](https://react.dev/learn/passing-data-deeply-with-context) provider to wrap the app (`pages/`) to make session data available anywhere.
+
+When used, the session state is automatically synchronized across all open tabs/windows and they are all updated whenever they gain or lose focus
+or the state changes (e.g. a user signs in or out) when [SessionProviderProps.refetchOnWindowFocus](react.mdx#refetchonwindowfocus) is `true`.
+
+
+<Callout type="info">
+  `SessionProvider` is for client-side use only and when using [Next.js App Router (`app/`)](https://nextjs.org/blog/next-13-4#nextjs-app-router) you should prefer the `auth()` export.
+</Callout>
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `props` | [`SessionProviderProps`](react.mdx#sessionproviderprops) |
+
+### Returns
+
+`Element`
+
+***
+
+## getCsrfToken()
+
+```ts
+getCsrfToken(): Promise<string>
+```
+
+Returns the current Cross-Site Request Forgery Token (CSRF Token)
+required to make requests that changes state. (e.g. signing in or out, or updating the session).
+
+[CSRF Prevention: Double Submit Cookie](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html#double-submit-cookie)
+
+### Returns
+
+`Promise`\<`string`\>
+
+***
+
+## getProviders()
+
+```ts
+getProviders(): Promise<null | ProvidersType>
+```
+
+Returns a client-safe configuration object of the currently
+available providers.
+
+### Returns
+
+`Promise`\<`null` \| `ProvidersType`\>
+
+***
+
+## getSession()
+
+```ts
+getSession(params?): Promise<null | Session>
+```
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `params`? | [`GetSessionParams`](react.mdx#getsessionparams) |
+
+### Returns
+
+`Promise`\<`null` \| [`Session`](../nextjs.mdx#session-2)\>
+
+***
+
+## signIn()
+
+```ts
+signIn<P>(
+   provider?, 
+   options?, 
+authorizationParams?): Promise<P extends RedirectableProviderType ? SignInResponse | undefined : undefined>
+```
+
+Initiate a signin flow or send the user to the signin page listing all possible providers.
+Handles CSRF protection.
+
+### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `P` extends `undefined` \| [`RedirectableProviderType`](../core/providers.mdx#redirectableprovidertype) | `undefined` |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `provider`? | [`LiteralUnion`](react.mdx#literaluniontu)\<`P` extends [`RedirectableProviderType`](../core/providers.mdx#redirectableprovidertype) ? BuiltInProviderType \| P : [`BuiltInProviderType`](../core/providers.mdx#builtinprovidertype)\> |
+| `options`? | [`SignInOptions`](react.mdx#signinoptions) |
+| `authorizationParams`? | `SignInAuthorizationParams` |
+
+### Returns
+
+`Promise`\<`P` extends [`RedirectableProviderType`](../core/providers.mdx#redirectableprovidertype) ? [`SignInResponse`](react.mdx#signinresponse) \| `undefined` : `undefined`\>
+
+***
+
+## signOut()
+
+```ts
+signOut<R>(options?): Promise<R extends true ? undefined : SignOutResponse>
+```
+
+Initiate a signout, by destroying the current session.
+Handles CSRF protection.
+
+### Type parameters
+
+| Type parameter | Value |
+| :------ | :------ |
+| `R` extends `boolean` | `true` |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options`? | [`SignOutParams`](react.mdx#signoutparamsr)\<`R`\> |
+
+### Returns
+
+`Promise`\<`R` extends `true` ? `undefined` : `SignOutResponse`\>
+
+***
+
+## useSession()
+
+```ts
+useSession<R>(options?): SessionContextValue<R>
+```
+
+React Hook that gives you access to the logged in user's session data and lets you modify it.
+
+
+<Callout type="info">
+  `useSession` is for client-side use only and when using [Next.js App Router (`app/`)](https://nextjs.org/blog/next-13-4#nextjs-app-router) you should prefer the `auth()` export.
+</Callout>
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `R` extends `boolean` |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options`? | `UseSessionOptions`\<`R`\> |
+
+### Returns
+
+[`SessionContextValue`](react.mdx#sessioncontextvaluer)\<`R`\>

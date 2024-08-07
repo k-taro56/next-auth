@@ -1,0 +1,341 @@
+import { Callout } from 'nextra/components';
+
+# providers/tiktok
+
+<div style={{backgroundColor: "#000", display: "flex", justifyContent: "space-between", color: "#fff", padding: 16}}>
+<span>Built-in <b>TikTok</b> integration.</span>
+<a href="https://www.tiktok.com/">
+  <img style={{display: "block"}} src="https://authjs.dev/img/providers/tiktok.svg" height="48" />
+</a>
+</div>
+
+## TiktokProfile
+
+[More info](https://developers.tiktok.com/doc/tiktok-api-v2-get-user-info/)
+
+### Extends
+
+- `Record`\<`string`, `any`\>
+
+### Properties
+
+#### data
+
+```ts
+data: {
+  user: {
+     avatar_large_url: string;
+     avatar_url: string;
+     avatar_url_100: string;
+     bio_description: string;
+     display_name: string;
+     email: string;
+     follower_count: number;
+     following_count: number;
+     is_verified: boolean;
+     likes_count: number;
+     open_id: string;
+     profile_deep_link: string;
+     union_id: string;
+     username: string;
+     video_count: number;
+  };
+};
+```
+
+##### user
+
+```ts
+user: {
+  avatar_large_url: string;
+  avatar_url: string;
+  avatar_url_100: string;
+  bio_description: string;
+  display_name: string;
+  email: string;
+  follower_count: number;
+  following_count: number;
+  is_verified: boolean;
+  likes_count: number;
+  open_id: string;
+  profile_deep_link: string;
+  union_id: string;
+  username: string;
+  video_count: number;
+};
+```
+
+##### user.avatar\_large\_url?
+
+```ts
+optional avatar_large_url: string;
+```
+
+User's profile image with higher resolution
+
+To return this field, add `fields=avatar_url_100` in the user profile request's query parameter.
+
+##### user.avatar\_url
+
+```ts
+avatar_url: string;
+```
+
+User's profile image.
+
+To return this field, add `fields=avatar_url` in the user profile request's query parameter.
+
+##### user.avatar\_url\_100?
+
+```ts
+optional avatar_url_100: string;
+```
+
+User`s profile image in 100x100 size.
+
+To return this field, add `fields=avatar_url_100` in the user profile request's query parameter.
+
+##### user.bio\_description?
+
+```ts
+optional bio_description: string;
+```
+
+User's bio description if there is a valid one.
+
+To return this field, add `fields=bio_description` in the user profile request's query parameter.
+
+##### user.display\_name
+
+```ts
+display_name: string;
+```
+
+User's profile name
+
+To return this field, add `fields=display_name` in the user profile request's query parameter.
+
+##### user.email?
+
+```ts
+optional email: string;
+```
+
+###### Note
+
+Email is currently unsupported by TikTok
+
+##### user.follower\_count?
+
+```ts
+optional follower_count: number;
+```
+
+User's followers count.
+
+To return this field, add `fields=follower_count` in the user profile request's query parameter.
+
+##### user.following\_count?
+
+```ts
+optional following_count: number;
+```
+
+The number of accounts that the user is following.
+
+To return this field, add `fields=following_count` in the user profile request's query parameter.
+
+##### user.is\_verified?
+
+```ts
+optional is_verified: boolean;
+```
+
+Whether TikTok has provided a verified badge to the account after confirming
+that it belongs to the user it represents.
+
+To return this field, add `fields=is_verified` in the user profile request's query parameter.
+
+##### user.likes\_count?
+
+```ts
+optional likes_count: number;
+```
+
+The total number of likes received by the user across all of their videos.
+
+To return this field, add `fields=likes_count` in the user profile request's query parameter.
+
+##### user.open\_id
+
+```ts
+open_id: string;
+```
+
+The unique identification of the user in the current application.Open id
+for the client.
+
+To return this field, add `fields=open_id` in the user profile request's query parameter.
+
+##### user.profile\_deep\_link?
+
+```ts
+optional profile_deep_link: string;
+```
+
+The link to user's TikTok profile page.
+
+To return this field, add `fields=profile_deep_link` in the user profile request's query parameter.
+
+##### user.union\_id?
+
+```ts
+optional union_id: string;
+```
+
+The unique identification of the user across different apps for the same developer.
+For example, if a partner has X number of clients,
+it will get X number of open_id for the same TikTok user,
+but one persistent union_id for the particular user.
+
+To return this field, add `fields=union_id` in the user profile request's query parameter.
+
+##### user.username
+
+```ts
+username: string;
+```
+
+User's username.
+
+To return this field, add `fields=username` in the user profile request's query parameter.
+
+##### user.video\_count?
+
+```ts
+optional video_count: number;
+```
+
+The total number of publicly posted videos by the user.
+
+To return this field, add `fields=video_count` in the user profile request's query parameter.
+
+#### error
+
+```ts
+error: {
+  code: string;
+  log_id: string;
+  message: string;
+};
+```
+
+##### code
+
+```ts
+code: string;
+```
+
+The error category in string.
+
+##### log\_id
+
+```ts
+log_id: string;
+```
+
+The error message in string.
+
+##### message
+
+```ts
+message: string;
+```
+
+The error message in string.
+
+***
+
+## default()
+
+```ts
+default<P>(options): OAuthConfig<P>
+```
+
+Add TikTok login to your page.
+
+### Setup
+
+#### Callback URL
+```
+https://example.com/api/auth/callback/tiktok
+```
+
+#### Configuration
+```ts
+import { Auth } from "@auth/core"
+import TikTok from "@auth/core/providers/tiktok"
+
+const request = new Request(origin)
+const response = await Auth(request, {
+  providers: [
+    TikTok({ clientId: TIKTOK_CLIENT_KEY, clientSecret: TIKTOK_CLIENT_SECRET }),
+  ],
+})
+```
+
+### Resources
+ - [TikTok app console](https://developers.tiktok.com/)
+ - [TikTok login kit documentation](https://developers.tiktok.com/doc/login-kit-web/)
+ - [Avaliable Scopes](https://developers.tiktok.com/doc/tiktok-api-scopes/)
+
+### Notes
+
+
+<Callout type="default">
+  Production applications cannot use localhost URLs to sign in with TikTok. You need add the domain and Callback/Redirect url's to your TikTok app and have them review and approved by the TikTok Team.
+</Callout>
+
+
+<Callout type="default">
+  Email address is not supported by TikTok.
+</Callout>
+
+
+<Callout type="default">
+  Client_ID will be the Client Key in the TikTok Application
+</Callout>
+
+By default, Auth.js assumes that the TikTok provider is
+based on the [OAuth 2](https://www.rfc-editor.org/rfc/rfc6749.html) specification.
+
+
+<Callout type="default">
+  The TikTok provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/tiktok.ts).
+To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/configuring-oauth-providers).
+</Callout>
+
+
+<Callout type="info">
+  ****Disclaimer**** If you think you found a bug in the default configuration, you can [open an issue](https://authjs.dev/new/provider-issue).
+
+Auth.js strictly adheres to the specification and it cannot take responsibility for any deviation from
+the spec by the provider. You can open an issue, but if the problem is non-compliance with the spec,
+we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
+</Callout>
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `P` extends [`TiktokProfile`](tiktok.mdx#tiktokprofile) |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options` | [`OAuthUserConfig`](../providers.mdx#oauthuserconfigprofile)\<`P`\> |
+
+### Returns
+
+[`OAuthConfig`](../providers.mdx#oauthconfigprofile)\<`P`\>

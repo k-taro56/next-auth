@@ -1,0 +1,304 @@
+import { Callout } from 'nextra/components';
+
+# providers/pipedrive
+
+<div style={{backgroundColor: "#000", display: "flex", justifyContent: "space-between", color: "#fff", padding: 16}}>
+<span>Built-in <b>Pipedrive</b> integration.</span>
+<a href="https://www.pipedrive.com/">
+  <img style={{display: "block"}} src="https://authjs.dev/img/providers/pipedrive.svg" height="48" />
+</a>
+</div>
+
+## PipedriveProfile
+
+### Extends
+
+- `Record`\<`string`, `any`\>
+
+### Properties
+
+#### data
+
+```ts
+data: {
+  activated: boolean;
+  active_flag: boolean;
+  company_country: string;
+  company_domain: string;
+  company_id: number;
+  company_industry: string;
+  company_name: string;
+  created: Date;
+  default_currency: string;
+  email: string;
+  has_created_company: boolean;
+  icon_url: string;
+  id: number;
+  is_admin: number;
+  is_you: boolean;
+  lang: number;
+  language: {
+     country_code: string;
+     language_code: string;
+  };
+  last_login: Date;
+  locale: string;
+  modified: Date;
+  name: string;
+  phone: string;
+  role_id: number;
+  signup_flow_variation: string;
+  timezone_name: string;
+  timezone_offset: string;
+};
+```
+
+##### activated?
+
+```ts
+optional activated: boolean;
+```
+
+##### active\_flag?
+
+```ts
+optional active_flag: boolean;
+```
+
+##### company\_country?
+
+```ts
+optional company_country: string;
+```
+
+##### company\_domain?
+
+```ts
+optional company_domain: string;
+```
+
+##### company\_id?
+
+```ts
+optional company_id: number;
+```
+
+##### company\_industry?
+
+```ts
+optional company_industry: string;
+```
+
+##### company\_name?
+
+```ts
+optional company_name: string;
+```
+
+##### created?
+
+```ts
+optional created: Date;
+```
+
+##### default\_currency?
+
+```ts
+optional default_currency: string;
+```
+
+##### email
+
+```ts
+email: string;
+```
+
+##### has\_created\_company?
+
+```ts
+optional has_created_company: boolean;
+```
+
+##### icon\_url?
+
+```ts
+optional icon_url: string;
+```
+
+##### id
+
+```ts
+id: number;
+```
+
+##### is\_admin?
+
+```ts
+optional is_admin: number;
+```
+
+##### is\_you?
+
+```ts
+optional is_you: boolean;
+```
+
+##### lang?
+
+```ts
+optional lang: number;
+```
+
+##### language?
+
+```ts
+optional language: {
+  country_code: string;
+  language_code: string;
+};
+```
+
+##### language.country\_code?
+
+```ts
+optional country_code: string;
+```
+
+##### language.language\_code?
+
+```ts
+optional language_code: string;
+```
+
+##### last\_login?
+
+```ts
+optional last_login: Date;
+```
+
+##### locale?
+
+```ts
+optional locale: string;
+```
+
+##### modified?
+
+```ts
+optional modified: Date;
+```
+
+##### name
+
+```ts
+name: string;
+```
+
+##### phone?
+
+```ts
+optional phone: string;
+```
+
+##### role\_id?
+
+```ts
+optional role_id: number;
+```
+
+##### signup\_flow\_variation?
+
+```ts
+optional signup_flow_variation: string;
+```
+
+##### timezone\_name?
+
+```ts
+optional timezone_name: string;
+```
+
+##### timezone\_offset?
+
+```ts
+optional timezone_offset: string;
+```
+
+#### success
+
+```ts
+success: boolean;
+```
+
+***
+
+## default()
+
+```ts
+default<P>(options): OAuthConfig<P>
+```
+
+Add Pipedrive login to your page.
+
+### Setup
+
+#### Callback URL
+```
+https://example.com/api/auth/callback/pipedrive
+```
+
+#### Configuration
+```ts
+import { Auth } from "@auth/core"
+import Pipedrive from "@auth/core/providers/pipedrive"
+
+const request = new Request(origin)
+const response = await Auth(request, {
+  providers: [
+    Pipedrive({
+      clientId: PIPEDRIVE_CLIENT_ID,
+      clientSecret: PIPEDRIVE_CLIENT_SECRET,
+    }),
+  ],
+})
+```
+
+### Resources
+
+ - [Pipedrive OAuth documentation](https://pipedrive.readme.io/docs/marketplace-oauth-authorization)
+
+### Notes
+
+By default, Auth.js assumes that the Pipedrive provider is
+based on the [OAuth 2](https://www.rfc-editor.org/rfc/rfc6749.html) specification.
+
+
+<Callout type="default">
+  The Pipedrive provider comes with a [default configuration](https://github.com/nextauthjs/next-auth/blob/main/packages/core/src/providers/pipedrive.ts).
+To override the defaults for your use case, check out [customizing a built-in OAuth provider](https://authjs.dev/guides/configuring-oauth-providers).
+</Callout>
+
+
+<Callout type="info">
+  ****Disclaimer**** If you think you found a bug in the default configuration, you can [open an issue](https://authjs.dev/new/provider-issue).
+
+Auth.js strictly adheres to the specification and it cannot take responsibility for any deviation from
+the spec by the provider. You can open an issue, but if the problem is non-compliance with the spec,
+we might not pursue a resolution. You can ask for more help in [Discussions](https://authjs.dev/new/github-discussions).
+</Callout>
+
+### Type parameters
+
+| Type parameter |
+| :------ |
+| `P` extends [`PipedriveProfile`](pipedrive.mdx#pipedriveprofile) |
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `options` | [`OAuthUserConfig`](../providers.mdx#oauthuserconfigprofile)\<`P`\> |
+
+### Returns
+
+[`OAuthConfig`](../providers.mdx#oauthconfigprofile)\<`P`\>

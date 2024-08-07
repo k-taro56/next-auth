@@ -1,0 +1,63 @@
+import { Callout } from 'nextra/components';
+
+# lib/http-api-adapters
+
+## encodeUrlEncoded()
+
+```ts
+encodeUrlEncoded(object): string
+```
+
+Encodes an object as url-encoded string.
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `object` | `Record`\<`string`, `any`\> |
+
+### Returns
+
+`string`
+
+***
+
+## toExpressResponse()
+
+```ts
+toExpressResponse(response, res): Promise<void>
+```
+
+Adapts a Web Response to an Express Response, invoking appropriate
+Express response methods to handle the response.
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `response` | [`Response`]( https://developer.mozilla.org/en-US/docs/Web/API/Response ) |
+| `res` | `Response`\<`any`, `Record`\<`string`, `any`\>\> |
+
+### Returns
+
+`Promise`\<`void`\>
+
+***
+
+## toWebRequest()
+
+```ts
+toWebRequest(req): Request
+```
+
+Adapts an Express Request to a Web Request, returning the Web Request.
+
+### Parameters
+
+| Parameter | Type |
+| :------ | :------ |
+| `req` | `Request`\<`ParamsDictionary`, `any`, `any`, `ParsedQs`, `Record`\<`string`, `any`\>\> |
+
+### Returns
+
+[`Request`]( https://developer.mozilla.org/en-US/docs/Web/API/Request )
