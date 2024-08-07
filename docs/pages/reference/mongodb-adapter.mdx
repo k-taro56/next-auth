@@ -85,7 +85,7 @@ addressing persistence, container reuse, and connection closure issues.
 
 ##### Returns
 
-`Promise`\<`void`\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
 ***
 
@@ -118,13 +118,13 @@ Takes a MongoDB object and returns a plain old JavaScript object
 
 | Type parameter | Value |
 | :------ | :------ |
-| `T` | `Record`\<`string`, `unknown`\> |
+| `T` | [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, `unknown`\> |
 
 ##### Parameters
 
 | Parameter | Type |
 | :------ | :------ |
-| `object` | `Record`\<`string`, `any`\> |
+| `object` | [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, `any`\> |
 
 ##### Returns
 
@@ -138,13 +138,13 @@ Takes a plain old JavaScript object and turns it into a MongoDB object
 
 | Type parameter | Value |
 | :------ | :------ |
-| `T` | `Record`\<`string`, `unknown`\> |
+| `T` | [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, `unknown`\> |
 
 ##### Parameters
 
 | Parameter | Type |
 | :------ | :------ |
-| `object` | `Record`\<`string`, `any`\> |
+| `object` | [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, `any`\> |
 
 ##### Returns
 
@@ -164,7 +164,7 @@ MongoDBAdapter(client, options): Adapter
 
 | Parameter | Type | Description |
 | :------ | :------ | :------ |
-| `client` | `MongoClient` \| `Promise`\<`MongoClient`\> \| () => `MongoClient` \| `Promise`\<`MongoClient`\> | The MongoDB client.<br /><br />The MongoDB team recommends providing a non-connected `MongoClient` instance to avoid unhandled promise rejections if the client fails to connect.<br /><br />Alternatively, you can also pass:<br />- A promise that resolves to a connected `MongoClient` (not recommended).<br />- A function, to handle more complex and custom connection strategies.<br /><br />Using a function that returns `MongoClient \| Promise<MongoClient>`, combined with `options.onClose`, can be useful when you want a more advanced and customized connection strategy to address challenges related to persistence, container reuse, and connection closure. |
+| `client` | `MongoClient` \| [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MongoClient`\> \| () => `MongoClient` \| [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`MongoClient`\> | The MongoDB client.<br /><br />The MongoDB team recommends providing a non-connected `MongoClient` instance to avoid unhandled promise rejections if the client fails to connect.<br /><br />Alternatively, you can also pass:<br />- A promise that resolves to a connected `MongoClient` (not recommended).<br />- A function, to handle more complex and custom connection strategies.<br /><br />Using a function that returns `MongoClient \| Promise<MongoClient>`, combined with `options.onClose`, can be useful when you want a more advanced and customized connection strategy to address challenges related to persistence, container reuse, and connection closure. |
 | `options` | [`MongoDBAdapterOptions`](mongodb-adapter.mdx#mongodbadapteroptions) | - |
 
 ### Returns

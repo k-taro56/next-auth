@@ -96,7 +96,7 @@ optional session: null | Session;
 
 ### Extends
 
-- `Record`\<`string`, `unknown`\>
+- [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, `unknown`\>
 
 ### Properties
 
@@ -249,7 +249,7 @@ Document
 
 ### Returns
 
-`Promise`\<[`Session`](../nextjs.mdx#session-2) \| `null`\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Session`](../nextjs.mdx#session-2) \| `null`\>
 
 ***
 
@@ -318,7 +318,7 @@ required to make requests that changes state. (e.g. signing in or out, or updati
 
 ### Returns
 
-`Promise`\<`string`\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`string`\>
 
 ***
 
@@ -333,7 +333,7 @@ available providers.
 
 ### Returns
 
-`Promise`\<`null` \| `ProvidersType`\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`null` \| `ProvidersType`\>
 
 ***
 
@@ -351,7 +351,7 @@ getSession(params?): Promise<null | Session>
 
 ### Returns
 
-`Promise`\<`null` \| [`Session`](../nextjs.mdx#session-2)\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`null` \| [`Session`](../nextjs.mdx#session-2)\>
 
 ***
 
@@ -383,7 +383,7 @@ Handles CSRF protection.
 
 ### Returns
 
-`Promise`\<`P` extends [`RedirectableProviderType`](../core/providers.mdx#redirectableprovidertype) ? [`SignInResponse`](react.mdx#signinresponse) \| `undefined` : `undefined`\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`P` extends [`RedirectableProviderType`](../core/providers.mdx#redirectableprovidertype) ? [`SignInResponse`](react.mdx#signinresponse) \| `undefined` : `undefined`\>
 
 ***
 
@@ -410,7 +410,7 @@ Handles CSRF protection.
 
 ### Returns
 
-`Promise`\<`R` extends `true` ? `undefined` : `SignOutResponse`\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`R` extends `true` ? `undefined` : `SignOutResponse`\>
 
 ***
 

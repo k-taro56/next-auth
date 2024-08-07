@@ -164,7 +164,7 @@ Prepare a value to pass into navigator.credentials.get(...) for authenticator "l
 
 ###### Returns
 
-`Promise`\<`PublicKeyCredentialRequestOptionsJSON`\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`PublicKeyCredentialRequestOptionsJSON`\>
 
 ##### generateRegistrationOptions()
 
@@ -184,7 +184,7 @@ Prepare a value to pass into navigator.credentials.create(...) for authenticator
 
 ###### Returns
 
-`Promise`\<`PublicKeyCredentialCreationOptionsJSON`\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`PublicKeyCredentialCreationOptionsJSON`\>
 
 ##### verifyAuthenticationResponse()
 
@@ -204,7 +204,7 @@ Verify that the user has legitimately completed the login process
 
 ###### Returns
 
-`Promise`\<`VerifiedAuthenticationResponse`\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`VerifiedAuthenticationResponse`\>
 
 ##### verifyRegistrationResponse()
 
@@ -224,7 +224,7 @@ Verify that the user has legitimately completed the registration process
 
 ###### Returns
 
-`Promise`\<`VerifiedRegistrationResponse`\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`VerifiedRegistrationResponse`\>
 
 #### simpleWebAuthnBrowserVersion
 
@@ -296,12 +296,12 @@ type GetUserInfo: (options, request) => Promise<{
 
 ### Returns
 
-`Promise`\<\{
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<\{
   `exists`: `true`;
   `user`: [`User`](../types.mdx#user-2);
   } \| \{
   `exists`: `false`;
-  `user`: `Omit`\<[`User`](../types.mdx#user-2), `"id"`\>;
+  `user`: [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)\<[`User`](../types.mdx#user-2), `"id"`\>;
   } \| `null`\>
 
 ***
@@ -413,7 +413,7 @@ we might not pursue a resolution. You can ask for more help in [Discussions](htt
 
 | Parameter | Type |
 | :------ | :------ |
-| `config` | `Partial`\<[`WebAuthnConfig`](webauthn.mdx#webauthnconfig)\> |
+| `config` | [`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)\<[`WebAuthnConfig`](webauthn.mdx#webauthnconfig)\> |
 
 ### Returns
 

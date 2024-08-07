@@ -14,7 +14,7 @@ Encodes an object as url-encoded string.
 
 | Parameter | Type |
 | :------ | :------ |
-| `object` | `Record`\<`string`, `any`\> |
+| `object` | [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, `any`\> |
 
 ### Returns
 
@@ -35,12 +35,12 @@ Express response methods to handle the response.
 
 | Parameter | Type |
 | :------ | :------ |
-| `response` | [`Response`]( https://developer.mozilla.org/en-US/docs/Web/API/Response ) |
-| `res` | `Response`\<`any`, `Record`\<`string`, `any`\>\> |
+| `response` | [`Response`]( https://developer.mozilla.org/docs/Web/API/Response ) |
+| `res` | `Response`\<`any`, [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, `any`\>\> |
 
 ### Returns
 
-`Promise`\<`void`\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
 ***
 
@@ -56,8 +56,8 @@ Adapts an Express Request to a Web Request, returning the Web Request.
 
 | Parameter | Type |
 | :------ | :------ |
-| `req` | `Request`\<`ParamsDictionary`, `any`, `any`, `ParsedQs`, `Record`\<`string`, `any`\>\> |
+| `req` | `Request`\<`ParamsDictionary`, `any`, `any`, `ParsedQs`, [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, `any`\>\> |
 
 ### Returns
 
-[`Request`]( https://developer.mozilla.org/en-US/docs/Web/API/Request )
+[`Request`]( https://developer.mozilla.org/docs/Web/API/Request )

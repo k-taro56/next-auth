@@ -8,7 +8,7 @@ Configure the SvelteKitAuth method.
 
 ### Extends
 
-- `Omit`\<[`AuthConfig`](../core.mdx#authconfig), `"raw"`\>
+- [`Omit`](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys)\<[`AuthConfig`](../core.mdx#authconfig), `"raw"`\>
 
 ### Properties
 
@@ -206,7 +206,7 @@ callbacks: {
 | :------ | :------ | :------ |
 | `params` | `Object` | - |
 | `params.account` | `null` \| [`Account`](../sveltekit.mdx#account) | - |
-| `params.credentials`? | `Record`\<`string`, [`CredentialInput`](../core/providers/credentials.mdx#credentialinput)\> | If Credentials provider is used, it contains the user credentials |
+| `params.credentials`? | [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, [`CredentialInput`](../core/providers/credentials.mdx#credentialinput)\> | If Credentials provider is used, it contains the user credentials |
 | `params.email`? | `Object` | If Email provider is used, on the first call, it contains a<br />`verificationRequest: true` property to indicate it is being triggered in the verification request flow.<br />When the callback is invoked after a user has clicked on a sign in link,<br />this property will not be present. You can check for the `verificationRequest` property<br />to avoid sending emails to addresses or domains on a blocklist or to only explicitly generate them<br />for email address in an allow list. |
 | `params.email.verificationRequest`? | `boolean` | - |
 | `params.profile`? | [`Profile`](../sveltekit.mdx#profile) | If OAuth provider is used, it contains the full<br />OAuth profile returned by your provider. |

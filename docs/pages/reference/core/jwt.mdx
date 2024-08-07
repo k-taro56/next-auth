@@ -39,7 +39,7 @@ You can then import this submodule from `@auth/core/jwt`.
 
 ### Extends
 
-- `Record`\<`string`, `unknown`\>
+- [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, `unknown`\>
 
 ### Properties
 
@@ -91,7 +91,7 @@ optional sub: string;
 
 ### Extends
 
-- `Pick`\<[`JWTDecodeParams`](jwt.mdx#jwtdecodeparams), `"salt"` \| `"secret"`\>
+- [`Pick`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)\<[`JWTDecodeParams`](jwt.mdx#jwtdecodeparams), `"salt"` \| `"secret"`\>
 
 ### Type parameters
 
@@ -204,7 +204,7 @@ Returned by the `jwt` callback when using JWT sessions
 
 ### Extends
 
-- `Record`\<`string`, `unknown`\>.[`DefaultJWT`](jwt.mdx#defaultjwt)
+- [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, `unknown`\>.[`DefaultJWT`](jwt.mdx#defaultjwt)
 
 ### Properties
 
@@ -444,7 +444,7 @@ Decodes a Auth.js issued JWT.
 
 ### Returns
 
-`Promise`\<`Payload` \| `null`\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`Payload` \| `null`\>
 
 ***
 
@@ -470,7 +470,7 @@ Issues a JWT. By default, the JWT is encrypted using "A256CBC-HS512".
 
 ### Returns
 
-`Promise`\<`string`\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`string`\>
 
 ***
 
@@ -497,4 +497,4 @@ or the raw JWT string. We look for the JWT in the either the cookies, or the `Au
 
 ### Returns
 
-`Promise`\<`R` extends `true` ? `string` : [`JWT`](jwt.mdx#jwt) \| `null`\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`R` extends `true` ? `string` : [`JWT`](jwt.mdx#jwt) \| `null`\>

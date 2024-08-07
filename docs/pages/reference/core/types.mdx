@@ -63,7 +63,7 @@ and also extends `TokenSet`, which is different tokens returned by OAuth Provide
 
 ### Extends
 
-- `Partial`\<`OpenIDTokenEndpointResponse`\>
+- [`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)\<`OpenIDTokenEndpointResponse`\>
 
 ### Properties
 
@@ -379,7 +379,7 @@ Override any of the methods, and the rest will use the default logger.
 
 ### Extends
 
-- `Record`\<`string`, `Function`\>
+- [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, [`Function`]( https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function )\>
 
 ### Properties
 
@@ -410,7 +410,7 @@ error: (error) => void;
 
 | Parameter | Type |
 | :------ | :------ |
-| `error` | `Error` |
+| `error` | [`Error`]( https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error ) |
 
 ##### Returns
 
@@ -679,7 +679,7 @@ type: string;
 
 | Type parameter | Value |
 | :------ | :------ |
-| `Body` extends `string` \| `Record`\<`string`, `any`\> \| `any`[] \| `null` | `any` |
+| `Body` extends `string` \| [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, `any`\> \| `any`[] \| `null` | `any` |
 
 ### Properties
 

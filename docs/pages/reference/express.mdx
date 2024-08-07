@@ -132,7 +132,7 @@ via the [`logger.error`](https://authjs.dev/reference/core#logger) option.
 
 ### Extends
 
-- `Error`
+- [`Error`]( https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error )
 
 ### Constructors
 
@@ -233,7 +233,7 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 
 | Parameter | Type |
 | :------ | :------ |
-| `err` | `Error` |
+| `err` | [`Error`]( https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error ) |
 | `stackTraces` | `CallSite`[] |
 
 ##### Returns
@@ -269,7 +269,7 @@ Create .stack property on a target object
 | Parameter | Type |
 | :------ | :------ |
 | `targetObject` | `object` |
-| `constructorOpt`? | `Function` |
+| `constructorOpt`? | [`Function`]( https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function ) |
 
 ##### Returns
 
@@ -420,7 +420,7 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 
 | Parameter | Type |
 | :------ | :------ |
-| `err` | `Error` |
+| `err` | [`Error`]( https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error ) |
 | `stackTraces` | `CallSite`[] |
 
 ##### Returns
@@ -462,7 +462,7 @@ Create .stack property on a target object
 | Parameter | Type |
 | :------ | :------ |
 | `targetObject` | `object` |
-| `constructorOpt`? | `Function` |
+| `constructorOpt`? | [`Function`]( https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Function ) |
 
 ##### Returns
 
@@ -481,7 +481,7 @@ and also extends `TokenSet`, which is different tokens returned by OAuth Provide
 
 ### Extends
 
-- `Partial`\<`OpenIDTokenEndpointResponse`\>
+- [`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)\<`OpenIDTokenEndpointResponse`\>
 
 ### Properties
 
@@ -886,13 +886,13 @@ ExpressAuth(config): (req, res, next) => Promise<void>
 >
 > | Parameter | Type |
 > | :------ | :------ |
-> | `req` | `Request`\<`ParamsDictionary`, `any`, `any`, `ParsedQs`, `Record`\<`string`, `any`\>\> |
-> | `res` | `Response`\<`any`, `Record`\<`string`, `any`\>\> |
+> | `req` | `Request`\<`ParamsDictionary`, `any`, `any`, `ParsedQs`, [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, `any`\>\> |
+> | `res` | `Response`\<`any`, [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, `any`\>\> |
 > | `next` | `NextFunction` |
 >
 > #### Returns
 >
-> `Promise`\<`void`\>
+> [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 >
 
 ***
@@ -907,7 +907,7 @@ getSession(req, config): GetSessionResult
 
 | Parameter | Type |
 | :------ | :------ |
-| `req` | `Request`\<`ParamsDictionary`, `any`, `any`, `ParsedQs`, `Record`\<`string`, `any`\>\> |
+| `req` | `Request`\<`ParamsDictionary`, `any`, `any`, `ParsedQs`, [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, `any`\>\> |
 | `config` | [`ExpressAuthConfig`](express.mdx#expressauthconfig) |
 
 ### Returns

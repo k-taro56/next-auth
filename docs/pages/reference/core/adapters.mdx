@@ -219,7 +219,7 @@ See also [Database Session management](https://authjs.dev/guides/creating-a-data
 | Parameter | Type |
 | :------ | :------ |
 | `session` | `Object` |
-| `session.expires` | `Date` |
+| `session.expires` | [`Date`]( https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date ) |
 | `session.sessionToken` | `string` |
 | `session.userId` | `string` |
 
@@ -286,7 +286,7 @@ See also [Database Session management](https://authjs.dev/guides/creating-a-data
 
 ##### Returns
 
-`Promise`\<`void`\> \| [`Awaitable`](types.mdx#awaitablet)\<`undefined` \| `null` \| [`AdapterSession`](adapters.mdx#adaptersession)\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\> \| [`Awaitable`](types.mdx#awaitablet)\<`undefined` \| `null` \| [`AdapterSession`](adapters.mdx#adaptersession)\>
 
 #### deleteUser()?
 
@@ -302,7 +302,7 @@ optional deleteUser(userId): Promise<void> | Awaitable<undefined | null | Adapte
 
 ##### Returns
 
-`Promise`\<`void`\> \| [`Awaitable`](types.mdx#awaitablet)\<`undefined` \| `null` \| [`AdapterUser`](adapters.mdx#adapteruser)\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\> \| [`Awaitable`](types.mdx#awaitablet)\<`undefined` \| `null` \| [`AdapterUser`](adapters.mdx#adapteruser)\>
 
 ##### Todo
 
@@ -416,7 +416,7 @@ See also [User management](https://authjs.dev/guides/creating-a-database-adapter
 
 | Parameter | Type |
 | :------ | :------ |
-| `providerAccountId` | `Pick`\<[`AdapterAccount`](adapters.mdx#adapteraccount), `"provider"` \| `"providerAccountId"`\> |
+| `providerAccountId` | [`Pick`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)\<[`AdapterAccount`](adapters.mdx#adapteraccount), `"provider"` \| `"providerAccountId"`\> |
 
 ##### Returns
 
@@ -461,7 +461,7 @@ See also [User management](https://authjs.dev/guides/creating-a-database-adapter
 
 ##### Returns
 
-`Promise`\<`void`\> \| [`Awaitable`](types.mdx#awaitablet)\<`undefined` \| `null` \| [`AdapterAccount`](adapters.mdx#adapteraccount)\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\> \| [`Awaitable`](types.mdx#awaitablet)\<`undefined` \| `null` \| [`AdapterAccount`](adapters.mdx#adapteraccount)\>
 
 #### listAuthenticatorsByUserId()?
 
@@ -494,11 +494,11 @@ optional unlinkAccount(providerAccountId): Promise<void> | Awaitable<undefined |
 
 | Parameter | Type |
 | :------ | :------ |
-| `providerAccountId` | `Pick`\<[`AdapterAccount`](adapters.mdx#adapteraccount), `"provider"` \| `"providerAccountId"`\> |
+| `providerAccountId` | [`Pick`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)\<[`AdapterAccount`](adapters.mdx#adapteraccount), `"provider"` \| `"providerAccountId"`\> |
 
 ##### Returns
 
-`Promise`\<`void`\> \| [`Awaitable`](types.mdx#awaitablet)\<`undefined` \| [`AdapterAccount`](adapters.mdx#adapteraccount)\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\> \| [`Awaitable`](types.mdx#awaitablet)\<`undefined` \| [`AdapterAccount`](adapters.mdx#adapteraccount)\>
 
 ##### Todo
 
@@ -539,7 +539,7 @@ See also [Database Session management](https://authjs.dev/guides/creating-a-data
 
 | Parameter | Type |
 | :------ | :------ |
-| `session` | `Partial`\<[`AdapterSession`](adapters.mdx#adaptersession)\> & `Pick`\<[`AdapterSession`](adapters.mdx#adaptersession), `"sessionToken"`\> |
+| `session` | [`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)\<[`AdapterSession`](adapters.mdx#adaptersession)\> & [`Pick`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)\<[`AdapterSession`](adapters.mdx#adaptersession), `"sessionToken"`\> |
 
 ##### Returns
 
@@ -559,7 +559,7 @@ See also [User management](https://authjs.dev/guides/creating-a-database-adapter
 
 | Parameter | Type |
 | :------ | :------ |
-| `user` | `Partial`\<[`AdapterUser`](adapters.mdx#adapteruser)\> & `Pick`\<[`AdapterUser`](adapters.mdx#adapteruser), `"id"`\> |
+| `user` | [`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)\<[`AdapterUser`](adapters.mdx#adapteruser)\> & [`Pick`](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys)\<[`AdapterUser`](adapters.mdx#adapteruser), `"id"`\> |
 
 ##### Returns
 
